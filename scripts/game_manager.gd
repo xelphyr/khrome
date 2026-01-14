@@ -16,3 +16,4 @@ func _process(_delta: float) -> void:
 func _load_level(level: int):
 	var loaded_level = levels[level].instantiate()
 	get_tree().current_scene.call_deferred("add_child", loaded_level)
+
