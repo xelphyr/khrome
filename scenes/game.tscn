@@ -1,30 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bynl54fhlontd"]
+[gd_scene load_steps=2 format=3 uid="uid://cf7lm2tagexth"]
 
-[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/platform_blue.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="3_iywne"]
-[ext_resource type="PackedScene" uid="uid://21qdq5puygj" path="res://scenes/obstacles/platform_gold.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://kg2op7xdq4ut" path="res://scenes/ui_manager.tscn" id="1_uwrxv"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Game" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_yqjtg")]
-
-[node name="PlatformBlue" parent="." instance=ExtResource("2_lnu2h")]
-transform = Transform3D(5, 0, 0, 0, 0.516, 0, 0, 0, 5, 0, -2.2451253, 0)
-
-[node name="PlatformBlue2" parent="." instance=ExtResource("2_lnu2h")]
-transform = Transform3D(5, 0, 0, 0, 0.516, 0, 0, 0, 5, 0, -2.245, -17.276)
-
-[node name="Camera3D" parent="." instance=ExtResource("3_iywne")]
-transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
-cull_mask = 1047553
-script = ExtResource("4_p57ef")
-
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
-layers = 3
-shadow_enabled = true
-
-[node name="PlatformGold" parent="." instance=ExtResource("3_lnu2h")]
-transform = Transform3D(5, 0, 0, 0, 0.516, 0, 0, 0, 5, 0, -2.245, -8.727)
+[node name="UIManager" parent="." instance=ExtResource("1_uwrxv")]

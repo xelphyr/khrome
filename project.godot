@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Khrome"
-run/main_scene="uid://bynl54fhlontd"
+run/main_scene="uid://cf7lm2tagexth"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,10 @@ project/assembly_name="Khrome"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[gui]
+
+theme/custom_font="uid://gox2ioaowuep"
 
 [input]
 
