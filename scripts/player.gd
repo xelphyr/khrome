@@ -4,6 +4,15 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+func _ready() -> void:
+	EventBus.switch_to.connect(change_collision_layer)
+
+func change_collision_layer(to: int) -> void:
+	print(to)
+	set_collision_layer_value(1, to==1)
+	set_collision_layer_value(2, to==2)
+	set_collision_mask_value(1, to==1)
+	set_collision_mask_value(2, to==2)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

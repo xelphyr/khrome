@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://butyikmac32bn"]
+
+[sub_resource type="Environment" id="Environment_yqjtg"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.75
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(0.7071067, -0.29883623, 0.6408563, 0, 0.90630776, 0.42261827, -0.7071067, -0.29883623, 0.6408563, 0, 0, 0)
+cull_mask = 1047555
+environment = SubResource("Environment_yqjtg")
+projection = 1
+size = 29.155
