@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo5lq3e3doqav"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_souht"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="2_wk5vn"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/platform_blue.tscn" id="3_kt1qv"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="4_fnalb"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="5_sipdq"]
+[ext_resource type="PackedScene" uid="uid://21qdq5puygj" path="res://scenes/obstacles/platform_gold.tscn" id="6_ci58i"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="7_hakhg"]
+
+[sub_resource type="Environment" id="Environment_0absb"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="2" type="Node3D" node_paths=PackedStringArray("level_finish")]
+script = ExtResource("1_souht")
+level_finish = NodePath("LevelFinish")
+level_idx = 2
+
+[node name="Player" parent="." instance=ExtResource("2_wk5vn")]
+
+[node name="PlatformBlue" parent="." instance=ExtResource("3_kt1qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2451253, 0)
+
+[node name="PlatformBlue2" parent="." instance=ExtResource("3_kt1qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1743646, -8.781528)
+
+[node name="Camera3D" parent="." instance=ExtResource("4_fnalb")]
+transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
+cull_mask = 1047553
+environment = SubResource("Environment_0absb")
+script = ExtResource("5_sipdq")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="PlatformGold" parent="." instance=ExtResource("6_ci58i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.245, -8.727)
+
+[node name="LevelFinish" parent="." instance=ExtResource("7_hakhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4193645, -8.858879)

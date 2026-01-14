@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 10
 
 func _ready() -> void:
 	EventBus.switch_to.connect(change_collision_layer)

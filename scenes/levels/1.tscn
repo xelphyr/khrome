@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bynl54fhlontd"]
+[gd_scene load_steps=9 format=3 uid="uid://bynl54fhlontd"]
 
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_kpjit"]
 [ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/platform_blue.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="3_iywne"]
@@ -12,7 +13,10 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[node name="1" type="Node3D"]
+[node name="1" type="Node3D" node_paths=PackedStringArray("level_finish")]
+script = ExtResource("1_kpjit")
+level_finish = NodePath("LevelFinish")
+level_idx = 1
 
 [node name="Player" parent="." instance=ExtResource("1_yqjtg")]
 
