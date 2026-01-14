@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg6kthv7k7egy"]
+[gd_scene load_steps=5 format=3 uid="uid://bg6kthv7k7egy"]
+
+[ext_resource type="Script" uid="uid://dwirww2e32fhl" path="res://scripts/level_select_handler.gd" id="1_l0h45"]
+[ext_resource type="Theme" uid="uid://64swlkl603eh" path="res://assets/themes/level_select_button.tres" id="1_x15a5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gugsm"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l0h45")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -42,3 +46,74 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_gugsm")
 text = "LEVEL SELECT :3"
+
+[node name="ButtonGrid" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 8
+
+[node name="1" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="2" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "2"
+
+[node name="3" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "3"
+
+[node name="4" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "4"
+
+[node name="5" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "5"
+
+[node name="6" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "6"
+
+[node name="7" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "7"
+
+[node name="8" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "8"
+
+[node name="9" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonGrid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("1_x15a5")
+theme_override_font_sizes/font_size = 32
+text = "9"

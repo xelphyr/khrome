@@ -14,8 +14,8 @@ func _ready() -> void:
 
 func change_state(to: Enum.UIState):
 	state = to
-	if get_child_count() > 0:
-		get_child(0).queue_free()
+	for child in get_children(true):
+		child.queue_free()
 	match to:
 		Enum.UIState.SPLASH:
 			var instance = splash.instantiate()
