@@ -14,4 +14,4 @@ func _load_level(level: int) -> void:
 	for child in get_children():
 		child.queue_free()
 	var loaded_level = levels[level].instantiate()
-	call_deferred("add_child", loaded_level)
+	add_child(loaded_level)

@@ -8,6 +8,17 @@
 
 config_version=5
 
+[Addons]
+
+ButtonPrompts/prompts/light_themed_keyboard_and_mouse=false
+ButtonPrompts/prompts/positional_controller_button_prompts=false
+ButtonPrompts/optional_supported_controllers/dualshock_4=true
+ButtonPrompts/optional_supported_controllers/dualshock_3=true
+ButtonPrompts/optional_supported_controllers/xbox_one=true
+ButtonPrompts/optional_supported_controllers/xbox_360=true
+ButtonPrompts/optional_supported_controllers/steam_deck=true
+ButtonPrompts/optional_supported_controllers/nintendo_switch=true
+
 [application]
 
 config/name="Khrome"
@@ -19,6 +30,7 @@ config/icon="res://icon.svg"
 
 EventBus="*res://scripts/event_bus.gd"
 GameManager="*res://scripts/game_manager.gd"
+button_prompts_manager="*res://addons/button_prompts_for_godot/Scripts/button_prompts_manager.gd"
 
 [dotnet]
 
@@ -26,7 +38,7 @@ project/assembly_name="Khrome"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/button_prompts_for_godot/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [global_group]
 

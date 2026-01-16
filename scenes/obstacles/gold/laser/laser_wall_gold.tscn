@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dguvhgx2n66rh"]
+
+[ext_resource type="Script" uid="uid://uafeywname13" path="res://scripts/laser.gd" id="1_yb2lr"]
+[ext_resource type="Material" uid="uid://crvbc7qsl8ctq" path="res://assets/mats/gold.tres" id="2_xuh14"]
+[ext_resource type="PackedScene" uid="uid://bc7yao7y8fbsc" path="res://scenes/obstacles/gold/laser/laser_gold.tscn" id="3_0xu7q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8ut3"]
+lightmap_size_hint = Vector2i(11, 66)
+add_uv2 = true
+size = Vector3(1, 5.5, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v1bl5"]
+lightmap_size_hint = Vector2i(17, 11)
+add_uv2 = true
+height = 0.5
+
+[node name="LaserWallGold" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_yb2lr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 2.75)
+layers = 2
+mesh = SubResource("BoxMesh_l8ut3")
+surface_material_override/0 = ExtResource("2_xuh14")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -2.75)
+layers = 2
+mesh = SubResource("BoxMesh_l8ut3")
+surface_material_override/0 = ExtResource("2_xuh14")
+
+[node name="LaserGold1" parent="." instance=ExtResource("3_0xu7q")]
+
+[node name="LaserGold2" parent="." instance=ExtResource("3_0xu7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="LaserGold3" parent="." instance=ExtResource("3_0xu7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LaserGold4" parent="." instance=ExtResource("3_0xu7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="LaserGold5" parent="." instance=ExtResource("3_0xu7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4, 2.75)
+layers = 2
+mesh = SubResource("CylinderMesh_v1bl5")
+surface_material_override/0 = ExtResource("2_xuh14")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4, -2.75)
+layers = 2
+mesh = SubResource("CylinderMesh_v1bl5")
+surface_material_override/0 = ExtResource("2_xuh14")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

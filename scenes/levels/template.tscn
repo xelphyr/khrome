@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://bexh5s6vwbmnm"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_6qh8r"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="2_pkh0q"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="3_6vcqa"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="4_mla37"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="7_sce6r"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="8_tg8cx"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="9_v7tsa"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[node name="Template" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_6qh8r")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+level_idx = 1
+
+[node name="Camera3D" parent="." instance=ExtResource("3_6vcqa")]
+transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
+cull_mask = 1047553
+script = ExtResource("4_mla37")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("2_pkh0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("7_sce6r")]
+
+[node name="FallDetect" parent="." instance=ExtResource("8_tg8cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Start" parent="." instance=ExtResource("9_v7tsa")]
+
+[node name="Objects" type="Node3D" parent="."]

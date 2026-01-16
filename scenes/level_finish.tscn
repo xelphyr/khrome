@@ -5,9 +5,12 @@
 [sub_resource type="BoxMesh" id="BoxMesh_k847a"]
 
 [node name="LevelFinish" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0umw0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 3
 mesh = SubResource("BoxMesh_k847a")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2jig0u58ncbr"]
+
+[ext_resource type="Material" uid="uid://cmrwctgeui3pa" path="res://assets/mats/blue.tres" id="1_0hupl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jiev"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kejii"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[node name="PlatformBlue" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3jiev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_kejii")
+surface_material_override/0 = ExtResource("1_0hupl")

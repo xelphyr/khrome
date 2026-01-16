@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4qtjb6y8rkrh"]
+
+[ext_resource type="Script" uid="uid://c4qn7xrm52xuh" path="res://scripts/jump_pad.gd" id="1_5m2mm"]
+[ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="2_5m2mm"]
+[ext_resource type="Material" uid="uid://3pgsn35ulr7w" path="res://assets/mats/grey_glow.tres" id="3_8xnj7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jiev"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kejii"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tber4"]
+size = Vector3(4.9, 0.2, 4.9)
+
+[node name="JumpPadGrey" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_5m2mm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3jiev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_kejii")
+surface_material_override/0 = ExtResource("2_5m2mm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.25, 0, 0, 0, 0.5, 0, 0, 0, 5.25, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_kejii")
+surface_material_override/0 = ExtResource("3_8xnj7")
+
+[node name="EnterDetect" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterDetect"]
+shape = SubResource("BoxShape3D_tber4")
+
+[connection signal="body_entered" from="EnterDetect" to="." method="_on_enter_detect_body_entered"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://kg2op7xdq4ut" path="res://scenes/ui_manager.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b4n7dgs7x13qs" path="res://scripts/level_manager.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://bynl54fhlontd" path="res://scenes/levels/1.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bo5lq3e3doqav" path="res://scenes/levels/2.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://cyrc1mxc2g68x" path="res://scenes/levels/1.tscn" id="3_lbhrr"]
+[ext_resource type="Environment" uid="uid://bumrna5rsi872" path="res://assets/environment/basic_environment.tres" id="5_iywne"]
 
 [node name="Game" type="Node"]
 
@@ -12,6 +12,8 @@
 [node name="LevelManager" type="Node" parent="." groups=["LevelManager"]]
 script = ExtResource("2_yqjtg")
 levels = Dictionary[int, PackedScene]({
-1: ExtResource("3_lbhrr"),
-2: ExtResource("4_iywne")
+1: ExtResource("3_lbhrr")
 })
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_iywne")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk54j0tyj6lux"]
+
+[ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="1_unys5"]
+[ext_resource type="PackedScene" uid="uid://ctujuy3mhmcq1" path="res://scenes/obstacles/grey/laser/laser_grey.tscn" id="2_04m4y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lhvgq"]
+lightmap_size_hint = Vector2i(11, 26)
+add_uv2 = true
+size = Vector3(1, 1.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8ut3"]
+lightmap_size_hint = Vector2i(11, 26)
+add_uv2 = true
+size = Vector3(1, 1.5, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_301pi"]
+lightmap_size_hint = Vector2i(17, 11)
+add_uv2 = true
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ivoxx"]
+lightmap_size_hint = Vector2i(17, 11)
+add_uv2 = true
+height = 0.5
+
+[node name="LaserSingleGrey" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 2.75)
+layers = 3
+mesh = SubResource("BoxMesh_lhvgq")
+surface_material_override/0 = ExtResource("1_unys5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2.75)
+layers = 3
+mesh = SubResource("BoxMesh_l8ut3")
+surface_material_override/0 = ExtResource("1_unys5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 2.75)
+layers = 3
+mesh = SubResource("CylinderMesh_301pi")
+surface_material_override/0 = ExtResource("1_unys5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.75)
+layers = 3
+mesh = SubResource("CylinderMesh_ivoxx")
+surface_material_override/0 = ExtResource("1_unys5")
+
+[node name="LaserGrey" parent="." instance=ExtResource("2_04m4y")]

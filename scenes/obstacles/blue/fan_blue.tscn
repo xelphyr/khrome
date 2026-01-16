@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://clgypnd4wnnht"]
+
+[ext_resource type="Material" uid="uid://cmrwctgeui3pa" path="res://assets/mats/blue.tres" id="1_61f8x"]
+[ext_resource type="Script" uid="uid://dwm0kwvfynpya" path="res://scripts/fan.gd" id="1_s8pxw"]
+[ext_resource type="Material" uid="uid://b0s1x7m2fr8id" path="res://assets/mats/blue_translucent.tres" id="2_hvgf3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jiev"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kejii"]
+lightmap_size_hint = Vector2i(54, 41)
+add_uv2 = true
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s8pxw"]
+lightmap_size_hint = Vector2i(50, 198)
+add_uv2 = true
+size = Vector3(4.6, 17, 4.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvgf3"]
+size = Vector3(4.6, 18, 4.6)
+
+[node name="FanBlue" type="StaticBody3D"]
+script = ExtResource("1_s8pxw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3jiev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_kejii")
+surface_material_override/0 = ExtResource("1_61f8x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+material_override = ExtResource("2_hvgf3")
+mesh = SubResource("BoxMesh_s8pxw")
+surface_material_override/0 = ExtResource("1_61f8x")
+
+[node name="FanArea" type="Area3D" parent="."]
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+gravity = 19.8
+linear_damp_space_override = 3
+linear_damp = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FanArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 0)
+shape = SubResource("BoxShape3D_hvgf3")
+
+[connection signal="body_entered" from="FanArea" to="." method="_on_fan_area_body_entered"]
+[connection signal="body_exited" from="FanArea" to="." method="_on_fan_area_body_exited"]

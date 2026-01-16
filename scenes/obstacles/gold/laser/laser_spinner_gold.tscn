@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bt7o23igpfyo0"]
+
+[ext_resource type="Script" uid="uid://quet52w12i57" path="res://scripts/spinner.gd" id="1_yv1js"]
+[ext_resource type="PackedScene" uid="uid://bc7yao7y8fbsc" path="res://scenes/obstacles/gold/laser/laser_gold.tscn" id="2_6iunv"]
+[ext_resource type="Material" uid="uid://86wqpy2v6a36" path="res://assets/mats/gold_glow.tres" id="3_yv1js"]
+[ext_resource type="Material" uid="uid://crvbc7qsl8ctq" path="res://assets/mats/gold.tres" id="4_6iunv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pkqk5"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ovjn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yt6lf"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 1.2
+
+[node name="LaserSpinnerGold" type="AnimatableBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_yv1js")
+
+[node name="LaserGold" parent="." instance=ExtResource("2_6iunv")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+layers = 2
+mesh = SubResource("SphereMesh_pkqk5")
+surface_material_override/0 = ExtResource("3_yv1js")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+layers = 2
+mesh = SubResource("SphereMesh_pkqk5")
+surface_material_override/0 = ExtResource("3_yv1js")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CylinderMesh_4ovjn")
+surface_material_override/0 = ExtResource("4_6iunv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+layers = 2
+mesh = SubResource("CylinderMesh_yt6lf")
+surface_material_override/0 = ExtResource("4_6iunv")

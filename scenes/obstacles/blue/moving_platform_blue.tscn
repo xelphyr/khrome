@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo7pup025oqow"]
+
+[ext_resource type="Material" uid="uid://cmrwctgeui3pa" path="res://assets/mats/blue.tres" id="1_0x15a"]
+[ext_resource type="Script" uid="uid://q5ls32sjnr2d" path="res://scripts/moving_platform.gd" id="1_reydo"]
+
+[sub_resource type="Curve" id="Curve_reydo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jiev"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kejii"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[node name="MovingPlatformBlue" type="AnimatableBody3D" node_paths=PackedStringArray("positions")]
+script = ExtResource("1_reydo")
+positions = [NodePath("Positions/Node3D"), NodePath("Positions/Node3D2")]
+lerp_curve = SubResource("Curve_reydo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3jiev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_kejii")
+surface_material_override/0 = ExtResource("1_0x15a")
+
+[node name="Positions" type="Node" parent="."]
+
+[node name="Node3D" type="Node3D" parent="Positions"]
+
+[node name="Node3D2" type="Node3D" parent="Positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8578606, 0)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbxo0vsfb3hcm"]
+
+[ext_resource type="Script" uid="uid://uafeywname13" path="res://scripts/laser.gd" id="1_o880h"]
+[ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="2_o880h"]
+[ext_resource type="PackedScene" uid="uid://ctujuy3mhmcq1" path="res://scenes/obstacles/grey/laser/laser_grey.tscn" id="3_pdabn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8ut3"]
+lightmap_size_hint = Vector2i(11, 66)
+add_uv2 = true
+size = Vector3(1, 5.5, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v1bl5"]
+lightmap_size_hint = Vector2i(17, 11)
+add_uv2 = true
+height = 0.5
+
+[node name="LaserWallGrey" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_o880h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 2.75)
+layers = 3
+mesh = SubResource("BoxMesh_l8ut3")
+surface_material_override/0 = ExtResource("2_o880h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -2.75)
+layers = 3
+mesh = SubResource("BoxMesh_l8ut3")
+surface_material_override/0 = ExtResource("2_o880h")
+
+[node name="LaserGrey1" parent="." instance=ExtResource("3_pdabn")]
+
+[node name="LaserGrey2" parent="." instance=ExtResource("3_pdabn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="LaserGrey3" parent="." instance=ExtResource("3_pdabn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LaserGrey4" parent="." instance=ExtResource("3_pdabn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="LaserGrey5" parent="." instance=ExtResource("3_pdabn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4, 2.75)
+layers = 3
+mesh = SubResource("CylinderMesh_v1bl5")
+surface_material_override/0 = ExtResource("2_o880h")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4, -2.75)
+layers = 3
+mesh = SubResource("CylinderMesh_v1bl5")
+surface_material_override/0 = ExtResource("2_o880h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

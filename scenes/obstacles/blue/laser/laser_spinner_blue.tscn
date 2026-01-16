@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxjnfbbghb63h"]
+
+[ext_resource type="Script" uid="uid://quet52w12i57" path="res://scripts/spinner.gd" id="1_27ih1"]
+[ext_resource type="Material" uid="uid://cmrwctgeui3pa" path="res://assets/mats/blue.tres" id="2_8rj4o"]
+[ext_resource type="Material" uid="uid://bphysa3ntgfuw" path="res://assets/mats/blue_glow.tres" id="3_8rj4o"]
+[ext_resource type="PackedScene" uid="uid://b6135twy2tah1" path="res://scenes/obstacles/blue/laser/laser_blue.tscn" id="3_pkqk5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pkqk5"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ovjn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yt6lf"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 1.2
+
+[node name="LaserSpinnerBlue" type="AnimatableBody3D"]
+script = ExtResource("1_27ih1")
+
+[node name="LaserBlue" parent="." instance=ExtResource("3_pkqk5")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+material_override = ExtResource("3_8rj4o")
+mesh = SubResource("SphereMesh_pkqk5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+material_override = ExtResource("3_8rj4o")
+mesh = SubResource("SphereMesh_pkqk5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_8rj4o")
+mesh = SubResource("CylinderMesh_4ovjn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("2_8rj4o")
+mesh = SubResource("CylinderMesh_yt6lf")

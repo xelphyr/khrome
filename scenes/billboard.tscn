@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn6lgbco8oc0e"]
+
+[ext_resource type="Script" uid="uid://c005168h7m23y" path="res://addons/button_prompts_for_godot/Scripts/ui_button_prompt.gd" id="1_c58ef"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_c58ef"]
+size = Vector2(1.5, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dsevu"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt668"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_dsevu")
+
+[node name="Billboard" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_c58ef")
+surface_material_override/0 = SubResource("StandardMaterial3D_dt668")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(1536, 1024)
+
+[node name="ButtonPromptLabel" type="RichTextLabel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "{move_x+} to move forward. 
+{move_x-} to move backward. 
+{move_z+} to move left. 
+{move_z-} to move right. "
+fit_content = true
+scroll_active = false
+script = ExtResource("1_c58ef")
+metadata/_custom_type_script = "uid://c005168h7m23y"
