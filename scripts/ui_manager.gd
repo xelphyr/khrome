@@ -12,6 +12,7 @@ var state: Enum.UIState
 func _ready() -> void:
 	change_state(Enum.UIState.SPLASH)
 
+
 func change_state(to: Enum.UIState):
 	state = to
 	for child in get_children(true):
@@ -25,8 +26,5 @@ func change_state(to: Enum.UIState):
 			add_child(instance)
 		Enum.UIState.GAME:
 			var instance = game.instantiate()
-			add_child(instance)
-		Enum.UIState.PAUSE:
-			var instance = pause.instantiate()
 			add_child(instance)
 	

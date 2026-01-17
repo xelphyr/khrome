@@ -7,12 +7,12 @@ var cooldown : float = 0
 enum State {DEFAULT, FADEIN, FADEOUT}
 var curr_state = State.DEFAULT
 
+var is_paused : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.gameui_fadein_start.connect(func(): curr_state = State.FADEIN)
 	EventBus.gameui_fadeout_start.connect(func(): curr_state = State.FADEOUT)
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,4 +32,30 @@ func _process(delta: float) -> void:
 			cooldown = 0
 			curr_state = State.DEFAULT
 			EventBus.gameui_fadeout_end.emit()
+	
+	if Input.is_action_just_pressed("pause"):
+		if is_paused:
+			resume() 
+		else:
+			pause()
+			
+
+func pause():
+	is_paused = true
+	$PauseMenu.visible = true
+	EventBus.pause_game.emit()
+
+func resume():
+	is_paused = false
+	$PauseMenu.visible = false
+	EventBus.resume_game.emit()
+
+
+func _on_restart_pressed() -> void:
+	resume()
+	EventBus.level_failed.emit()
+
+
+func _on_resume_pressed() -> void:
+	resume()
 

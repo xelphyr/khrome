@@ -1,3 +1,3 @@
 class_name Enum   
 
-enum UIState {SPLASH, LEVEL_SELECT, GAME, PAUSE}
+enum UIState {SPLASH, LEVEL_SELECT, GAME}

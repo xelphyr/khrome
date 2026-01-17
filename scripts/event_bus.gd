@@ -7,6 +7,9 @@ signal load_level(level: int)
 signal level_complete()
 signal level_failed()
 
+signal pause_game()
+signal resume_game()
+
 ## Gameplay: Switch between the blue and gold states.
 signal switch_to(state: int)
 

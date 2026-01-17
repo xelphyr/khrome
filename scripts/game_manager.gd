@@ -11,6 +11,18 @@ func _ready() -> void:
 	EventBus.gameui_fadein_end.connect(_on_gameui_fadein_end)
 	EventBus.gameui_fadeout_end.connect(_on_gameui_fadeout_end)
 
+	EventBus.pause_game.connect(_pause_game)
+	EventBus.resume_game.connect(_resume_game)
+
+func _pause_game():
+	print("paused")
+	get_tree().paused = true
+
+func _resume_game():
+	print("resume")
+	get_tree().paused = false
+
+
 func _on_level_selected(level: int):
 	curr_level = level
 	EventBus.load_level.emit(level)
