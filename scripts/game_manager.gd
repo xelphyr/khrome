@@ -25,9 +25,12 @@ func _resume_game():
 
 func _on_level_selected(level: int):
 	curr_level = level
+	curr_state = 1
 	EventBus.load_level.emit(level)
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
 
 func _on_level_complete():
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.WIN)
 	curr_level += 1
 	EventBus.gameui_fadein_start.emit()
 
@@ -36,8 +39,10 @@ func _on_level_failed():
 	EventBus.load_level.emit(curr_level)
 	
 func _on_gameui_fadein_end():
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
 	EventBus.load_level.emit(curr_level)
 	EventBus.gameui_fadeout_start.emit()
+	curr_state = 1
 
 func _on_gameui_fadeout_end():
 	pass

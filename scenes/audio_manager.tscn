@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://chyyx24vxgd51"]
+
+[ext_resource type="Script" uid="uid://reo8v22q6uwg" path="res://scripts/audio_manager.gd" id="1_kq7b2"]
+[ext_resource type="Script" uid="uid://bcabii1rnlilv" path="res://scripts/sound_effect_settings.gd" id="2_02gw7"]
+[ext_resource type="Resource" uid="uid://bm4ob10h21xlg" path="res://resources/sound_effects/jump.tres" id="3_ujhup"]
+[ext_resource type="Resource" uid="uid://cvqj4x00t4rus" path="res://resources/sound_effects/fall.tres" id="4_064dn"]
+[ext_resource type="Resource" uid="uid://rbab7pkoscut" path="res://resources/sound_effects/laser.tres" id="5_ic5jq"]
+[ext_resource type="Resource" uid="uid://bi0446y4fd1ug" path="res://resources/sound_effects/button_select.tres" id="6_if78k"]
+[ext_resource type="Resource" uid="uid://ci10ab21usjqc" path="res://resources/sound_effects/win.tres" id="7_8igv3"]
+[ext_resource type="Resource" uid="uid://cguxh37kbx8x3" path="res://resources/sound_effects/level_enter.tres" id="8_02gw7"]
+
+[node name="AudioManager" type="Node3D"]
+script = ExtResource("1_kq7b2")
+sound_effect_settings = Array[ExtResource("2_02gw7")]([ExtResource("3_ujhup"), ExtResource("4_064dn"), ExtResource("5_ic5jq"), ExtResource("6_if78k"), ExtResource("7_8igv3"), ExtResource("8_02gw7")])

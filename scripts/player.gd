@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP)
 		velocity.y = jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.

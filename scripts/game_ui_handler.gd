@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 			EventBus.gameui_fadeout_end.emit()
 	
 	if Input.is_action_just_pressed("pause"):
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 		if is_paused:
 			resume() 
 		else:
@@ -52,10 +53,17 @@ func resume():
 
 
 func _on_restart_pressed() -> void:
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 	resume()
 	EventBus.level_failed.emit()
 
 
 func _on_resume_pressed() -> void:
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 	resume()
 
+
+
+func _on_menu_pressed() -> void:
+	EventBus.exit_level.emit()
+	

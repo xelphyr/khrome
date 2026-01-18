@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffectSettings" load_steps=3 format=3 uid="uid://bm4ob10h21xlg"]
+
+[ext_resource type="Script" uid="uid://bcabii1rnlilv" path="res://scripts/sound_effect_settings.gd" id="1_xbwof"]
+[ext_resource type="AudioStream" uid="uid://b1crv5yghcdft" path="res://assets/audio/jump.sfxr" id="2_yx10j"]
+
+[resource]
+script = ExtResource("1_xbwof")
+limit = 2
+sound_effect = ExtResource("2_yx10j")
+vol = -20
+metadata/_custom_type_script = "uid://bcabii1rnlilv"

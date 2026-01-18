@@ -71,5 +71,13 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Restart"
 
+[node name="Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
 [connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

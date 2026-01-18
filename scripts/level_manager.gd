@@ -8,6 +8,7 @@ class_name LevelManager
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.load_level.connect(_load_level)
+	EventBus.exit_level.connect(_unload)
 
 
 func _load_level(level: int) -> void:
@@ -15,3 +16,7 @@ func _load_level(level: int) -> void:
 		child.queue_free()
 	var loaded_level = levels[level].instantiate()
 	add_child(loaded_level)
+
+func _unload() -> void:
+	for child in get_children():
+		child.queue_free()

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffectSettings" load_steps=3 format=3 uid="uid://cguxh37kbx8x3"]
+
+[ext_resource type="Script" uid="uid://bcabii1rnlilv" path="res://scripts/sound_effect_settings.gd" id="1_trfr8"]
+[ext_resource type="AudioStream" uid="uid://cwthwhngqtebg" path="res://assets/audio/level_enter.sfxr" id="2_u022n"]
+
+[resource]
+script = ExtResource("1_trfr8")
+type = 2
+sound_effect = ExtResource("2_u022n")
+vol = -20
+metadata/_custom_type_script = "uid://bcabii1rnlilv"

@@ -23,10 +23,12 @@ func _ready() -> void:
 
 func _on_level_finish_body_entered(body: Node3D):
 	if body.is_in_group(&"Player"):
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.WIN)
 		_level_end(body)
 
 func _on_fall_detect_body_entered(body: Node3D):
 	if body.is_in_group(&"Player"):
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.FALL)
 		_level_failed()
 
 func _level_failed():

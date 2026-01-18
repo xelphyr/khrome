@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cwthwhngqtebg"
+path="res://.godot/imported/level_enter.sfxr-b7c38ca016b0c353405b953ea7985f0d.sample"
+
+[deps]
+
+source_file="res://assets/audio/level_enter.sfxr"
+dest_files=["res://.godot/imported/level_enter.sfxr-b7c38ca016b0c353405b953ea7985f0d.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
