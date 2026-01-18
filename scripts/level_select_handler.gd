@@ -13,4 +13,4 @@ func _level_selected(button: BaseButton):
 	#AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 	print("level selected: ", button.name)
 	EventBus.level_selected.emit(button.name.to_int())
-	get_parent().call("change_state", Enum.UIState.GAME)
+	UIManager.call("change_state", Enum.UIState.GAME)

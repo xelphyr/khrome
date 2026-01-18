@@ -1,36 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf7lm2tagexth"]
+[gd_scene load_steps=13 format=3 uid="uid://cf7lm2tagexth"]
 
-[ext_resource type="PackedScene" uid="uid://kg2op7xdq4ut" path="res://scenes/ui_manager.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b4n7dgs7x13qs" path="res://scripts/level_manager.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cyrc1mxc2g68x" path="res://scenes/levels/1.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bih8wry0i0ue3" path="res://scenes/levels/2.tscn" id="4_iywne"]
 [ext_resource type="Environment" uid="uid://bumrna5rsi872" path="res://assets/environment/basic_environment.tres" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://v1ejw5fb6hgi" path="res://scenes/levels/3.tscn" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ct064u3khx75m" path="res://scenes/levels/4.tscn" id="6_u5sy4"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_iywne"]
-viewport_path = NodePath("LevelManager/1/Objects/Billboard/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djhl7"]
-resource_local_to_scene = true
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_iywne")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_lbhrr"]
-viewport_path = NodePath("LevelManager/1/Objects/Billboard2/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iywne"]
-resource_local_to_scene = true
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_lbhrr")
+[ext_resource type="PackedScene" uid="uid://cvs0d22j0g6oe" path="res://scenes/levels/6.tscn" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://ch13pci1wva74" path="res://scenes/levels/5.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://d3esy1nkd6vc" path="res://scenes/levels/7.tscn" id="8_kvuet"]
+[ext_resource type="PackedScene" uid="uid://c1aqsg4se8tdj" path="res://scenes/levels/8.tscn" id="9_trtic"]
+[ext_resource type="PackedScene" uid="uid://1v5wk2pxnu05" path="res://scenes/levels/9.tscn" id="10_ir15t"]
+[ext_resource type="PackedScene" uid="uid://b1sxhckcnke0g" path="res://scenes/levels/10.tscn" id="11_ca42v"]
 
 [node name="Game" type="Node"]
-
-[node name="UIManager" parent="." groups=["UIManager"] instance=ExtResource("1_uwrxv")]
 
 [node name="LevelManager" type="Node" parent="." groups=["LevelManager"]]
 script = ExtResource("2_yqjtg")
@@ -38,24 +21,14 @@ levels = Dictionary[int, PackedScene]({
 1: ExtResource("3_lbhrr"),
 2: ExtResource("4_iywne"),
 3: ExtResource("5_p57ef"),
-4: ExtResource("6_u5sy4")
+4: ExtResource("6_u5sy4"),
+5: ExtResource("7_gee14"),
+6: ExtResource("7_dinhu"),
+7: ExtResource("8_kvuet"),
+8: ExtResource("9_trtic"),
+9: ExtResource("10_ir15t"),
+10: ExtResource("11_ca42v")
 })
-
-[node name="1" parent="LevelManager" instance=ExtResource("3_lbhrr")]
-
-[node name="Billboard" parent="LevelManager/1/Objects" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_djhl7")
-
-[node name="Billboard2" parent="LevelManager/1/Objects" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_iywne")
-
-[node name="Sun" parent="LevelManager/1" index="2"]
-shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_iywne")
-
-[editable path="LevelManager/1"]
-[editable path="LevelManager/1/Objects/PlatformGrey"]
-[editable path="LevelManager/1/Objects/Billboard"]
-[editable path="LevelManager/1/Objects/Billboard2"]

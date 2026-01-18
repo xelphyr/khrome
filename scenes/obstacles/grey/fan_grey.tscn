@@ -42,7 +42,8 @@ surface_material_override/0 = ExtResource("3_asxy3")
 [node name="FanArea" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 3
-gravity_space_override = 3
+priority = 1
+gravity_space_override = 2
 gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
 

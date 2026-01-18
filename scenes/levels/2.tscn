@@ -32,7 +32,8 @@ script = ExtResource("1_souht")
 level_finish = NodePath("LevelFinish")
 fall_detect = NodePath("FallDetect")
 start = NodePath("Start")
-level_idx = 1
+level_idx = 2
+level_name = "Switcheroo"
 
 [node name="Camera3D" parent="." instance=ExtResource("4_fnalb")]
 transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)

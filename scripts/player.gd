@@ -1,10 +1,12 @@
 extends CharacterBody3D
 class_name Player
 
+@export var drag = 70.0
 @export var speed = 5.0
 @export var jump_velocity = 10
 @export var default_terminal_velocity : float = 200
 
+var num_fans = 0
 var terminal_velocity = default_terminal_velocity
 
 func _ready() -> void:
@@ -18,26 +20,43 @@ func change_collision_layer(to: int) -> void:
 	set_collision_mask_value(2, to==2)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#Step 1: get the movement vector
+	var input_dir := Input.get_vector("move_z+", "move_z-", "move_x+", "move_x-")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	# Handle jump.
+	#Step 2: get the gravity
+	var gravity := get_gravity()
+
+	#Step 3: gravity-velocity combinations for each direction
+	if gravity.x == 0:
+		if direction:
+			if abs(direction.x * speed) > abs(velocity.x):
+				velocity.x = direction.x * speed
+			else:
+				velocity.x = move_toward(velocity.x, direction.x * speed, drag*delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0, drag*delta)
+	else:
+		velocity.x += gravity.x * delta
+	if gravity.z == 0:
+		if direction:
+			if abs(direction.z * speed) > abs(velocity.z):
+				velocity.z = direction.z * speed
+			else:
+				velocity.z = move_toward(velocity.z, direction.z * speed, drag*delta)
+		else:
+			velocity.z = move_toward(velocity.z, 0, drag*delta)
+	else:
+		velocity.z += gravity.z * delta
+
+	if not is_on_floor():
+		velocity.y += get_gravity().y * delta
+
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP)
 		velocity.y = jump_velocity
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("move_z+", "move_z-", "move_x+", "move_x-")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
-
+	#Step 4: max speed
 	velocity.x = tanh(velocity.x/terminal_velocity)*terminal_velocity
 	velocity.y = tanh(velocity.y/terminal_velocity)*terminal_velocity
 	velocity.z = tanh(velocity.z/terminal_velocity)*terminal_velocity
@@ -46,6 +65,35 @@ func _physics_process(delta: float) -> void:
 
 func on_fan_entered(new_terminal_velocity : int):
 	terminal_velocity = new_terminal_velocity
+	num_fans += 1
 
 func on_fan_exited():
 	terminal_velocity = default_terminal_velocity
+	num_fans = max(0, num_fans-1)
+
+##	# Handle jump.
+##	if Input.is_action_just_pressed("jump") and is_on_floor():
+##		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP)
+##		velocity.y = jump_velocity
+##
+##	# Get the input direction and handle the movement/deceleration.
+##	# As good practice, you should replace UI actions with custom gameplay actions.
+##	var input_dir := Input.get_vector("move_z+", "move_z-", "move_x+", "move_x-")
+##	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+##	if direction:
+##		velocity.x = direction.x * speed
+##		velocity.z = direction.z * speed
+##	else:
+##		velocity.x = move_toward(velocity.x, 0, speed)
+##		velocity.z = move_toward(velocity.z, 0, speed)
+##	
+##	if get_gravity().y == 0:
+##		velocity.y = move_toward(velocity.y, 0, speed*delta)
+##	
+##	# Add the gravity.
+##	if not is_on_floor():
+##		velocity += get_gravity() * delta
+##
+##	velocity.x = tanh(velocity.x/terminal_velocity)*terminal_velocity
+##	velocity.y = tanh(velocity.y/terminal_velocity)*terminal_velocity
+##	velocity.z = tanh(velocity.z/terminal_velocity)*terminal_velocity

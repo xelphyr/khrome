@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends AnimatableBody3D
 
 @export var spin_speed : float
 @export var rotate_vector : Vector3

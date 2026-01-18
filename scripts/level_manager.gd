@@ -5,6 +5,10 @@ class_name LevelManager
 	1: preload("res://scenes/levels/1.tscn")
 }
 
+var current_level : Level:
+	get:
+		return get_child(0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.load_level.connect(_load_level)

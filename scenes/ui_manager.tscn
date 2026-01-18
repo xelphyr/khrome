@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://di1ph75gpn1l" path="res://scenes/ui/game.tscn" id="4_j2mt3"]
 
 [node name="UIManager" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_rwj1f")
 splash = ExtResource("2_iku3t")
 level_select = ExtResource("3_reske")

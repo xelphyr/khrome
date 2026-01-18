@@ -1,16 +1,18 @@
 extends CanvasLayer
-class_name UIManager
 
 @export var splash : PackedScene
 @export var level_select: PackedScene
 @export var game : PackedScene
-@export var pause : PackedScene
 
 var state: Enum.UIState
 
+var displayed_ui : Control:
+	get:
+		return get_child(0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	change_state(Enum.UIState.SPLASH)
+	call_deferred("change_state", Enum.UIState.SPLASH)
 
 
 func change_state(to: Enum.UIState):

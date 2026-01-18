@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch13pci1wva74"]
+[gd_scene load_steps=22 format=3 uid="uid://ch13pci1wva74"]
 
 [ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_ljm8n"]
 [ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_p5xfs"]
@@ -9,8 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_8eji6"]
 [ext_resource type="PackedScene" uid="uid://lsdkqolfxe20" path="res://scenes/obstacles/grey/laser/laser_spinner_grey.tscn" id="8_csx81"]
 [ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="9_3nc6l"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="10_rvt76"]
+[ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="11_v24ps"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rvt76"]
+top_radius = 4.0
+bottom_radius = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8eji6"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 8.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v24ps"]
+radius = 4.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rvt76"]
 height = 1.0
@@ -21,12 +35,29 @@ top_radius = 7.5
 bottom_radius = 7.5
 height = 1.0
 
-[node name="Template" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8eji6"]
+size = Vector3(0.25, 5, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a3y27"]
+lightmap_size_hint = Vector2i(80, 131)
+add_uv2 = true
+size = Vector3(0.25, 5, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2l31"]
+size = Vector3(0.25, 5, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aoltl"]
+lightmap_size_hint = Vector2i(80, 131)
+add_uv2 = true
+size = Vector3(0.25, 5, 15)
+
+[node name="5" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
 script = ExtResource("1_ljm8n")
 level_finish = NodePath("LevelFinish")
 fall_detect = NodePath("FallDetect")
 start = NodePath("Start")
-level_idx = 1
+level_idx = 5
+level_name = "A Deadly Carousel"
 
 [node name="Camera3D" parent="." instance=ExtResource("2_p5xfs")]
 transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
@@ -46,7 +77,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="LevelFinish" parent="." instance=ExtResource("5_rvt76")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -27)
 metadata/_edit_group_ = true
 
 [node name="FallDetect" parent="." instance=ExtResource("6_v24ps")]
@@ -57,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="LaserSpinnerGrey" parent="Objects" instance=ExtResource("8_csx81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -13)
 spin_speed = 1.0
 rotate_vector = Vector3(0, 1, 0)
 
@@ -65,15 +96,24 @@ rotate_vector = Vector3(0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="Objects/LaserSpinnerGrey" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
-cast_shadow = 0
-
-[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 cast_shadow = 0
 
+[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
+cast_shadow = 0
+
+[node name="MeshInstance3D3" parent="Objects/LaserSpinnerGrey" index="3"]
+mesh = SubResource("CylinderMesh_rvt76")
+
+[node name="MeshInstance3D4" parent="Objects/LaserSpinnerGrey" index="4"]
+mesh = SubResource("CylinderMesh_8eji6")
+
+[node name="CollisionShape3D" parent="Objects/LaserSpinnerGrey" index="5"]
+shape = SubResource("CylinderShape3D_v24ps")
+
 [node name="LaserSpinnerGrey2" parent="Objects" instance=ExtResource("8_csx81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -13)
 spin_speed = 1.0
 rotate_vector = Vector3(0, 1, 0)
 
@@ -81,15 +121,24 @@ rotate_vector = Vector3(0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="Objects/LaserSpinnerGrey2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
-cast_shadow = 0
-
-[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 cast_shadow = 0
 
+[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
+cast_shadow = 0
+
+[node name="MeshInstance3D3" parent="Objects/LaserSpinnerGrey2" index="3"]
+mesh = SubResource("CylinderMesh_rvt76")
+
+[node name="MeshInstance3D4" parent="Objects/LaserSpinnerGrey2" index="4"]
+mesh = SubResource("CylinderMesh_8eji6")
+
+[node name="CollisionShape3D" parent="Objects/LaserSpinnerGrey2" index="5"]
+shape = SubResource("CylinderShape3D_v24ps")
+
 [node name="LaserSpinnerGrey3" parent="Objects" instance=ExtResource("8_csx81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -13)
 spin_speed = 1.0
 rotate_vector = Vector3(0, 1, 0)
 
@@ -97,15 +146,24 @@ rotate_vector = Vector3(0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="Objects/LaserSpinnerGrey3" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
-cast_shadow = 0
-
-[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey3" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 cast_shadow = 0
 
+[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
+cast_shadow = 0
+
+[node name="MeshInstance3D3" parent="Objects/LaserSpinnerGrey3" index="3"]
+mesh = SubResource("CylinderMesh_rvt76")
+
+[node name="MeshInstance3D4" parent="Objects/LaserSpinnerGrey3" index="4"]
+mesh = SubResource("CylinderMesh_8eji6")
+
+[node name="CollisionShape3D" parent="Objects/LaserSpinnerGrey3" index="5"]
+shape = SubResource("CylinderShape3D_v24ps")
+
 [node name="LaserSpinnerGrey4" parent="Objects" instance=ExtResource("8_csx81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -13)
 spin_speed = 1.0
 rotate_vector = Vector3(0, 1, 0)
 
@@ -113,27 +171,64 @@ rotate_vector = Vector3(0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="Objects/LaserSpinnerGrey4" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
-cast_shadow = 0
-
-[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey4" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 cast_shadow = 0
 
+[node name="MeshInstance3D2" parent="Objects/LaserSpinnerGrey4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
+cast_shadow = 0
+
+[node name="MeshInstance3D3" parent="Objects/LaserSpinnerGrey4" index="3"]
+mesh = SubResource("CylinderMesh_rvt76")
+
+[node name="MeshInstance3D4" parent="Objects/LaserSpinnerGrey4" index="4"]
+mesh = SubResource("CylinderMesh_8eji6")
+
+[node name="CollisionShape3D" parent="Objects/LaserSpinnerGrey4" index="5"]
+shape = SubResource("CylinderShape3D_v24ps")
+
 [node name="PlatformGrey" parent="Objects" instance=ExtResource("9_3nc6l")]
+
+[node name="PlatformGrey3" parent="Objects" instance=ExtResource("9_3nc6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
 
 [node name="PlatformGrey2" parent="Objects" instance=ExtResource("9_3nc6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 
 [node name="CollisionShape3D" parent="Objects/PlatformGrey2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
 shape = SubResource("CylinderShape3D_rvt76")
 
 [node name="MeshInstance3D" parent="Objects/PlatformGrey2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
 mesh = SubResource("CylinderMesh_v24ps")
+
+[node name="PlatformBlue" parent="Objects" instance=ExtResource("10_rvt76")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 0, 2.9, 14)
+
+[node name="CollisionShape3D" parent="Objects/PlatformBlue" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.382687, 0, -13.499999)
+shape = SubResource("BoxShape3D_8eji6")
+
+[node name="MeshInstance3D" parent="Objects/PlatformBlue" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.382687, 0, -13.499999)
+mesh = SubResource("BoxMesh_a3y27")
+
+[node name="PlatformGold" parent="Objects" instance=ExtResource("11_v24ps")]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 2.8999999, 14)
+
+[node name="CollisionShape3D" parent="Objects/PlatformGold" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.382687, 0, -13.499999)
+shape = SubResource("BoxShape3D_m2l31")
+
+[node name="MeshInstance3D" parent="Objects/PlatformGold" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.382687, 0, -13.499999)
+mesh = SubResource("BoxMesh_aoltl")
 
 [editable path="Objects/LaserSpinnerGrey"]
 [editable path="Objects/LaserSpinnerGrey2"]
 [editable path="Objects/LaserSpinnerGrey3"]
 [editable path="Objects/LaserSpinnerGrey4"]
 [editable path="Objects/PlatformGrey2"]
+[editable path="Objects/PlatformBlue"]
+[editable path="Objects/PlatformGold"]

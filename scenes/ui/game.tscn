@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://di1ph75gpn1l"]
+[gd_scene load_steps=7 format=3 uid="uid://di1ph75gpn1l"]
 
 [ext_resource type="Script" uid="uid://bgrps1r5juetx" path="res://scripts/game_ui_handler.gd" id="1_21b1b"]
 [ext_resource type="FontFile" uid="uid://gox2ioaowuep" path="res://assets/fonts/AldotheApache.ttf" id="2_nbrst"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nbrst"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfd0b"]
+font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbrst"]
 bg_color = Color(0, 0, 0, 1)
@@ -19,6 +25,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_21b1b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LevelIndex" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+label_settings = SubResource("LabelSettings_nbrst")
+
+[node name="LevelName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Name"
+label_settings = SubResource("LabelSettings_kfd0b")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)

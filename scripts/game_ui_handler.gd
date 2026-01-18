@@ -13,6 +13,7 @@ var is_paused : bool = false
 func _ready() -> void:
 	EventBus.gameui_fadein_start.connect(func(): curr_state = State.FADEIN)
 	EventBus.gameui_fadeout_start.connect(func(): curr_state = State.FADEOUT)
+	set_level_data()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 			$Panel.modulate.a = 1.0
 			cooldown = 0
 			curr_state = State.DEFAULT
+			reset_level_data()
 			EventBus.gameui_fadein_end.emit()
 	if curr_state == State.FADEOUT:
 		$Panel.modulate.a = lerpf(1.0, 0.0, cooldown/fade_time)
@@ -31,6 +33,7 @@ func _process(delta: float) -> void:
 			$Panel.modulate.a = 0.0
 			cooldown = 0
 			curr_state = State.DEFAULT
+			set_level_data()
 			EventBus.gameui_fadeout_end.emit()
 	
 	if Input.is_action_just_pressed("pause"):
@@ -39,7 +42,18 @@ func _process(delta: float) -> void:
 			resume() 
 		else:
 			pause()
-			
+
+func reset_level_data():
+	$MarginContainer/VBoxContainer/LevelIndex.text = ""
+	$MarginContainer/VBoxContainer/LevelName.text = ""
+
+func set_level_data():
+	var level = get_tree().get_first_node_in_group(&"LevelManager").current_level
+	var level_name = level.level_name
+	var level_idx = level.level_idx
+
+	$MarginContainer/VBoxContainer/LevelIndex.text = "Level %s" % level_idx
+	$MarginContainer/VBoxContainer/LevelName.text = level_name.to_upper()
 
 func pause():
 	is_paused = true

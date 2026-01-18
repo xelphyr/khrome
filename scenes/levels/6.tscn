@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvs0d22j0g6oe"]
+[gd_scene load_steps=15 format=3 uid="uid://cvs0d22j0g6oe"]
 
 [ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_5tf5j"]
 [ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_d2tr0"]
@@ -7,19 +7,29 @@
 [ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="5_bl2v8"]
 [ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="6_0bgan"]
 [ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_my386"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="8_0bgan"]
+[ext_resource type="PackedScene" uid="uid://clgypnd4wnnht" path="res://scenes/obstacles/blue/fan_blue.tscn" id="9_my386"]
+[ext_resource type="PackedScene" uid="uid://fo8e7lqouets" path="res://scenes/obstacles/gold/fan_gold.tscn" id="10_mhb6s"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="11_euiwt"]
+[ext_resource type="PackedScene" uid="uid://dbmbv5jnr5yoa" path="res://scenes/obstacles/gold/spinner_gold.tscn" id="12_0bgan"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
 
-[node name="Template" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_my386"]
+size = Vector3(5, 1, 15)
+
+[node name="6" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
 script = ExtResource("1_5tf5j")
 level_finish = NodePath("LevelFinish")
 fall_detect = NodePath("FallDetect")
 start = NodePath("Start")
-level_idx = 1
+level_idx = 6
+level_name = "Move and Be Moved"
 
 [node name="Camera3D" parent="." instance=ExtResource("2_d2tr0")]
-transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
+transform = Transform3D(0.70710677, -0.29883623, 0.64085644, 0, 0.9063078, 0.42261824, -0.70710677, -0.29883623, 0.64085644, 50, 45.333, 50)
 cull_mask = 1047553
+size = 44.573
 script = ExtResource("3_hhxix")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -32,13 +42,50 @@ shadow_enabled = true
 camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
 
 [node name="Player" parent="." instance=ExtResource("4_xmsj2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 16)
 
 [node name="LevelFinish" parent="." instance=ExtResource("5_bl2v8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, -25)
 
 [node name="FallDetect" parent="." instance=ExtResource("6_0bgan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
 
 [node name="Start" parent="." instance=ExtResource("7_my386")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 16)
 
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("8_0bgan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 16)
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("8_0bgan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -25)
+
+[node name="FanBlue" parent="Objects" instance=ExtResource("9_my386")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 8)
+
+[node name="FanGold" parent="Objects" instance=ExtResource("10_mhb6s")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 20, 12)
+
+[node name="FanArea" parent="Objects/FanGold" index="3"]
+gravity_point_center = Vector3(0, 0, -1)
+gravity_direction = Vector3(0, 0, -1)
+gravity = 100.0
+
+[node name="PlatformBlue" parent="Objects" instance=ExtResource("11_euiwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -19)
+
+[node name="SpinnerGold" parent="Objects" instance=ExtResource("12_0bgan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -25)
+spin_speed = 1.0
+rotate_vector = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" parent="Objects/SpinnerGold" index="0"]
+shape = SubResource("BoxShape3D_my386")
+
+[node name="MeshInstance3D" parent="Objects/SpinnerGold" index="1"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+
+[editable path="Objects/FanBlue"]
+[editable path="Objects/FanGold"]
+[editable path="Objects/SpinnerGold"]

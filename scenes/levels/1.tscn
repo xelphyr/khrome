@@ -49,6 +49,7 @@ level_finish = NodePath("LevelFinish")
 fall_detect = NodePath("FallDetect")
 start = NodePath("Start")
 level_idx = 1
+level_name = "Baby Steps"
 
 [node name="Objects" type="Node3D" parent="."]
 
