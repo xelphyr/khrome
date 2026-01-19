@@ -36,7 +36,7 @@ UIManager="*res://scenes/ui_manager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

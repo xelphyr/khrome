@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ch13pci1wva74"]
+[gd_scene load_steps=26 format=3 uid="uid://ch13pci1wva74"]
 
 [ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_ljm8n"]
 [ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_p5xfs"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="9_3nc6l"]
 [ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="10_rvt76"]
 [ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="11_v24ps"]
+[ext_resource type="PackedScene" uid="uid://bn6lgbco8oc0e" path="res://scenes/billboard.tscn" id="12_v24ps"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
 
@@ -50,6 +51,19 @@ size = Vector3(0.25, 5, 15)
 lightmap_size_hint = Vector2i(80, 131)
 add_uv2 = true
 size = Vector3(0.25, 5, 15)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8eji6"]
+size = Vector2(11.25, 7.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ql3nd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3y27"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_ql3nd")
 
 [node name="5" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
 script = ExtResource("1_ljm8n")
@@ -225,6 +239,18 @@ shape = SubResource("BoxShape3D_m2l31")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.382687, 0, -13.499999)
 mesh = SubResource("BoxMesh_aoltl")
 
+[node name="Billboard3" parent="." instance=ExtResource("12_v24ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.052223, 1, -1.1244631)
+mesh = SubResource("QuadMesh_8eji6")
+surface_material_override/0 = SubResource("StandardMaterial3D_a3y27")
+
+[node name="SubViewport" parent="Billboard3" index="0"]
+size = Vector2i(1152, 768)
+
+[node name="RichTextLabel" parent="Billboard3/SubViewport" index="0"]
+text = "[code]LASERS ALSO GO SPINNY[/code]
+[code]TIME TO RUN, I GUESS...[/code]"
+
 [editable path="Objects/LaserSpinnerGrey"]
 [editable path="Objects/LaserSpinnerGrey2"]
 [editable path="Objects/LaserSpinnerGrey3"]
@@ -232,3 +258,4 @@ mesh = SubResource("BoxMesh_aoltl")
 [editable path="Objects/PlatformGrey2"]
 [editable path="Objects/PlatformBlue"]
 [editable path="Objects/PlatformGold"]
+[editable path="Billboard3"]

@@ -12,6 +12,7 @@ var displayed_ui : Control:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventBus.exit_level.connect(func(): change_state(Enum.UIState.SPLASH))
 	call_deferred("change_state", Enum.UIState.SPLASH)
 
 

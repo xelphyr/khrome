@@ -4,6 +4,7 @@ extends StaticBody3D
 
 func _on_enter_detect_body_entered(body: Node3D) -> void:
 	if body.is_in_group(&"Player"):
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP_PAD)
 		body.velocity += global_transform.basis.y * jump_force
 
 

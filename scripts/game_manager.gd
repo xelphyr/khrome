@@ -42,7 +42,7 @@ func _on_level_failed():
 func _on_gameui_fadein_end():
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
 	if curr_level > levels_count:
-		UIManager.change_state(Enum.UIState.SPLASH)
+		EventBus.exit_level.emit()
 	else:
 		EventBus.load_level.emit(curr_level)
 		EventBus.gameui_fadeout_start.emit()
