@@ -84,25 +84,25 @@ text = "Game Paused"
 label_settings = SubResource("LabelSettings_bfhks")
 
 [node name="Resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [node name="Restart" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Restart"
 
 [node name="Menu" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-text = "Restart"
+text = "Back To Menu"
 
 [connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

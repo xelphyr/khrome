@@ -31,3 +31,6 @@ func change_state(to: Enum.UIState):
 			var instance = game.instantiate()
 			add_child(instance)
 	
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause") and state == Enum.UIState.LEVEL_SELECT:
+		change_state(Enum.UIState.SPLASH)

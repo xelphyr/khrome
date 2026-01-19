@@ -29,6 +29,7 @@ func _on_level_selected(level: int):
 	curr_state = 1
 	EventBus.load_level.emit(level)
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
+	get_tree().paused = false
 
 func _on_level_complete():
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.WIN)
