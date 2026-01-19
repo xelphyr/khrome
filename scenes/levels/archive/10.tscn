@@ -1,0 +1,273 @@
+[gd_scene load_steps=16 format=3 uid="uid://b1sxhckcnke0g"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_8aoj4"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_q04di"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="3_vriqm"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="4_l0o5w"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="5_qb2b3"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="6_q1mat"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_dqpvq"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="8_q1mat"]
+[ext_resource type="Script" uid="uid://uafeywname13" path="res://scripts/laser.gd" id="9_dqpvq"]
+[ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="10_df1hg"]
+[ext_resource type="PackedScene" uid="uid://ctujuy3mhmcq1" path="res://scenes/obstacles/grey/laser/laser_grey.tscn" id="11_l6gyq"]
+[ext_resource type="PackedScene" uid="uid://b15n8p41mnc6b" path="res://scenes/obstacles/grey/moving_platform_grey.tscn" id="12_ept81"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tw20q"]
+lightmap_size_hint = Vector2i(11, 161)
+add_uv2 = true
+size = Vector3(1, 15, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b66a3"]
+size = Vector3(15, 1, 15)
+
+[node name="Template" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_8aoj4")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+level_idx = 1
+
+[node name="Camera3D" parent="." instance=ExtResource("2_q04di")]
+transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
+cull_mask = 1047553
+script = ExtResource("3_vriqm")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("4_l0o5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("5_qb2b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -29)
+
+[node name="FallDetect" parent="." instance=ExtResource("6_q1mat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Start" parent="." instance=ExtResource("7_dqpvq")]
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("8_q1mat")]
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("8_q1mat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 78, 0)
+
+[node name="LaserWallGrey" type="Area3D" parent="Objects"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -8, 24, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("9_dqpvq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Objects/LaserWallGrey"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 7.75)
+layers = 3
+mesh = SubResource("BoxMesh_tw20q")
+surface_material_override/0 = ExtResource("10_df1hg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Objects/LaserWallGrey"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -7.75)
+layers = 3
+mesh = SubResource("BoxMesh_tw20q")
+surface_material_override/0 = ExtResource("10_df1hg")
+
+[node name="LaserGrey1" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="LaserGrey2" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 1, 0)
+
+[node name="LaserGrey3" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 3, 0)
+
+[node name="LaserGrey4" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 4, 0)
+
+[node name="LaserGrey5" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 2, 0)
+
+[node name="LaserGrey6" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 5, 0)
+
+[node name="LaserGrey7" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 6, 0)
+
+[node name="LaserGrey8" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 8, 0)
+
+[node name="LaserGrey9" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 9, 0)
+
+[node name="LaserGrey10" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 7, 0)
+
+[node name="LaserGrey11" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 10, 0)
+
+[node name="LaserGrey12" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 11, 0)
+
+[node name="LaserGrey13" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 13, 0)
+
+[node name="LaserGrey14" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 14, 0)
+
+[node name="LaserGrey15" parent="Objects/LaserWallGrey" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 12, 0)
+
+[node name="LaserWallGrey2" type="Area3D" parent="Objects"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -8, 49, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("9_dqpvq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Objects/LaserWallGrey2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7, 7.75)
+layers = 3
+mesh = SubResource("BoxMesh_tw20q")
+surface_material_override/0 = ExtResource("10_df1hg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Objects/LaserWallGrey2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7, -7.75)
+layers = 3
+mesh = SubResource("BoxMesh_tw20q")
+surface_material_override/0 = ExtResource("10_df1hg")
+
+[node name="LaserGrey1" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 0, 0)
+
+[node name="LaserGrey2" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 1, 0)
+
+[node name="LaserGrey3" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 3, 0)
+
+[node name="LaserGrey4" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 4, 0)
+
+[node name="LaserGrey5" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 2, 0)
+
+[node name="LaserGrey6" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 5, 0)
+
+[node name="LaserGrey7" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 6, 0)
+
+[node name="LaserGrey8" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 8, 0)
+
+[node name="LaserGrey9" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 9, 0)
+
+[node name="LaserGrey10" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 7, 0)
+
+[node name="LaserGrey11" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 10, 0)
+
+[node name="LaserGrey12" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 11, 0)
+
+[node name="LaserGrey13" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 13, 0)
+
+[node name="LaserGrey14" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 14, 0)
+
+[node name="LaserGrey15" parent="Objects/LaserWallGrey2" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4, 12, 0)
+
+[node name="LaserWallGrey3" type="Area3D" parent="Objects"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -8, 67, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("9_dqpvq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Objects/LaserWallGrey3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 7.75)
+layers = 3
+mesh = SubResource("BoxMesh_tw20q")
+surface_material_override/0 = ExtResource("10_df1hg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Objects/LaserWallGrey3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -7.75)
+layers = 3
+mesh = SubResource("BoxMesh_tw20q")
+surface_material_override/0 = ExtResource("10_df1hg")
+
+[node name="LaserGrey1" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="LaserGrey2" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 1, 0)
+
+[node name="LaserGrey3" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 3, 0)
+
+[node name="LaserGrey4" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 4, 0)
+
+[node name="LaserGrey5" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 2, 0)
+
+[node name="LaserGrey6" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 5, 0)
+
+[node name="LaserGrey7" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 6, 0)
+
+[node name="LaserGrey8" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 8, 0)
+
+[node name="LaserGrey9" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 9, 0)
+
+[node name="LaserGrey10" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 7, 0)
+
+[node name="LaserGrey11" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 10, 0)
+
+[node name="LaserGrey12" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 11, 0)
+
+[node name="LaserGrey13" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 13, 0)
+
+[node name="LaserGrey14" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 14, 0)
+
+[node name="LaserGrey15" parent="Objects/LaserWallGrey3" instance=ExtResource("11_l6gyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 12, 0)
+
+[node name="MovingPlatformGrey" parent="Objects" instance=ExtResource("12_ept81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 78, 0)
+
+[node name="CollisionShape3D" parent="Objects/MovingPlatformGrey" index="0"]
+shape = SubResource("BoxShape3D_b66a3")
+
+[node name="MeshInstance3D" parent="Objects/MovingPlatformGrey" index="1"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="Node3D" parent="Objects/MovingPlatformGrey/Positions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 78, 0)
+
+[node name="Node3D2" parent="Objects/MovingPlatformGrey/Positions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[connection signal="body_entered" from="Objects/LaserWallGrey" to="Objects/LaserWallGrey" method="_on_body_entered"]
+[connection signal="body_entered" from="Objects/LaserWallGrey2" to="Objects/LaserWallGrey2" method="_on_body_entered"]
+[connection signal="body_entered" from="Objects/LaserWallGrey3" to="Objects/LaserWallGrey3" method="_on_body_entered"]
+
+[editable path="Objects/MovingPlatformGrey"]

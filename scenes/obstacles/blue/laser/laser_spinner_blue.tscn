@@ -19,6 +19,7 @@ height = 1.2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8rj4o"]
 
 [node name="LaserSpinnerBlue" type="AnimatableBody3D"]
+sync_to_physics = false
 script = ExtResource("1_27ih1")
 
 [node name="LaserBlue" parent="." instance=ExtResource("3_pkqk5")]
@@ -26,11 +27,13 @@ script = ExtResource("1_27ih1")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 material_override = ExtResource("3_8rj4o")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_pkqk5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 material_override = ExtResource("3_8rj4o")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_pkqk5")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]

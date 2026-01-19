@@ -2,6 +2,7 @@ extends Node
 
 var curr_state : int = 1
 var curr_level : int = -1
+var levels_count = 10
 
 func _ready() -> void:
 	EventBus.level_selected.connect(_on_level_selected)
@@ -40,9 +41,12 @@ func _on_level_failed():
 	
 func _on_gameui_fadein_end():
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
-	EventBus.load_level.emit(curr_level)
-	EventBus.gameui_fadeout_start.emit()
-	curr_state = 1
+	if curr_level > levels_count:
+		UIManager.change_state(Enum.UIState.SPLASH)
+	else:
+		EventBus.load_level.emit(curr_level)
+		EventBus.gameui_fadeout_start.emit()
+		curr_state = 1
 
 func _on_gameui_fadeout_end():
 	pass

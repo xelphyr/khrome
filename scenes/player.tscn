@@ -8,7 +8,6 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
-wall_min_slide_angle = 1.4835298
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -45,7 +45,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 16)
 
 [node name="LevelFinish" parent="." instance=ExtResource("5_bl2v8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, -19)
 
 [node name="FallDetect" parent="." instance=ExtResource("6_0bgan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 16)
 
 [node name="PlatformGrey2" parent="Objects" instance=ExtResource("8_0bgan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -19)
 
 [node name="FanBlue" parent="Objects" instance=ExtResource("9_my386")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 8)
@@ -76,8 +76,8 @@ gravity = 100.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -19)
 
 [node name="SpinnerGold" parent="Objects" instance=ExtResource("12_0bgan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -25)
-spin_speed = 1.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -19)
+spin_speed = 0.5
 rotate_vector = Vector3(0, 1, 0)
 
 [node name="CollisionShape3D" parent="Objects/SpinnerGold" index="0"]

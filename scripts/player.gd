@@ -50,7 +50,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z += gravity.z * delta
 
 	if not is_on_floor():
-		velocity.y += get_gravity().y * delta
+		if get_gravity().y == 0:
+			velocity.y = move_toward(velocity.y, 0, drag*delta)
+		else:	
+			velocity.y += get_gravity().y * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP)

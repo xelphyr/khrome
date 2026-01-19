@@ -21,6 +21,7 @@ height = 1.2
 [node name="LaserSpinnerGold" type="AnimatableBody3D"]
 collision_layer = 2
 collision_mask = 2
+sync_to_physics = false
 script = ExtResource("1_yv1js")
 
 [node name="LaserGold" parent="." instance=ExtResource("2_6iunv")]
