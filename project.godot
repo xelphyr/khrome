@@ -30,7 +30,6 @@ config/icon="res://icon.svg"
 
 EventBus="*res://scripts/event_bus.gd"
 GameManager="*res://scripts/game_manager.gd"
-button_prompts_manager="*res://addons/button_prompts_for_godot/Scripts/button_prompts_manager.gd"
 AudioManager="*res://scenes/audio_manager.tscn"
 UIManager="*res://scenes/ui_manager.tscn"
 
@@ -44,7 +43,7 @@ project/assembly_name="Khrome"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/button_prompts_for_godot/plugin.cfg", "res://addons/gdfxr/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [global_group]
 
