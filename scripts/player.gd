@@ -5,7 +5,6 @@ class_name Player
 @export var speed = 5.0
 @export var jump_velocity = 10
 @export var default_terminal_velocity : float = 200
-
 @export var blue_phase_mat : Material
 @export var gold_phase_mat : Material
 
@@ -74,6 +73,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+
 func on_fan_entered(new_terminal_velocity : int):
 	terminal_velocity = new_terminal_velocity
 	num_fans += 1
@@ -81,6 +81,8 @@ func on_fan_entered(new_terminal_velocity : int):
 func on_fan_exited():
 	terminal_velocity = default_terminal_velocity
 	num_fans = max(0, num_fans-1)
+
+
 
 ##	# Handle jump.
 ##	if Input.is_action_just_pressed("jump") and is_on_floor():

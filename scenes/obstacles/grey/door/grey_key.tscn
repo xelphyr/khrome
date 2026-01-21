@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpconct8qupih"]
+
+[ext_resource type="Script" uid="uid://63sqmo1x8paq" path="res://scripts/key.gd" id="1_0wq0f"]
+[ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="1_llved"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_flow1"]
+material = ExtResource("1_llved")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wq0f"]
+size = Vector3(1.2, 0.2, 1.2)
+
+[node name="GreyKey" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_0wq0f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 3
+mesh = SubResource("BoxMesh_flow1")
+
+[node name="CodeIndicator" type="MeshInstance3D" parent="."]
+layers = 3
+mesh = SubResource("BoxMesh_0wq0f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

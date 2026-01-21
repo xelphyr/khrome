@@ -13,6 +13,14 @@ var is_paused : bool = false
 func _ready() -> void:
 	EventBus.gameui_fadein_start.connect(func(): curr_state = State.FADEIN)
 	EventBus.gameui_fadeout_start.connect(func(): curr_state = State.FADEOUT)
+	EventBus.switch_to.connect(func(state): 
+		if state == 1:
+			$PhaseToGold.modulate = Color(255,255,255,0)
+			$AnimationPlayer.play("PhaseToBlue")
+		if state == 2:
+			$PhaseToBlue.modulate = Color(255,255,255,0)
+			$AnimationPlayer.play("PhaseToGold")
+	)
 	set_level_data()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyuro6ku8uypl"]
+[gd_scene load_steps=9 format=3 uid="uid://cyuro6ku8uypl"]
 
 [ext_resource type="Script" uid="uid://cxygt2g124o34" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Material" uid="uid://dulsdkjc2vcrs" path="res://assets/mats/blue_no_shadow.tres" id="2_dqkch"]
 [ext_resource type="Material" uid="uid://x8jo0ugvmxpv" path="res://assets/mats/gold_no_shadow.tres" id="3_qlg0r"]
 [ext_resource type="Material" uid="uid://c4vh1i42q041g" path="res://assets/mats/black.tres" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://cw2fi3x1qlg6j" path="res://scenes/shadow.tscn" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -28,6 +29,9 @@ layers = 3
 mesh = SubResource("CapsuleMesh_3vyb7")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-layers = 3
+layers = 1024
 mesh = SubResource("CapsuleMesh_g2els")
 surface_material_override/0 = ExtResource("2_dqkch")
+
+[node name="Shadow" parent="." instance=ExtResource("5_qlg0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

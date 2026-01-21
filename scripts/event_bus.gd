@@ -12,6 +12,9 @@ signal resume_game()
 
 signal exit_level()
 
+## Signal between doors and keys, others can listen in if they want
+signal unlocked(code: int)
+
 ## Gameplay: Switch between the blue and gold states.
 signal switch_to(state: int)
 

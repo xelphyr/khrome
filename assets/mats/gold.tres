@@ -4,3 +4,4 @@
 albedo_color = Color(1, 0.84313726, 0, 1)
 clearcoat = 0.73
 clearcoat_roughness = 0.35
+disable_receive_shadows = true

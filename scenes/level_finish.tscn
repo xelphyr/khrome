@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq3hcjehob3s"]
+[gd_scene load_steps=11 format=3 uid="uid://dq3hcjehob3s"]
 
 [ext_resource type="Material" uid="uid://3pgsn35ulr7w" path="res://assets/mats/grey_glow.tres" id="2_joamf"]
 [ext_resource type="Material" uid="uid://c4vh1i42q041g" path="res://assets/mats/black.tres" id="2_kib3w"]
+[ext_resource type="PackedScene" uid="uid://cw2fi3x1qlg6j" path="res://scenes/shadow.tscn" id="3_joamf"]
+[ext_resource type="Texture2D" uid="uid://drwy56t31c1ea" path="res://images/square.png" id="4_bfkf3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0umw0"]
 
@@ -62,7 +64,6 @@ _data = {
 }
 
 [node name="LevelFinish" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06412554, 0)
 collision_layer = 3
 collision_mask = 3
 
@@ -84,3 +85,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_joamf")
 }
 autoplay = "LevelFinishHover"
+
+[node name="Shadow" parent="." instance=ExtResource("3_joamf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
+texture_albedo = ExtResource("4_bfkf3")

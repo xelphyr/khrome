@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=4 uid="uid://posowmkfxeow"]
+
+[ext_resource type="Script" uid="uid://k0t51y0xsv1n" path="res://scripts/door.gd" id="1_txs7p"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8on71"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -3, 2, 17.53822, 6),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgAEAAAAAwAFAAIAAgAFAAQAAwAGAAUAAQAGAAMABQAHAAQAAAAEAAcABgAHAAUAAAAHAAgAAQAJAAYAAAAKAAEACgAJAAEACAAKAAAACQALAAYABgALAAcACgALAAkACAAHAAsACAALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAD///9/AAD//////38AAAAAKK8R5AAA//8orxHkAAAAAAAA//8AAP//AAD//wAA//8AAP9/AAAAAAAA/38AAAAAKK/tGwAA//8AAAAAAAD//yiv7RsAAAAAAAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fp04d"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -3, 2, 17.53822, 6),
+"attribute_data": PackedByteArray("/9//X/+f/1//3/8//5//P/+f/z//X/8//58AAP9fAAD/n//f/1//3/+f/7//X/+//1////+f////X/9f/x//X/9f/z//H/8//x//f/9f/3//n/9f/1//X/+f/z//X/8//1//f/+f/3//n/+//1//v/+f/3//X/9//9//f/+f/3//3/9f/5//Xw=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsACAAMAAkADQAMAAgADgAPABAAEAAPABEADgASAA8AEwASAA4AFAAVABYAFgAVABcAFAAYABUAGQAYABQAGgAbABwAHAAbAB0AHgAfACAAIAAfACEA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 34,
+"vertex_data": PackedByteArray("AAD///9//////////3///wAAKK8R5P////8orxHk/////yivEeQHwP//AAD//wfAAAAorxHkB8AAAAAA//8HwAAA////f7PVAAAAAP9/xdQAACiv7Rs31QAAAAAAAA/UAAAAAP//bdUAACivEeSf1v//AAD/f/+/AAAAAP9//7///wAA////vwAAAAD///+/AAAAAAAA/7///wAAAAD/v///////f7PV//8AAP9/xdT//yivEeQ31f//AAD//w/U//8AAAAAbdX//yiv7Ruf1gAAKK/tG2z+AAAAAAAAbP7//yiv7Rts/v//AAAAAGz+AAAor+0b/////yiv7Rv//wAA////f/////////9/////f5mV/3+Zlf9/mZX/f5mVr/xPA6/8TwOv/E8Dr/xPA8bVG9Wl1KvVMdVm1cPTHNZy1UXV3daP1AAA/38AAP9/AAD/fwAA/38AAP9/AAD/fzgq4ypZK1MqzSqYKjss4imMKrkqISlvKyK/Ir8ivyK/Ir8ivyK/Ir//f2Tq/39k6v9/ZOr/f2Tq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8on71")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xbkx"]
+size = Vector3(2, 19, 11)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_txs7p")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_fp04d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+shape = SubResource("BoxShape3D_1xbkx")
