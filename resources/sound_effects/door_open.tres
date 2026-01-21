@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundEffectSettings" load_steps=3 format=3 uid="uid://c4nhkc8taru7i"]
+
+[ext_resource type="Script" uid="uid://bcabii1rnlilv" path="res://scripts/sound_effect_settings.gd" id="1_3bwmw"]
+[ext_resource type="AudioStream" uid="uid://c6jsyld7k8lq3" path="res://assets/audio/door_open.sfxr" id="2_3bwmw"]
+
+[resource]
+script = ExtResource("1_3bwmw")
+limit = 2
+type = 5
+sound_effect = ExtResource("2_3bwmw")
+vol = -20
+metadata/_custom_type_script = "uid://bcabii1rnlilv"

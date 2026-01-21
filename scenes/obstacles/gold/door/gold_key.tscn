@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://chj51m81f10xx"]
+
+[ext_resource type="Script" uid="uid://63sqmo1x8paq" path="res://scripts/key.gd" id="1_wsiyd"]
+[ext_resource type="Material" uid="uid://crvbc7qsl8ctq" path="res://assets/mats/gold.tres" id="2_bstxo"]
+[ext_resource type="PackedScene" uid="uid://cw2fi3x1qlg6j" path="res://scenes/shadow.tscn" id="3_lykxj"]
+[ext_resource type="Texture2D" uid="uid://drwy56t31c1ea" path="res://images/square.png" id="4_imkla"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_flow1"]
+material = ExtResource("2_bstxo")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wq0f"]
+size = Vector3(1.2, 0.2, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lykxj"]
+
+[node name="GoldKey" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_wsiyd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("BoxMesh_flow1")
+
+[node name="CodeIndicator" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("BoxMesh_0wq0f")
+
+[node name="Shadow" parent="." instance=ExtResource("3_lykxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
+layers = 2
+texture_albedo = ExtResource("4_imkla")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lykxj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

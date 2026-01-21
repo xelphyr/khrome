@@ -21,7 +21,7 @@ func _ready() -> void:
 			$PhaseToBlue.modulate = Color(255,255,255,0)
 			$AnimationPlayer.play("PhaseToGold")
 	)
-	set_level_data()
+	call_deferred("set_level_data")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,6 +56,7 @@ func reset_level_data():
 	$MarginContainer/VBoxContainer/LevelName.text = ""
 
 func set_level_data():
+	print("Setting level texr")
 	var level = get_tree().get_first_node_in_group(&"LevelManager").current_level
 	var level_name = level.level_name
 	var level_idx = level.level_idx

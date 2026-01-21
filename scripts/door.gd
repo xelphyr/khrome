@@ -3,12 +3,14 @@ class_name Door
 
 @export var code : int = 0
 var color_array : Array[Material] = [
-
+	preload("uid://b4kndl2iuq5vv"),
+	preload("uid://clfocv5uo5ucq"),
+	preload("uid://dulsdkjc2vcrs"),
 ]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$CodeIndicator.material_override = color_array[code]	
+	$DoorMesh.material_override = color_array[code]	
 	EventBus.unlocked.connect(_check_unlocked)
 	
 
@@ -18,5 +20,5 @@ func _check_unlocked(key_code : int) -> void:
 		unlock()
 
 func unlock():
-	$CollisionShape3D.disabled = true
-	visible = false
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.DOOR_OPEN)
+	$AnimationPlayer.play("DoorLower")

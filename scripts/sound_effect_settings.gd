@@ -8,7 +8,8 @@ enum SoundEffectType {
     LASER,
     FALL,
     BUTTON_SELECT,
-    JUMP_PAD
+    JUMP_PAD,
+    DOOR_OPEN
 }
 
 @export_range(0,10) var limit : int = 5

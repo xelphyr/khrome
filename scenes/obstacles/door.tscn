@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://posowmkfxeow"]
+[gd_scene load_steps=10 format=4 uid="uid://posowmkfxeow"]
 
 [ext_resource type="Script" uid="uid://k0t51y0xsv1n" path="res://scripts/door.gd" id="1_txs7p"]
+[ext_resource type="Material" uid="uid://c4vh1i42q041g" path="res://assets/mats/black.tres" id="2_fp04d"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8on71"]
 _surfaces = [{
@@ -35,12 +36,69 @@ shadow_mesh = SubResource("ArrayMesh_8on71")
 [sub_resource type="BoxShape3D" id="BoxShape3D_1xbkx"]
 size = Vector3(2, 19, 11)
 
+[sub_resource type="Animation" id="Animation_1xbkx"]
+resource_name = "DoorLower"
+length = 2.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorMesh")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 2, 1, 0, -18, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 8, 0, 2, 1, 0, -10, 0)
+
+[sub_resource type="Animation" id="Animation_fp04d"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorMesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04vkj"]
+_data = {
+&"DoorLower": SubResource("Animation_1xbkx"),
+&"RESET": SubResource("Animation_fp04d")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jip6"]
+size = Vector3(3, 20, 10)
+
 [node name="Door" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_txs7p")
 
 [node name="DoorMesh" type="MeshInstance3D" parent="."]
+layers = 3
 mesh = SubResource("ArrayMesh_fp04d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
 shape = SubResource("BoxShape3D_1xbkx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_04vkj")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, 0)
+layers = 3
+material_override = ExtResource("2_fp04d")
+mesh = SubResource("BoxMesh_7jip6")
