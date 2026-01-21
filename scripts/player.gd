@@ -6,6 +6,9 @@ class_name Player
 @export var jump_velocity = 10
 @export var default_terminal_velocity : float = 200
 
+@export var blue_phase_mat : Material
+@export var gold_phase_mat : Material
+
 var num_fans = 0
 var terminal_velocity = default_terminal_velocity
 
@@ -18,6 +21,11 @@ func change_collision_layer(to: int) -> void:
 	set_collision_layer_value(2, to==2)
 	set_collision_mask_value(1, to==1)
 	set_collision_mask_value(2, to==2)
+
+	if to == 1:
+		$MeshInstance3D2.set_surface_override_material(0, blue_phase_mat)
+	if to == 2:
+		$MeshInstance3D2.set_surface_override_material(0, gold_phase_mat)
 
 func _physics_process(delta: float) -> void:
 	#Step 1: get the movement vector

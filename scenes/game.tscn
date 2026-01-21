@@ -33,6 +33,7 @@ levels = Dictionary[int, PackedScene]({
 })
 
 [node name="1" parent="LevelManager" instance=ExtResource("3_lbhrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020507813, 0, -0.01922512)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_iywne")

@@ -11,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="9_x6e36"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ql3nd"]
-size = Vector3(20, 1, 5)
+size = Vector3(12.5, 1, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ql3nd"]
-lightmap_size_hint = Vector2i(29, 36)
+lightmap_size_hint = Vector2i(21, 28)
 add_uv2 = true
-size = Vector3(4, 1, 1)
+size = Vector3(2.5, 1, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ql3nd"]
 size = Vector2(11.25, 7.5)
@@ -54,14 +54,21 @@ level_name = "Baby Steps"
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="PlatformGrey" parent="Objects" instance=ExtResource("8_ijh0y")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -4)
 
 [node name="CollisionShape3D" parent="Objects/PlatformGrey" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0)
 shape = SubResource("BoxShape3D_ql3nd")
 
 [node name="MeshInstance3D" parent="Objects/PlatformGrey" index="1"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 7.5, 0, 0)
+mesh = SubResource("BoxMesh_ql3nd")
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("8_ijh0y")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -19)
+
+[node name="CollisionShape3D" parent="Objects/PlatformGrey2" index="0"]
+shape = SubResource("BoxShape3D_ql3nd")
+
+[node name="MeshInstance3D" parent="Objects/PlatformGrey2" index="1"]
 mesh = SubResource("BoxMesh_ql3nd")
 
 [node name="Billboard" parent="Objects" instance=ExtResource("9_ql3nd")]
@@ -79,7 +86,7 @@ keyboard_a [code]MOVE LEFT[/code]
 keyboard_d [code]MOVE RIGHT[/code] "
 
 [node name="Billboard2" parent="Objects" instance=ExtResource("9_ql3nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -4, -13)
 mesh = SubResource("QuadMesh_ql3nd")
 surface_material_override/0 = SubResource("StandardMaterial3D_x6e36")
 
@@ -107,7 +114,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="LevelFinish" parent="." instance=ExtResource("6_4o7q8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -23)
 
 [node name="FallDetect" parent="." instance=ExtResource("8_ql3nd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
@@ -115,5 +122,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
 [node name="Start" parent="." instance=ExtResource("9_x6e36")]
 
 [editable path="Objects/PlatformGrey"]
+[editable path="Objects/PlatformGrey2"]
 [editable path="Objects/Billboard"]
 [editable path="Objects/Billboard2"]
