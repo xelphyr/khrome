@@ -42,5 +42,5 @@ func update_display(value : float):
 	minutes = floori(value/60.0) % 60
 	hours = floori(floori(value/60.0)/60.0)
 
-	text = "%02d:%02d:%02.3f" % [hours, minutes, seconds]
+	text = "%02d:%02d:%06.3f" % [hours, minutes, seconds]
 

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/penultimate.tscn" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/the_gates_of_eden.tscn" id="12_ir15t"]
 [ext_resource type="AudioStream" uid="uid://c5bne2v46v31f" path="res://assets/audio/music_zapsplat_action_dark_sci_fi_serious_atmospsheric_deep_tech_014.mp3" id="13_trtic"]
-[ext_resource type="Script" uid="uid://djpykuxbbjxi" path="res://scenes/game_music.gd" id="14_ir15t"]
+[ext_resource type="Script" uid="uid://djpykuxbbjxi" path="res://scripts/game_music.gd" id="14_ir15t"]
 
 [node name="Game" type="Node"]
 
