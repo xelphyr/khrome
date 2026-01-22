@@ -10,6 +10,7 @@ var color_array : Array[Material] = [
 
 func _ready() -> void:
 	$CodeIndicator.material_override = color_array[code]	
+	$AnimationPlayer.play("KeyHover")
 
 
 func _on_body_entered(body: Node3D) -> void:

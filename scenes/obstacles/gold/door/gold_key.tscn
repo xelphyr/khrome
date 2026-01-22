@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chj51m81f10xx"]
+[gd_scene load_steps=11 format=3 uid="uid://chj51m81f10xx"]
 
 [ext_resource type="Script" uid="uid://63sqmo1x8paq" path="res://scripts/key.gd" id="1_wsiyd"]
 [ext_resource type="Material" uid="uid://crvbc7qsl8ctq" path="res://assets/mats/gold.tres" id="2_bstxo"]
@@ -12,6 +12,62 @@ material = ExtResource("2_bstxo")
 size = Vector3(1.2, 0.2, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lykxj"]
+
+[sub_resource type="Animation" id="Animation_vroeq"]
+resource_name = "KeyHover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.96666664, 1, 0, 0, 0, 2, 1, 0, 0.2, 0, 3, 1, 0, 0.2, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CodeIndicator")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.96666664, 1, 0, 0, 0, 2, 1, 0, 0.2, 0, 3.0333333, 1, 0, 0.2, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.96666664, 1, 0, 0, 0, 2, 1, 0, 0.2, 0, 3, 1, 0, 0.2, 0)
+
+[sub_resource type="Animation" id="Animation_y5j4j"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CodeIndicator")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70opq"]
+_data = {
+&"KeyHover": SubResource("Animation_vroeq"),
+&"RESET": SubResource("Animation_y5j4j")
+}
 
 [node name="GoldKey" type="Area3D"]
 collision_layer = 2
@@ -33,5 +89,10 @@ texture_albedo = ExtResource("4_imkla")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_lykxj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_70opq")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
