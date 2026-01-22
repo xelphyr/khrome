@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://cyrc1mxc2g68x"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_mat1x"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="2_suwv0"]
+[ext_resource type="PackedScene" uid="uid://bn6lgbco8oc0e" path="res://scenes/billboard.tscn" id="3_6rd4c"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="4_wvg1g"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="5_1iki6"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="6_qtwya"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="7_q7a22"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="8_gv3vx"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="9_3scu7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ql3nd"]
+size = Vector3(12.5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ql3nd"]
+lightmap_size_hint = Vector2i(21, 28)
+add_uv2 = true
+size = Vector3(2.5, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ql3nd"]
+size = Vector2(11.25, 7.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_x6e36"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djhl7"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_x6e36")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ql3nd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6e36"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_ql3nd")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[node name="Baby Steps" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_mat1x")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("2_suwv0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -4)
+
+[node name="CollisionShape3D" parent="Objects/PlatformGrey" index="0"]
+shape = SubResource("BoxShape3D_ql3nd")
+
+[node name="MeshInstance3D" parent="Objects/PlatformGrey" index="1"]
+mesh = SubResource("BoxMesh_ql3nd")
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("2_suwv0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -19)
+
+[node name="CollisionShape3D" parent="Objects/PlatformGrey2" index="0"]
+shape = SubResource("BoxShape3D_ql3nd")
+
+[node name="MeshInstance3D" parent="Objects/PlatformGrey2" index="1"]
+mesh = SubResource("BoxMesh_ql3nd")
+
+[node name="Billboard" parent="Objects" instance=ExtResource("3_6rd4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 0)
+mesh = SubResource("QuadMesh_ql3nd")
+surface_material_override/0 = SubResource("StandardMaterial3D_djhl7")
+
+[node name="SubViewport" parent="Objects/Billboard" index="0"]
+size = Vector2i(1152, 768)
+
+[node name="RichTextLabel" parent="Objects/Billboard/SubViewport" index="0"]
+text = "keyboard_w [code]MOVE FORWARD[/code] 
+keyboard_s [code]MOVE BACKWARD[/code] 
+keyboard_a [code]MOVE LEFT[/code] 
+keyboard_d [code]MOVE RIGHT[/code] "
+
+[node name="Billboard2" parent="Objects" instance=ExtResource("3_6rd4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -4, -13)
+mesh = SubResource("QuadMesh_ql3nd")
+surface_material_override/0 = SubResource("StandardMaterial3D_x6e36")
+
+[node name="SubViewport" parent="Objects/Billboard2" index="0"]
+size = Vector2i(1152, 768)
+
+[node name="RichTextLabel" parent="Objects/Billboard2/SubViewport" index="0"]
+text = "keyboard_space [code]TO JUMP[/code]"
+
+[node name="Camera3D" parent="." instance=ExtResource("4_wvg1g")]
+transform = Transform3D(0.7071067, -0.2988362, 0.64085627, 0, 0.9063077, 0.42261824, -0.7071067, -0.2988362, 0.64085627, 50, 40.333, 50)
+cull_mask = 1047553
+script = ExtResource("5_1iki6")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("6_qtwya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("7_q7a22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -23)
+
+[node name="FallDetect" parent="." instance=ExtResource("8_gv3vx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Start" parent="." instance=ExtResource("9_3scu7")]
+
+[editable path="Objects/PlatformGrey"]
+[editable path="Objects/PlatformGrey2"]
+[editable path="Objects/Billboard"]
+[editable path="Objects/Billboard2"]

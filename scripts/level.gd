@@ -4,8 +4,6 @@ class_name Level
 @export var level_finish : Area3D
 @export var fall_detect : Area3D
 @export var start : Node3D
-@export var level_idx : int
-@export var level_name : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

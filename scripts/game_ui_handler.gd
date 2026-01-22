@@ -57,9 +57,9 @@ func reset_level_data():
 
 func set_level_data():
 	print("Setting level texr")
-	var level = get_tree().get_first_node_in_group(&"LevelManager").current_level
-	var level_name = level.level_name
-	var level_idx = level.level_idx
+	var level_manager = get_tree().get_first_node_in_group(&"LevelManager")
+	var level_idx = level_manager.current_level
+	var level_name = level_manager.current_level_name
 
 	$MarginContainer/VBoxContainer/LevelIndex.text = "Level %s" % level_idx
 	$MarginContainer/VBoxContainer/LevelName.text = level_name.to_upper()

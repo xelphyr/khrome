@@ -1,18 +1,18 @@
 [gd_scene load_steps=16 format=3 uid="uid://cf7lm2tagexth"]
 
 [ext_resource type="Script" uid="uid://b4n7dgs7x13qs" path="res://scripts/level_manager.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cyrc1mxc2g68x" path="res://scenes/levels/1.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bih8wry0i0ue3" path="res://scenes/levels/2.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://cyrc1mxc2g68x" path="res://scenes/levels/baby_steps.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bih8wry0i0ue3" path="res://scenes/levels/switcheroo.tscn" id="4_iywne"]
 [ext_resource type="Environment" uid="uid://bumrna5rsi872" path="res://assets/environment/basic_environment.tres" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://v1ejw5fb6hgi" path="res://scenes/levels/3.tscn" id="5_p57ef"]
-[ext_resource type="PackedScene" uid="uid://ct064u3khx75m" path="res://scenes/levels/4.tscn" id="6_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://cvs0d22j0g6oe" path="res://scenes/levels/6.tscn" id="7_dinhu"]
-[ext_resource type="PackedScene" uid="uid://ch13pci1wva74" path="res://scenes/levels/5.tscn" id="7_gee14"]
-[ext_resource type="PackedScene" uid="uid://d3esy1nkd6vc" path="res://scenes/levels/7.tscn" id="8_kvuet"]
-[ext_resource type="PackedScene" uid="uid://c1aqsg4se8tdj" path="res://scenes/levels/8.tscn" id="9_trtic"]
-[ext_resource type="PackedScene" uid="uid://1v5wk2pxnu05" path="res://scenes/levels/9.tscn" id="10_ir15t"]
-[ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/10.tscn" id="11_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/11.tscn" id="12_ir15t"]
+[ext_resource type="PackedScene" uid="uid://v1ejw5fb6hgi" path="res://scenes/levels/cross_stacking.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ct064u3khx75m" path="res://scenes/levels/security.tscn" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cvs0d22j0g6oe" path="res://scenes/levels/move_and_be_moved.tscn" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://ch13pci1wva74" path="res://scenes/levels/a_deadly_carousel.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://d3esy1nkd6vc" path="res://scenes/levels/carousel_part_2.tscn" id="8_kvuet"]
+[ext_resource type="PackedScene" uid="uid://c1aqsg4se8tdj" path="res://scenes/levels/railgun.tscn" id="9_trtic"]
+[ext_resource type="PackedScene" uid="uid://1v5wk2pxnu05" path="res://scenes/levels/railgun_part_2.tscn" id="10_ir15t"]
+[ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/penultimate.tscn" id="11_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/the_gates_of_eden.tscn" id="12_ir15t"]
 [ext_resource type="AudioStream" uid="uid://c5bne2v46v31f" path="res://assets/audio/music_zapsplat_action_dark_sci_fi_serious_atmospsheric_deep_tech_014.mp3" id="13_trtic"]
 [ext_resource type="Script" uid="uid://djpykuxbbjxi" path="res://scenes/game_music.gd" id="14_ir15t"]
 
@@ -20,19 +20,7 @@
 
 [node name="LevelManager" type="Node" parent="." groups=["LevelManager"]]
 script = ExtResource("2_yqjtg")
-levels = Dictionary[int, PackedScene]({
-1: ExtResource("3_lbhrr"),
-2: ExtResource("4_iywne"),
-3: ExtResource("5_p57ef"),
-4: ExtResource("6_u5sy4"),
-5: ExtResource("7_gee14"),
-6: ExtResource("7_dinhu"),
-7: ExtResource("8_kvuet"),
-8: ExtResource("9_trtic"),
-9: ExtResource("10_ir15t"),
-10: ExtResource("11_dinhu"),
-11: ExtResource("12_ir15t")
-})
+levels = Array[PackedScene]([ExtResource("3_lbhrr"), ExtResource("4_iywne"), ExtResource("5_p57ef"), ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("7_dinhu"), ExtResource("8_kvuet"), ExtResource("9_trtic"), ExtResource("10_ir15t"), ExtResource("11_dinhu"), ExtResource("12_ir15t")])
 
 [node name="1" parent="LevelManager" instance=ExtResource("3_lbhrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020507813, 0, -0.01922512)
