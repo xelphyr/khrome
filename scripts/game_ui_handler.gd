@@ -5,10 +5,10 @@ const fade_time : float = 1
 var cooldown : float = 0
 
 enum State {DEFAULT, FADEIN, FADEOUT}
-var curr_state = State.DEFAULT
+var curr_state = State.FADEOUT
 
 var is_paused : bool = false
-var is_fadeout_just_start := false
+var is_fadeout_just_start := true
 
 @onready var level_idx_display = $MarginContainer/VBoxContainer/LevelIndex
 @onready var level_name_display = $MarginContainer/VBoxContainer/LevelName
@@ -27,8 +27,7 @@ func _ready() -> void:
 			$PhaseToBlue.modulate = Color(255,255,255,0)
 			$AnimationPlayer.play("PhaseToGold")
 	)
-	call_deferred("set_level_idx")
-	call_deferred("set_level_name")
+	$Panel.modulate.a = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

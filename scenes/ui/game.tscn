@@ -1,8 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://di1ph75gpn1l"]
+[gd_scene load_steps=17 format=3 uid="uid://di1ph75gpn1l"]
 
 [ext_resource type="Script" uid="uid://bgrps1r5juetx" path="res://scripts/game_ui_handler.gd" id="1_21b1b"]
 [ext_resource type="Script" uid="uid://dgqx34jh6wsdu" path="res://scripts/typewriter_label.gd" id="2_bfhks"]
 [ext_resource type="FontFile" uid="uid://gox2ioaowuep" path="res://assets/fonts/AldotheApache.ttf" id="2_nbrst"]
+[ext_resource type="Script" uid="uid://bhsdggx3otv3m" path="res://scenes/ui/timer.gd" id="3_kfd0b"]
+[ext_resource type="FontFile" uid="uid://cwopwcpfevaun" path="res://assets/fonts/CPMono_v07_Light.otf" id="3_lakwo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lakwo"]
+font = ExtResource("3_lakwo")
+font_size = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbrst"]
 bg_color = Color(0, 0, 0, 1)
@@ -107,11 +113,16 @@ grow_vertical = 2
 script = ExtResource("1_21b1b")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(500, 0)
@@ -125,7 +136,7 @@ text = "SIMULATION 1"
 fit_content = true
 script = ExtResource("2_bfhks")
 max_characters = 15
-char_delay = 0.1
+char_delay = 0.07
 
 [node name="LevelName" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -134,6 +145,19 @@ text = "Level Name"
 fit_content = true
 script = ExtResource("2_bfhks")
 max_characters = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "00:00:00.000"
+label_settings = SubResource("LabelSettings_lakwo")
+script = ExtResource("3_kfd0b")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
