@@ -1,13 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://di1ph75gpn1l"]
+[gd_scene load_steps=14 format=3 uid="uid://di1ph75gpn1l"]
 
 [ext_resource type="Script" uid="uid://bgrps1r5juetx" path="res://scripts/game_ui_handler.gd" id="1_21b1b"]
+[ext_resource type="Script" uid="uid://dgqx34jh6wsdu" path="res://scripts/typewriter_label.gd" id="2_bfhks"]
 [ext_resource type="FontFile" uid="uid://gox2ioaowuep" path="res://assets/fonts/AldotheApache.ttf" id="2_nbrst"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_nbrst"]
-font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_kfd0b"]
-font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbrst"]
 bg_color = Color(0, 0, 0, 1)
@@ -119,17 +114,26 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="LevelIndex" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LevelIndex" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Level 1"
-label_settings = SubResource("LabelSettings_nbrst")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "SIMULATION 1"
+fit_content = true
+script = ExtResource("2_bfhks")
+max_characters = 15
+char_delay = 0.1
 
-[node name="LevelName" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LevelName" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
 text = "Level Name"
-label_settings = SubResource("LabelSettings_kfd0b")
+fit_content = true
+script = ExtResource("2_bfhks")
+max_characters = 100
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
