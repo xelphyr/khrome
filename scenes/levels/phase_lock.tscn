@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://j20qxb0lnd8e"]
+[gd_scene load_steps=16 format=3 uid="uid://j20qxb0lnd8e"]
 
 [ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_cgow1"]
 [ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_6a7iq"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="10_6bvtt"]
 [ext_resource type="PackedScene" uid="uid://ba1h728qe26aj" path="res://scenes/obstacles/grey/phase_lock/blue_phase_lock_grey.tscn" id="11_ynqyd"]
 [ext_resource type="PackedScene" uid="uid://d17dskml2ioad" path="res://scenes/obstacles/grey/phase_lock/blue_phase_unlock_grey.tscn" id="12_82fk6"]
+[ext_resource type="PackedScene" uid="uid://bikoae6dbwid3" path="res://scenes/obstacles/grey/phase_lock/gold_phase_lock_grey.tscn" id="13_6bvtt"]
+[ext_resource type="PackedScene" uid="uid://cbsjjn53dna4c" path="res://scenes/obstacles/grey/phase_lock/gold_phase_unlock_grey.tscn" id="14_ynqyd"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
 
@@ -39,7 +41,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="LevelFinish" parent="." instance=ExtResource("5_l1syh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1129174, -33.000916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1129174, -29.248886)
 
 [node name="FallDetect" parent="." instance=ExtResource("6_awduc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
@@ -51,16 +53,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
 [node name="PlatformGrey" parent="Objects" instance=ExtResource("8_awduc")]
 
 [node name="PlatformGrey2" parent="Objects" instance=ExtResource("8_awduc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.90227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.150242)
 
 [node name="PlatformBlue" parent="Objects" instance=ExtResource("9_82pgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.581586, 0, -16.281591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.368908, 0, -14.739135)
 
 [node name="PlatformGold" parent="Objects" instance=ExtResource("10_6bvtt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4858, 0, -16.677425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.566472, 0, -14.512153)
 
 [node name="BluePhaseLockGrey" parent="Objects" instance=ExtResource("11_ynqyd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.601949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0321474, 0, -7.6528587)
 
 [node name="BluePhaseUnlockGrey" parent="Objects" instance=ExtResource("12_82fk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.400509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4595613, 0, -21.810886)
+
+[node name="GoldPhaseLockGrey" parent="Objects" instance=ExtResource("13_6bvtt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3798294, 0, -7.5859013)
+
+[node name="GoldPhaseUnlockGrey" parent="Objects" instance=ExtResource("14_ynqyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.595654, 0, -21.547216)

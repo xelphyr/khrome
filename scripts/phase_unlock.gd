@@ -8,7 +8,7 @@ func _ready() -> void:
 	EventBus.phase_lock_unlock_enter.connect(func(): disabled = false)
 
 func _on_detect_area_body_entered(body: Node3D) -> void:
-	if not disabled and body.is_in_group(&"Player") and GameManager.curr_state == phase:
+	if not disabled and body.is_in_group(&"Player") and GameManager.phase_locked and GameManager.curr_state == phase:
 		GameManager.unlock_phase(phase)
 		EventBus.phase_lock_unlock_enter.emit()
 		disabled = true
