@@ -23,7 +23,7 @@ lightmap_size_hint = Vector2i(24, 31)
 add_uv2 = true
 size = Vector3(3, 1, 1)
 
-[node name="Template" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+[node name="A Matter Of Perspective" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
 script = ExtResource("1_7mdi5")
 level_finish = NodePath("LevelFinish")
 fall_detect = NodePath("FallDetect")
