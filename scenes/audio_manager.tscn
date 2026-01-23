@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chyyx24vxgd51"]
+[gd_scene load_steps=23 format=3 uid="uid://chyyx24vxgd51"]
 
 [ext_resource type="Script" uid="uid://reo8v22q6uwg" path="res://scripts/audio_manager.gd" id="1_kq7b2"]
 [ext_resource type="Script" uid="uid://bcabii1rnlilv" path="res://scripts/sound_effect_settings.gd" id="2_02gw7"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://cwthwhngqtebg" path="res://assets/audio/level_enter.sfxr" id="8_2y2jw"]
 [ext_resource type="AudioStream" uid="uid://cw3nhtqah5qb7" path="res://assets/audio/jump_pad.sfxr" id="9_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://c6jsyld7k8lq3" path="res://assets/audio/door_open.sfxr" id="10_064dn"]
+[ext_resource type="AudioStream" uid="uid://ca5ihoqqmvqpq" path="res://assets/audio/typewriter.sfxr" id="11_ic5jq"]
+[ext_resource type="AudioStream" uid="uid://lxmu1qhq2nhu" path="res://assets/audio/phase_switch.sfxr" id="12_if78k"]
 
 [sub_resource type="Resource" id="Resource_oucy0"]
 resource_name = "Jump"
@@ -81,6 +83,22 @@ sound_effect = ExtResource("10_064dn")
 vol = -20
 metadata/_custom_type_script = "uid://bcabii1rnlilv"
 
+[sub_resource type="Resource" id="Resource_if78k"]
+resource_name = "Typewriter"
+script = ExtResource("2_02gw7")
+type = 8
+sound_effect = ExtResource("11_ic5jq")
+vol = -20
+metadata/_custom_type_script = "uid://bcabii1rnlilv"
+
+[sub_resource type="Resource" id="Resource_8igv3"]
+script = ExtResource("2_02gw7")
+limit = 2
+type = 9
+sound_effect = ExtResource("12_if78k")
+vol = -20
+metadata/_custom_type_script = "uid://bcabii1rnlilv"
+
 [node name="AudioManager" type="Node3D"]
 script = ExtResource("1_kq7b2")
-sound_effect_settings = Array[ExtResource("2_02gw7")]([SubResource("Resource_oucy0"), SubResource("Resource_cuol6"), SubResource("Resource_m1k83"), SubResource("Resource_oummu"), SubResource("Resource_hssp1"), SubResource("Resource_8b11i"), SubResource("Resource_u6qdm"), SubResource("Resource_ic5jq")])
+sound_effect_settings = Array[ExtResource("2_02gw7")]([SubResource("Resource_oucy0"), SubResource("Resource_cuol6"), SubResource("Resource_m1k83"), SubResource("Resource_oummu"), SubResource("Resource_hssp1"), SubResource("Resource_8b11i"), SubResource("Resource_u6qdm"), SubResource("Resource_ic5jq"), SubResource("Resource_if78k"), SubResource("Resource_8igv3")])

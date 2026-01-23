@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://lxmu1qhq2nhu"
+path="res://.godot/imported/phase_switch.sfxr-fe5bf6a37cdb997699becb3df8180c2c.sample"
+
+[deps]
+
+source_file="res://assets/audio/phase_switch.sfxr"
+dest_files=["res://.godot/imported/phase_switch.sfxr-fe5bf6a37cdb997699becb3df8180c2c.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

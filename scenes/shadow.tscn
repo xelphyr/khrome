@@ -7,6 +7,6 @@
 layers = 1024
 size = Vector3(1, 0.1, 1)
 texture_albedo = ExtResource("1_0rvn4")
-modulate = Color(0, 0, 0, 0.6901961)
+modulate = Color(0, 0, 0, 0.73333335)
 cull_mask = 1023
 script = ExtResource("2_jqplm")

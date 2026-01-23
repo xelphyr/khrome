@@ -9,7 +9,9 @@ enum SoundEffectType {
     FALL,
     BUTTON_SELECT,
     JUMP_PAD,
-    DOOR_OPEN
+    DOOR_OPEN,
+    TYPEWRITER,
+    PHASE_SWITCH
 }
 
 @export_range(0,10) var limit : int = 5

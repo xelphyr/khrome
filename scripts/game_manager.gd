@@ -55,5 +55,6 @@ func _on_gameui_fadeout_end():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("switch"):
-		curr_state = (curr_state)%2+1
-		EventBus.switch_to.emit(curr_state) 
+		if UIManager.displayed_ui.name == "GameMenu" and (UIManager.displayed_ui.curr_state == UIManager.displayed_ui.State.DEFAULT or UIManager.displayed_ui.curr_state == UIManager.displayed_ui.State.FADEOUT):
+			curr_state = (curr_state)%2+1
+			EventBus.switch_to.emit(curr_state) 

@@ -16,6 +16,8 @@ var timer_running : bool = true
 func _ready() -> void:
 	EventBus.load_level.connect(start_clock)
 	EventBus.level_complete.connect(stop_clock)
+	EventBus.pause_game.connect(stop_clock)
+	EventBus.resume_game.connect(resume_clock)
 	EventBus.level_failed.connect(restart_clock)
 
 func _process(delta: float) -> void:
@@ -27,7 +29,11 @@ func start_clock(_param):
 	timer_running = true
 
 func restart_clock():
+	$AnimationPlayer.play("ClockReset")
 	seconds_elapsed = 0
+
+func resume_clock():
+	timer_running = true
 
 func stop_clock():
 	timer_running = false
@@ -43,4 +49,3 @@ func update_display(value : float):
 	hours = floori(floori(value/60.0)/60.0)
 
 	text = "%02d:%02d:%06.3f" % [hours, minutes, seconds]
-

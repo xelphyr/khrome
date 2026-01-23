@@ -26,6 +26,8 @@ func change_collision_layer(to: int) -> void:
 	if to == 2:
 		$MeshInstance3D2.set_surface_override_material(0, gold_phase_mat)
 
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.PHASE_SWITCH)
+
 func _physics_process(delta: float) -> void:
 	#Step 1: get the movement vector
 	var input_dir := Input.get_vector("move_z+", "move_z-", "move_x+", "move_x-")

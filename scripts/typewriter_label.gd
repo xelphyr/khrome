@@ -1,7 +1,6 @@
 extends RichTextLabel
 class_name TypewriterLabel
 
-@export var max_characters : int
 #@export var full_text : String
 @export var char_delay : float = 0.2
 #@export var cursor : String = "|"
@@ -27,7 +26,8 @@ func start_display(new_text: String):
 	
 func increment_visible_letter():
 	visible_characters += 1
-	if visible_characters >= max_characters:        
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.TYPEWRITER)
+	if visible_characters >= text.length():        
 		timer.stop()
 		
 

@@ -16,4 +16,7 @@ func _ready() -> void:
 
 func _update_display(value:int):
 	$AnimationPlayer.play("DeathIncrement")
-	text = "%02d" % value
+	if value==0:
+		text = "OK"
+	else:
+		text = "%02d" % value

@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://ca5ihoqqmvqpq"
+path="res://.godot/imported/typewriter.sfxr-f0d0653e254bfde04fea684897ade87c.sample"
+
+[deps]
+
+source_file="res://assets/audio/typewriter.sfxr"
+dest_files=["res://.godot/imported/typewriter.sfxr-f0d0653e254bfde04fea684897ade87c.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
