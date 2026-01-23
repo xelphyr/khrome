@@ -2,7 +2,8 @@ extends Node
 
 var curr_state : int = 1
 var curr_level : int = -1
-var levels_count = 10
+var curr_chapter : int = 1
+var chapter_levels_count = 10
 
 func _ready() -> void:
 	EventBus.level_selected.connect(_on_level_selected)
@@ -24,12 +25,19 @@ func _resume_game():
 	get_tree().paused = false
 
 
-func _on_level_selected(level: int):
+func _on_level_selected(chapter:int, level: int):
 	curr_level = level
 	curr_state = 1
-	EventBus.load_level.emit(level)
-	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
-	get_tree().paused = false
+	curr_chapter = chapter
+	var num_levels = get_tree().get_first_node_in_group(&"LevelManager").request_level_count(chapter)
+
+	if level > num_levels:
+		assert(false, "THAT LEVEL ISNT IMPLEMENTED YET AAAAAAAAAAAAAAAA")
+	else:
+		chapter_levels_count = num_levels
+		EventBus.load_level.emit(chapter, level)
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
+		get_tree().paused = false
 
 func _on_level_complete():
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.WIN)
@@ -38,14 +46,15 @@ func _on_level_complete():
 
 func _on_level_failed():
 	curr_state = 1
-	EventBus.load_level.emit(curr_level)
+	EventBus.load_level.emit(curr_chapter, curr_level)
 	
 func _on_gameui_fadein_end():
+	print("curr_level: ", curr_level)
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
-	if curr_level > levels_count:
+	if curr_level > chapter_levels_count:
 		EventBus.exit_level.emit()
 	else:
-		EventBus.load_level.emit(curr_level)
+		EventBus.load_level.emit(curr_chapter, curr_level)
 		EventBus.gameui_fadeout_start.emit()
 		curr_state = 1
 

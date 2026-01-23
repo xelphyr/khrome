@@ -20,7 +20,10 @@
 
 [node name="LevelManager" type="Node" parent="." groups=["LevelManager"]]
 script = ExtResource("2_yqjtg")
-levels = Array[PackedScene]([ExtResource("3_lbhrr"), ExtResource("4_iywne"), ExtResource("5_p57ef"), ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("7_dinhu"), ExtResource("8_kvuet"), ExtResource("9_trtic"), ExtResource("10_ir15t"), ExtResource("11_dinhu"), ExtResource("12_ir15t")])
+levels_chapter_1 = Array[PackedScene]([ExtResource("3_lbhrr"), ExtResource("4_iywne"), ExtResource("5_p57ef"), ExtResource("9_trtic"), ExtResource("10_ir15t")])
+levels_chapter_2 = Array[PackedScene]([ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("8_kvuet")])
+levels_chapter_3 = Array[PackedScene]([ExtResource("7_dinhu"), ExtResource("11_dinhu")])
+levels_chapter_4 = Array[PackedScene]([ExtResource("12_ir15t")])
 
 [node name="1" parent="LevelManager" instance=ExtResource("3_lbhrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020507813, 0, -0.01922512)

@@ -67,8 +67,9 @@ func reset_level_data():
 
 func set_level_idx():
 	print("Setting level texr")
-	var level_idx = level_manager.current_level
-	level_idx_display.start_display("SIMULATION %s" % level_idx)
+	var level_idx = GameManager.curr_level
+	var chapter_idx = GameManager.curr_chapter
+	level_idx_display.start_display("SIMULATION %s.%s" % [chapter_idx, level_idx])
 
 func set_level_name():
 	var level_name = level_manager.current_level_name

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	if timer_running:
 		seconds_elapsed += delta
 
-func start_clock(_param):
+func start_clock(_param1, _param2):
 	seconds_elapsed = 0
 	timer_running = true
 

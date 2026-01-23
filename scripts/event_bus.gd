@@ -1,8 +1,8 @@
 extends Node
 
 signal play
-signal level_selected(level: int)
-signal load_level(level: int)
+signal level_selected(chapter: int, level: int)
+signal load_level(chapter: int, level: int)
 
 signal level_complete()
 signal level_failed()
