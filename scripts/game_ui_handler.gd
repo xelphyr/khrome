@@ -23,16 +23,19 @@ func _ready() -> void:
 		if state == 1:
 			$PhaseToGold.modulate = Color(255,255,255,0)
 			if GameManager.phase_locked:
-				$AnimationPlayer.play("PhaseToBlue")
+				$AnimationPlayer.play("PhaseToBlueLocked")
 			else:
 				$AnimationPlayer.play("PhaseToBlue")
 		if state == 2:
 			$PhaseToBlue.modulate = Color(255,255,255,0)
 			if GameManager.phase_locked:
-				$AnimationPlayer.play("PhaseToGold")
+				$AnimationPlayer.play("PhaseToGoldLocked")
 			else:
 				$AnimationPlayer.play("PhaseToGold")
 	)
+	EventBus.level_failed.connect(func(): 
+		$PhaseToBlue.modulate.a = 0
+		$PhaseToGold.modulate.a = 0)
 	$Panel.modulate.a = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

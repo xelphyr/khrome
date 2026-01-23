@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://di1ph75gpn1l"]
+[gd_scene load_steps=24 format=3 uid="uid://di1ph75gpn1l"]
 
 [ext_resource type="Script" uid="uid://bgrps1r5juetx" path="res://scripts/game_ui_handler.gd" id="1_21b1b"]
 [ext_resource type="Script" uid="uid://dgqx34jh6wsdu" path="res://scripts/typewriter_label.gd" id="2_bfhks"]
@@ -10,6 +10,22 @@
 [sub_resource type="LabelSettings" id="LabelSettings_lakwo"]
 font = ExtResource("3_lakwo")
 font_size = 32
+
+[sub_resource type="Animation" id="Animation_icr1w"]
+resource_name = "ClockReset"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Clock:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5251013, 0.5251013, 0.5251013, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fytjj"]
 resource_name = "DeathIncrement"
@@ -52,22 +68,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_icr1w"]
-resource_name = "ClockReset"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Clock:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.5251013, 0.5251013, 0.5251013, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icr1w"]
@@ -162,10 +162,44 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_kywqo"]
+resource_name = "PhaseToBlue"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhaseToBlue:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922)]
+}
+
+[sub_resource type="Animation" id="Animation_mps81"]
+resource_name = "PhaseToGold"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhaseToGold:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fytjj"]
 _data = {
 &"PhaseToBlue": SubResource("Animation_5mgl0"),
+&"PhaseToBlueLocked": SubResource("Animation_kywqo"),
 &"PhaseToGold": SubResource("Animation_fdj2k"),
+&"PhaseToGoldLocked": SubResource("Animation_mps81"),
 &"RESET": SubResource("Animation_xafdj")
 }
 
