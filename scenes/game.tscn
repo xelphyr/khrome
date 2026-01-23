@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cf7lm2tagexth"]
+[gd_scene load_steps=17 format=3 uid="uid://cf7lm2tagexth"]
 
 [ext_resource type="Script" uid="uid://b4n7dgs7x13qs" path="res://scripts/level_manager.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cyrc1mxc2g68x" path="res://scenes/levels/baby_steps.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bih8wry0i0ue3" path="res://scenes/levels/switcheroo.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://cyrc1mxc2g68x" path="res://scenes/levels/chapter_1/baby_steps.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bih8wry0i0ue3" path="res://scenes/levels/chapter_1/switcheroo.tscn" id="4_iywne"]
 [ext_resource type="Environment" uid="uid://bumrna5rsi872" path="res://assets/environment/basic_environment.tres" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://v1ejw5fb6hgi" path="res://scenes/levels/cross_stacking.tscn" id="5_p57ef"]
-[ext_resource type="PackedScene" uid="uid://ct064u3khx75m" path="res://scenes/levels/security.tscn" id="6_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://cvs0d22j0g6oe" path="res://scenes/levels/move_and_be_moved.tscn" id="7_dinhu"]
-[ext_resource type="PackedScene" uid="uid://ch13pci1wva74" path="res://scenes/levels/a_deadly_carousel.tscn" id="7_gee14"]
-[ext_resource type="PackedScene" uid="uid://d3esy1nkd6vc" path="res://scenes/levels/carousel_part_2.tscn" id="8_kvuet"]
-[ext_resource type="PackedScene" uid="uid://c1aqsg4se8tdj" path="res://scenes/levels/railgun.tscn" id="9_trtic"]
-[ext_resource type="PackedScene" uid="uid://1v5wk2pxnu05" path="res://scenes/levels/railgun_part_2.tscn" id="10_ir15t"]
-[ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/penultimate.tscn" id="11_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/the_gates_of_eden.tscn" id="12_ir15t"]
+[ext_resource type="PackedScene" uid="uid://v1ejw5fb6hgi" path="res://scenes/levels/chapter_1/cross_stacking.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ct064u3khx75m" path="res://scenes/levels/chapter_2/security.tscn" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cvs0d22j0g6oe" path="res://scenes/levels/chapter_3/move_and_be_moved.tscn" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://ch13pci1wva74" path="res://scenes/levels/chapter_2/a_deadly_carousel.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://d3esy1nkd6vc" path="res://scenes/levels/chapter_2/carousel_part_2.tscn" id="8_kvuet"]
+[ext_resource type="PackedScene" uid="uid://c1aqsg4se8tdj" path="res://scenes/levels/chapter_1/railgun.tscn" id="9_trtic"]
+[ext_resource type="PackedScene" uid="uid://j20qxb0lnd8e" path="res://scenes/levels/phase_lock.tscn" id="10_ca42v"]
+[ext_resource type="PackedScene" uid="uid://1v5wk2pxnu05" path="res://scenes/levels/chapter_1/railgun_part_2.tscn" id="10_ir15t"]
+[ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/chapter_3/penultimate.tscn" id="11_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/chapter_4/the_gates_of_eden.tscn" id="12_ir15t"]
 [ext_resource type="AudioStream" uid="uid://c5bne2v46v31f" path="res://assets/audio/music_zapsplat_action_dark_sci_fi_serious_atmospsheric_deep_tech_014.mp3" id="13_trtic"]
 [ext_resource type="Script" uid="uid://djpykuxbbjxi" path="res://scripts/game_music.gd" id="14_ir15t"]
 
@@ -21,7 +22,7 @@
 [node name="LevelManager" type="Node" parent="." groups=["LevelManager"]]
 script = ExtResource("2_yqjtg")
 levels_chapter_1 = Array[PackedScene]([ExtResource("3_lbhrr"), ExtResource("4_iywne"), ExtResource("5_p57ef"), ExtResource("9_trtic"), ExtResource("10_ir15t")])
-levels_chapter_2 = Array[PackedScene]([ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("8_kvuet")])
+levels_chapter_2 = Array[PackedScene]([ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("8_kvuet"), ExtResource("10_ca42v")])
 levels_chapter_3 = Array[PackedScene]([ExtResource("7_dinhu"), ExtResource("11_dinhu")])
 levels_chapter_4 = Array[PackedScene]([ExtResource("12_ir15t")])
 

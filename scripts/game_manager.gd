@@ -5,6 +5,8 @@ var curr_level : int = -1
 var curr_chapter : int = 1
 var chapter_levels_count = 10
 
+var phase_locked := false
+
 func _ready() -> void:
 	EventBus.level_selected.connect(_on_level_selected)
 	EventBus.level_complete.connect(_on_level_complete)
@@ -29,6 +31,7 @@ func _on_level_selected(chapter:int, level: int):
 	curr_level = level
 	curr_state = 1
 	curr_chapter = chapter
+	phase_locked = false
 	var num_levels = get_tree().get_first_node_in_group(&"LevelManager").request_level_count(chapter)
 
 	if level > num_levels:
@@ -40,11 +43,15 @@ func _on_level_selected(chapter:int, level: int):
 		get_tree().paused = false
 
 func _on_level_complete():
+	phase_locked = false
+	EventBus.phase_lock_unlock_enter.emit()
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.WIN)
 	curr_level += 1
 	EventBus.gameui_fadein_start.emit()
 
 func _on_level_failed():
+	phase_locked = false
+	EventBus.phase_lock_unlock_enter.emit()
 	curr_state = 1
 	EventBus.load_level.emit(curr_chapter, curr_level)
 	
@@ -61,9 +68,17 @@ func _on_gameui_fadein_end():
 func _on_gameui_fadeout_end():
 	pass
 
+func lock_phase(to: int):
+	phase_locked = true
+	curr_state = to
+	EventBus.switch_to.emit(to)
+
+func unlock_phase(to: int):
+	phase_locked = false
+	EventBus.switch_to.emit(to)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("switch"):
+	if Input.is_action_just_pressed("switch") and not phase_locked:
 		if UIManager.displayed_ui.name == "GameMenu" and (UIManager.displayed_ui.curr_state == UIManager.displayed_ui.State.DEFAULT or UIManager.displayed_ui.curr_state == UIManager.displayed_ui.State.FADEOUT):
 			curr_state = (curr_state)%2+1
 			EventBus.switch_to.emit(curr_state) 

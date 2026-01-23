@@ -22,3 +22,5 @@ signal gameui_fadein_start()
 signal gameui_fadein_end()
 signal gameui_fadeout_start()
 signal gameui_fadeout_end()
+
+signal phase_lock_unlock_enter()

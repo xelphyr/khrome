@@ -22,10 +22,16 @@ func _ready() -> void:
 	EventBus.switch_to.connect(func(state): 
 		if state == 1:
 			$PhaseToGold.modulate = Color(255,255,255,0)
-			$AnimationPlayer.play("PhaseToBlue")
+			if GameManager.phase_locked:
+				$AnimationPlayer.play("PhaseToBlue")
+			else:
+				$AnimationPlayer.play("PhaseToBlue")
 		if state == 2:
 			$PhaseToBlue.modulate = Color(255,255,255,0)
-			$AnimationPlayer.play("PhaseToGold")
+			if GameManager.phase_locked:
+				$AnimationPlayer.play("PhaseToGold")
+			else:
+				$AnimationPlayer.play("PhaseToGold")
 	)
 	$Panel.modulate.a = 1.0
 
