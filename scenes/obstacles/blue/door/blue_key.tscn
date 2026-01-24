@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0ugm4h0pwu4t"]
+[gd_scene load_steps=13 format=3 uid="uid://d0ugm4h0pwu4t"]
 
 [ext_resource type="Script" uid="uid://63sqmo1x8paq" path="res://scripts/key.gd" id="1_5uese"]
 [ext_resource type="Material" uid="uid://cmrwctgeui3pa" path="res://assets/mats/blue.tres" id="2_3rg7g"]
@@ -10,6 +10,15 @@ material = ExtResource("2_3rg7g")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wq0f"]
 size = Vector3(1.2, 0.2, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vroeq"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.79607844)
+albedo_texture = ExtResource("4_y5j4j")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y5j4j"]
+material = SubResource("StandardMaterial3D_vroeq")
+size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vroeq"]
 
@@ -80,8 +89,8 @@ mesh = SubResource("BoxMesh_0wq0f")
 
 [node name="Shadow" parent="." instance=ExtResource("3_vroeq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
-layers = 1
-texture_albedo = ExtResource("4_y5j4j")
+layers = 1024
+mesh = SubResource("PlaneMesh_y5j4j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vroeq")

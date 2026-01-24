@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw2fi3x1qlg6j"]
+[gd_scene load_steps=5 format=3 uid="uid://cw2fi3x1qlg6j"]
 
 [ext_resource type="Texture2D" uid="uid://c3tjgu4qa4ni8" path="res://images/circle.png" id="1_0rvn4"]
 [ext_resource type="Script" uid="uid://cwjgnipe13dih" path="res://scripts/shadow.gd" id="2_jqplm"]
 
-[node name="Shadow" type="Decal"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqplm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.79607844)
+albedo_texture = ExtResource("1_0rvn4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bs2fw"]
+material = SubResource("StandardMaterial3D_jqplm")
+size = Vector2(1, 1)
+
+[node name="Shadow" type="MeshInstance3D"]
 layers = 1024
-size = Vector3(1, 0.1, 1)
-texture_albedo = ExtResource("1_0rvn4")
-modulate = Color(0, 0, 0, 0.73333335)
-cull_mask = 1023
+mesh = SubResource("PlaneMesh_bs2fw")
 script = ExtResource("2_jqplm")

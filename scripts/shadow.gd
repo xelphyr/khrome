@@ -1,4 +1,4 @@
-extends Decal
+extends MeshInstance3D
 class_name Shadow
 
 @export var shadow_dist : float = 9999
@@ -18,4 +18,4 @@ func _process(_delta: float) -> void:
 		visible = false
 	else:
 		visible = true
-		global_position = result.position
+		global_position = result.position + Vector3(0,0.001,0)

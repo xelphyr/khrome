@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpconct8qupih"]
+[gd_scene load_steps=13 format=3 uid="uid://bpconct8qupih"]
 
 [ext_resource type="Script" uid="uid://63sqmo1x8paq" path="res://scripts/key.gd" id="1_0wq0f"]
 [ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="1_llved"]
@@ -69,6 +69,15 @@ _data = {
 &"RESET": SubResource("Animation_y5j4j")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv3cw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.79607844)
+albedo_texture = ExtResource("4_jbs67")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jbs67"]
+material = SubResource("StandardMaterial3D_wv3cw")
+size = Vector2(1, 1)
+
 [node name="GreyKey" type="Area3D"]
 collision_layer = 3
 collision_mask = 3
@@ -82,10 +91,6 @@ mesh = SubResource("BoxMesh_flow1")
 layers = 3
 mesh = SubResource("BoxMesh_0wq0f")
 
-[node name="Shadow" parent="." instance=ExtResource("3_wv3cw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
-texture_albedo = ExtResource("4_jbs67")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wv3cw")
 
@@ -93,5 +98,9 @@ shape = SubResource("BoxShape3D_wv3cw")
 libraries = {
 &"": SubResource("AnimationLibrary_70opq")
 }
+
+[node name="Shadow" parent="." instance=ExtResource("3_wv3cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
+mesh = SubResource("PlaneMesh_jbs67")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

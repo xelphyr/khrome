@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt7v6i0kiwgan"]
+
+[ext_resource type="Texture2D" uid="uid://c3tjgu4qa4ni8" path="res://images/circle.png" id="1_7sf3s"]
+[ext_resource type="Script" uid="uid://cwjgnipe13dih" path="res://scripts/shadow.gd" id="2_0ref5"]
+
+[node name="Shadow" type="Decal"]
+layers = 1024
+size = Vector3(1, 0.1, 1)
+texture_albedo = ExtResource("1_7sf3s")
+modulate = Color(0, 0, 0, 0.73333335)
+cull_mask = 1023
+script = ExtResource("2_0ref5")
