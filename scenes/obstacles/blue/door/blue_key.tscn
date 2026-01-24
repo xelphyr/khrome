@@ -89,7 +89,7 @@ mesh = SubResource("BoxMesh_0wq0f")
 
 [node name="Shadow" parent="." instance=ExtResource("3_vroeq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
-layers = 1024
+layers = 1
 mesh = SubResource("PlaneMesh_y5j4j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
