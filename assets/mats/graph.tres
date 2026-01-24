@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c7kh6rifedcak"]
+
+[ext_resource type="Texture2D" uid="uid://duxju2uua8imc" path="res://images/graph_border.png" id="1_h55hj"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+albedo_texture = ExtResource("1_h55hj")
+disable_receive_shadows = true

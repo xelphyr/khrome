@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyuro6ku8uypl"]
+[gd_scene load_steps=11 format=3 uid="uid://cyuro6ku8uypl"]
 
 [ext_resource type="Script" uid="uid://cxygt2g124o34" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Material" uid="uid://bexea4kqe7rqy" path="res://assets/mats/blue_no_shadow.tres" id="2_dqkch"]
 [ext_resource type="Material" uid="uid://x8jo0ugvmxpv" path="res://assets/mats/gold_no_shadow.tres" id="3_qlg0r"]
 [ext_resource type="Material" uid="uid://c4vh1i42q041g" path="res://assets/mats/black.tres" id="4_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://cw2fi3x1qlg6j" path="res://scenes/shadow.tscn" id="5_qlg0r"]
+[ext_resource type="Material" uid="uid://c7kh6rifedcak" path="res://assets/mats/graph.tres" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -15,6 +16,10 @@ height = 1.6
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g2els"]
 flip_faces = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fjrip"]
+material = ExtResource("6_tuyoq")
+size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_3vyb7")
@@ -35,3 +40,86 @@ surface_material_override/0 = ExtResource("2_dqkch")
 
 [node name="Shadow" parent="." instance=ExtResource("5_qlg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="GraphZ" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GraphZ"]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 64, -64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="GraphZ"]
+transform = Transform3D(-4.371139e-08, -2.9802322e-08, 1, 1, -1.3027009e-15, 4.371139e-08, 0, 1, 2.9802322e-08, 64, 64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="GraphZ"]
+transform = Transform3D(-1, -2.6054018e-15, 8.742278e-08, 8.742278e-08, -2.9802322e-08, 1, 0, 1, 2.9802322e-08, -64, 64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="GraphZ"]
+transform = Transform3D(-4.371139e-08, 2.9802322e-08, -1, -1, -1.3027009e-15, 4.371139e-08, 0, 1, 2.9802322e-08, -64, -64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="GraphY" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GraphY"]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 64, -64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="GraphY"]
+transform = Transform3D(-4.371139e-08, -2.9802322e-08, 1, 1, -1.3027009e-15, 4.371139e-08, 0, 1, 2.9802322e-08, 64, 64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="GraphY"]
+transform = Transform3D(-1, -2.6054018e-15, 8.742278e-08, 8.742278e-08, -2.9802322e-08, 1, 0, 1, 2.9802322e-08, -64, 64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="GraphY"]
+transform = Transform3D(-4.371139e-08, 2.9802322e-08, -1, -1, -1.3027009e-15, 4.371139e-08, 0, 1, 2.9802322e-08, -64, -64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="GraphX" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GraphX"]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, 64, -64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="GraphX"]
+transform = Transform3D(-4.371139e-08, -2.9802322e-08, 1, 1, -1.3027009e-15, 4.371139e-08, 0, 1, 2.9802322e-08, 64, 64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="GraphX"]
+transform = Transform3D(-1, -2.6054018e-15, 8.742278e-08, 8.742278e-08, -2.9802322e-08, 1, 0, 1, 2.9802322e-08, -64, 64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="GraphX"]
+transform = Transform3D(-4.371139e-08, 2.9802322e-08, -1, -1, -1.3027009e-15, 4.371139e-08, 0, 1, 2.9802322e-08, -64, -64, 0)
+layers = 3
+mesh = SubResource("PlaneMesh_fjrip")
+skeleton = NodePath("../..")

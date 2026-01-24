@@ -48,7 +48,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.049599, 3, -13.795906)
 
 [node name="LevelFinish" parent="." instance=ExtResource("5_sfkne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.121883, 11.83402, 2.1472168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.521883, 12.43402, 3.1472168)
 
 [node name="FallDetect" parent="." instance=ExtResource("6_4jsps")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="PlatformBlue" parent="Objects" instance=ExtResource("8_8vij2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9975204, 10, 2.204094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3975205, 10.6, 3.204094)
 
 [node name="CollisionShape3D" parent="Objects/PlatformBlue" index="0"]
 shape = SubResource("BoxShape3D_k7m2t")
