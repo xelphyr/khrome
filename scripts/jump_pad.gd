@@ -8,4 +8,4 @@ func _on_enter_detect_body_entered(body: Node3D) -> void:
 		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP_PAD)
 		body.velocity += global_transform.basis.y * jump_force * Vector3(xz_mult,1,xz_mult)
 
-		
+

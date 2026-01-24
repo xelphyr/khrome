@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=3 uid="uid://td4npp7xv4mc"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_3vcxw"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_qmrxm"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="3_pe6mg"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="4_kpim8"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="5_rvquh"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="6_jpf3n"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_xu3ee"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="8_fjp0m"]
+[ext_resource type="PackedScene" uid="uid://keoes5bdc7gt" path="res://scenes/obstacles/blue/jump_pad_blue.tscn" id="9_tdfmp"]
+[ext_resource type="PackedScene" uid="uid://crig3hqos8fo2" path="res://scenes/obstacles/gold/jump_pad_gold.tscn" id="10_m6ovs"]
+[ext_resource type="PackedScene" uid="uid://b4qtjb6y8rkrh" path="res://scenes/obstacles/grey/jump_pad_grey.tscn" id="11_50xcf"]
+[ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="12_cukv4"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="13_u0e1j"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h170b"]
+size = Vector3(5, 1, 31)
+
+[node name="Chaotically Tending Upwards" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_3vcxw")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_qmrxm")]
+transform = Transform3D(0.70710677, -0.29883623, 0.64085644, 0, 0.9063078, 0.42261824, -0.70710677, -0.29883623, 0.64085644, 50, 68.349495, 50)
+cull_mask = 1047553
+size = 75.15854
+script = ExtResource("3_pe6mg")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("4_kpim8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("5_rvquh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.98477, 42, -11)
+
+[node name="FallDetect" parent="." instance=ExtResource("6_jpf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.066277, 0)
+
+[node name="Start" parent="." instance=ExtResource("7_xu3ee")]
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("8_fjp0m")]
+
+[node name="JumpPadBlue" parent="Objects" instance=ExtResource("9_tdfmp")]
+transform = Transform3D(3.5527137e-15, -5.960464e-08, 0.9999999, -0.9649936, 0.2622733, 1.5632711e-08, -0.26227337, -0.9649935, -5.7518093e-08, -26, 3, 5.626131)
+jump_force = 70.0
+
+[node name="JumpPadGold" parent="Objects" instance=ExtResource("10_m6ovs")]
+transform = Transform3D(0.07285523, -0.99734265, 0, 0.99734265, 0.07285523, 0, 0, 0, 1, 3.8122559, 3, -0.377491)
+jump_force = 60.0
+
+[node name="JumpPadGold2" parent="Objects" instance=ExtResource("10_m6ovs")]
+transform = Transform3D(1, 1.4901161e-08, 0, -1.4901161e-08, 1, 0, 0, 0, 1, -26, 15.1160965, -27.15815)
+jump_force = 40.0
+
+[node name="JumpPadGrey" parent="Objects" instance=ExtResource("11_50xcf")]
+transform = Transform3D(1, 0, 0, 0, 0.15219234, -0.98835087, 0, 0.98835087, 0.15219234, -26, 47.556282, -40.078766)
+jump_force = 70.0
+
+[node name="JumpPadGrey2" parent="Objects" instance=ExtResource("11_50xcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -3.8839035, -27.15815)
+jump_force = 40.0
+
+[node name="PlatformGold" parent="Objects" instance=ExtResource("12_cukv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 7.1160965, -27.15815)
+
+[node name="PlatformGold2" parent="Objects" instance=ExtResource("12_cukv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.98477, 40, -11)
+
+[node name="PlatformBlue" parent="Objects" instance=ExtResource("13_u0e1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.223, 40, -11)
+
+[node name="PlatformBlue3" parent="Objects" instance=ExtResource("13_u0e1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.984774, 40, -11)
+
+[node name="PlatformBlue4" parent="Objects" instance=ExtResource("13_u0e1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.98477, 40, -11)
+
+[node name="PlatformBlue2" parent="Objects" instance=ExtResource("13_u0e1j")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -25.223, 43, -9)
+
+[node name="CollisionShape3D" parent="Objects/PlatformBlue2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.536743e-07, 13)
+shape = SubResource("BoxShape3D_h170b")
+
+[node name="MeshInstance3D" parent="Objects/PlatformBlue2" index="1"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 31, 0, -9.536743e-07, 13)
+
+[editable path="Objects/PlatformBlue2"]
