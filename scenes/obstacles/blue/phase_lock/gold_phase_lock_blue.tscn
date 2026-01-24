@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://di4ddr3gv6cay"]
+
+[ext_resource type="Script" uid="uid://d2gssmbks4ik0" path="res://scripts/phase_lock.gd" id="1_xaxmx"]
+[ext_resource type="Material" uid="uid://cmrwctgeui3pa" path="res://assets/mats/blue.tres" id="2_6arwy"]
+[ext_resource type="Material" uid="uid://crvbc7qsl8ctq" path="res://assets/mats/gold.tres" id="2_u2j35"]
+[ext_resource type="Material" uid="uid://86wqpy2v6a36" path="res://assets/mats/gold_glow.tres" id="3_rl6uc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_weuuj"]
+size = Vector3(5, 1.2, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o48te"]
+material = ExtResource("2_6arwy")
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ip18w"]
+material = ExtResource("3_rl6uc")
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8awmq"]
+material = ExtResource("2_u2j35")
+size = Vector3(4.6, 0.2, 4.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tb6s"]
+size = Vector3(5, 0.2, 5)
+
+[node name="GoldPhaseLockBlue" type="StaticBody3D"]
+script = ExtResource("1_xaxmx")
+phase = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100000024, 0)
+shape = SubResource("BoxShape3D_weuuj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o48te")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9659258, -0.25, 0.0669873, 0.25881907, 0.9330128, -0.25000003, 0, 0.25881907, 0.96592593, -2, -0.2, 2)
+mesh = SubResource("BoxMesh_ip18w")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9659258, 0.25, -0.0669873, -0.25881907, 0.9330128, -0.25000003, 0, 0.25881907, 0.96592593, 2, -0.2, 2)
+mesh = SubResource("BoxMesh_ip18w")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.96592593, 0.25881907, 0, -0.25000003, 0.9330128, 0.25881907, 0.0669873, -0.25, 0.9659258, 2, -0.2, -2)
+mesh = SubResource("BoxMesh_ip18w")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.96592593, -0.25881907, 0, 0.25000003, 0.9330128, 0.25881907, -0.0669873, -0.25, 0.9659258, -1.8683324, -0.2, -2)
+mesh = SubResource("BoxMesh_ip18w")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_8awmq")
+
+[node name="DetectArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7566722, 0)
+shape = SubResource("BoxShape3D_7tb6s")
+
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
