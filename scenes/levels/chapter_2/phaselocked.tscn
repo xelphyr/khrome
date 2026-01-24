@@ -1,0 +1,163 @@
+[gd_scene load_steps=23 format=3 uid="uid://dft24scijqgft"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_ig6bw"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_y38y8"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="3_yfarg"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="4_5w46h"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="5_aweld"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="6_17drl"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_6rn8j"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="8_8gix4"]
+[ext_resource type="PackedScene" uid="uid://ba1h728qe26aj" path="res://scenes/obstacles/grey/phase_lock/blue_phase_lock_grey.tscn" id="9_xmsux"]
+[ext_resource type="PackedScene" uid="uid://d17dskml2ioad" path="res://scenes/obstacles/grey/phase_lock/blue_phase_unlock_grey.tscn" id="10_f487x"]
+[ext_resource type="PackedScene" uid="uid://bikoae6dbwid3" path="res://scenes/obstacles/grey/phase_lock/gold_phase_lock_grey.tscn" id="11_hnioa"]
+[ext_resource type="PackedScene" uid="uid://cbsjjn53dna4c" path="res://scenes/obstacles/grey/phase_lock/gold_phase_unlock_grey.tscn" id="12_po2xk"]
+[ext_resource type="PackedScene" uid="uid://keoes5bdc7gt" path="res://scenes/obstacles/blue/jump_pad_blue.tscn" id="13_koe6w"]
+[ext_resource type="PackedScene" uid="uid://crig3hqos8fo2" path="res://scenes/obstacles/gold/jump_pad_gold.tscn" id="14_nfvdk"]
+[ext_resource type="PackedScene" uid="uid://b3ryoq0cec63v" path="res://scenes/obstacles/blue/laser/laser_wall_blue.tscn" id="15_dutl0"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="16_j1snn"]
+[ext_resource type="PackedScene" uid="uid://dxjnfbbghb63h" path="res://scenes/obstacles/blue/laser/laser_spinner_blue.tscn" id="17_e2hm5"]
+[ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="18_wv0nk"]
+[ext_resource type="PackedScene" uid="uid://csh8rfrmpeyrk" path="res://scenes/obstacles/gold/laser/laser_single_gold.tscn" id="19_q03ue"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ctshh"]
+size = Vector3(5, 1, 17.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2llv"]
+lightmap_size_hint = Vector2i(26, 33)
+add_uv2 = true
+size = Vector3(1, 1, 3.5)
+
+[node name="Phaselocked" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_ig6bw")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_y38y8")]
+transform = Transform3D(0.7071068, -0.29883623, 0.6408564, 0, 0.9063078, 0.42261824, -0.7071068, -0.29883623, 0.6408564, 50, 42.01511, 31.405052)
+cull_mask = 1047554
+size = 51.44708
+script = ExtResource("3_yfarg")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("4_5w46h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("5_aweld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8258467, -43.824944)
+
+[node name="FallDetect" parent="." instance=ExtResource("6_17drl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Start" parent="." instance=ExtResource("7_6rn8j")]
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("8_8gix4")]
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("8_8gix4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.824944)
+
+[node name="BluePhaseLockGrey" parent="Objects" instance=ExtResource("9_xmsux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.102097, 0, 0)
+
+[node name="BluePhaseUnlockGrey" parent="Objects" instance=ExtResource("10_f487x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -44)
+
+[node name="GoldPhaseLockGrey" parent="Objects" instance=ExtResource("11_hnioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+
+[node name="GoldPhaseUnlockGrey" parent="Objects" instance=ExtResource("12_po2xk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -44)
+
+[node name="JumpPadBlue" parent="Objects" instance=ExtResource("13_koe6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.30065, -2, -9.801649)
+
+[node name="JumpPadBlue2" parent="Objects" instance=ExtResource("13_koe6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.301, -1, -43.802)
+
+[node name="JumpPadGold" parent="Objects" instance=ExtResource("14_nfvdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.27928, 0, -4.8253994)
+
+[node name="JumpPadGold3" parent="Objects" instance=ExtResource("14_nfvdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.27928, 0, -38.8254)
+
+[node name="JumpPadGold2" parent="Objects" instance=ExtResource("14_nfvdk")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -16.27928, 12, -1.8253994)
+
+[node name="LaserWallBlue" parent="Objects" instance=ExtResource("15_dutl0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.514923, 0, -5.3376274)
+
+[node name="PlatformBlue" parent="Objects" instance=ExtResource("16_j1snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.30065, 5, -21.80165)
+
+[node name="PlatformBlue2" parent="Objects" instance=ExtResource("16_j1snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.30065, 5, -21.80165)
+
+[node name="PlatformBlue3" parent="Objects" instance=ExtResource("16_j1snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.30065, 5, -27.80165)
+
+[node name="PlatformBlue4" parent="Objects" instance=ExtResource("16_j1snn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.30065, 5, -35.80165)
+
+[node name="LaserSpinnerBlue" parent="Objects" instance=ExtResource("17_e2hm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.989876, 6.9900646, -31.524014)
+spin_speed = 1.0
+rotate_vector = Vector3(0, 1, 0)
+
+[node name="LaserBlue" parent="Objects/LaserSpinnerBlue" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="Objects/LaserSpinnerBlue" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="MeshInstance3D2" parent="Objects/LaserSpinnerBlue" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="PlatformGold" parent="Objects" instance=ExtResource("18_wv0nk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -19)
+
+[node name="PlatformGold4" parent="Objects" instance=ExtResource("18_wv0nk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -19)
+
+[node name="PlatformGold2" parent="Objects" instance=ExtResource("18_wv0nk")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -16, 2, -21)
+
+[node name="CollisionShape3D" parent="Objects/PlatformGold2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.7353516)
+shape = SubResource("BoxShape3D_ctshh")
+
+[node name="MeshInstance3D" parent="Objects/PlatformGold2" index="1"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -7)
+mesh = SubResource("BoxMesh_u2llv")
+
+[node name="PlatformGold3" parent="Objects" instance=ExtResource("18_wv0nk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -25)
+
+[node name="CollisionShape3D" parent="Objects/PlatformGold3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.064647675)
+shape = SubResource("BoxShape3D_ctshh")
+
+[node name="MeshInstance3D" parent="Objects/PlatformGold3" index="1"]
+mesh = SubResource("BoxMesh_u2llv")
+
+[node name="LaserSingleGold" parent="Objects" instance=ExtResource("19_q03ue")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23, 1, -22)
+
+[node name="LaserSingleGold2" parent="Objects" instance=ExtResource("19_q03ue")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23, 1, -32)
+
+[editable path="Objects/LaserSpinnerBlue"]
+[editable path="Objects/PlatformGold2"]
+[editable path="Objects/PlatformGold3"]

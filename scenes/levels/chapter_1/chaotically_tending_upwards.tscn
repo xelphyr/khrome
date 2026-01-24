@@ -75,14 +75,14 @@ jump_force = 70.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -3.8839035, -27.15815)
 jump_force = 40.0
 
-[node name="PlatformGold" parent="Objects" instance=ExtResource("12_cukv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 7.1160965, -27.15815)
-
 [node name="PlatformGold2" parent="Objects" instance=ExtResource("12_cukv4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.98477, 40, -11)
 
 [node name="PlatformBlue" parent="Objects" instance=ExtResource("13_u0e1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.223, 40, -11)
+
+[node name="PlatformBlue5" parent="Objects" instance=ExtResource("13_u0e1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 9.1160965, -27.15815)
 
 [node name="PlatformBlue3" parent="Objects" instance=ExtResource("13_u0e1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.984774, 40, -11)
