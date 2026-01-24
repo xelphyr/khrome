@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmh2jhxlvjvmc"]
+
+[ext_resource type="Script" uid="uid://byn6plmckil36" path="res://scripts/chapter_complete_ui.gd" id="1_pst0b"]
+[ext_resource type="Script" uid="uid://dgqx34jh6wsdu" path="res://scripts/typewriter_label.gd" id="2_adncl"]
+[ext_resource type="Theme" uid="uid://64swlkl603eh" path="res://assets/themes/level_select_button.tres" id="3_adncl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enauh"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ChapterComplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pst0b")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_enauh")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 26
+
+[node name="LevelComplete" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+text = "CHAPTER 1 COMPLETE"
+fit_content = true
+horizontal_alignment = 1
+script = ExtResource("2_adncl")
+metadata/_custom_type_script = "uid://dgqx34jh6wsdu"
+
+[node name="Indev" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "THE PROLOGUE IS STILL IN DEVELOPMENT
+YOU CAN STILL PLAY THE LEVELS OF THE OTHER CHAPTERS!
+"
+fit_content = true
+horizontal_alignment = 1
+script = ExtResource("2_adncl")
+char_delay = 0.05
+metadata/_custom_type_script = "uid://dgqx34jh6wsdu"
+
+[node name="BackToMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_adncl")
+theme_override_font_sizes/font_size = 32
+text = "Back to menu"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

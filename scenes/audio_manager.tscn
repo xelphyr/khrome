@@ -100,5 +100,6 @@ vol = -20
 metadata/_custom_type_script = "uid://bcabii1rnlilv"
 
 [node name="AudioManager" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_kq7b2")
 sound_effect_settings = Array[ExtResource("2_02gw7")]([SubResource("Resource_oucy0"), SubResource("Resource_cuol6"), SubResource("Resource_m1k83"), SubResource("Resource_oummu"), SubResource("Resource_hssp1"), SubResource("Resource_8b11i"), SubResource("Resource_u6qdm"), SubResource("Resource_ic5jq"), SubResource("Resource_if78k"), SubResource("Resource_8igv3")])

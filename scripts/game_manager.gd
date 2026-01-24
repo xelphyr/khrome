@@ -59,7 +59,8 @@ func _on_gameui_fadein_end():
 	print("curr_level: ", curr_level)
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.LEVEL_ENTER)
 	if curr_level > chapter_levels_count:
-		EventBus.exit_level.emit()
+		get_tree().paused = true
+		UIManager.change_state(Enum.UIState.CHAPTER_COMPLETE)
 	else:
 		EventBus.load_level.emit(curr_chapter, curr_level)
 		EventBus.gameui_fadeout_start.emit()

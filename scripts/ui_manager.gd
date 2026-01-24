@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var splash : PackedScene
 @export var level_select: PackedScene
 @export var game : PackedScene
+@export var chapter_complete : PackedScene
 
 var state: Enum.UIState
 
@@ -30,6 +31,9 @@ func change_state(to: Enum.UIState):
 		Enum.UIState.GAME:
 			var instance = game.instantiate()
 			add_child(instance)
+		Enum.UIState.CHAPTER_COMPLETE:
+			var instance = chapter_complete.instantiate()
+			add_child(instance)			
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and state == Enum.UIState.LEVEL_SELECT:

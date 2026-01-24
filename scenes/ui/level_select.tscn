@@ -42,24 +42,22 @@ theme_override_constants/margin_bottom = 70
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_constants/separation = 20
-alignment = 1
 
 [node name="LevelSelect" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 1
 theme = SubResource("Theme_gugsm")
 text = "LEVEL SELECT"
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 155
 
 [node name="Chapter1" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter1"]
@@ -71,7 +69,7 @@ label_settings = SubResource("LabelSettings_l0h45")
 [node name="Buttons" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter1"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 5
@@ -142,7 +140,6 @@ text = "9"
 [node name="Chapter2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 visible = false
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter2"]
@@ -154,7 +151,7 @@ label_settings = SubResource("LabelSettings_l0h45")
 [node name="Buttons" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter2"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 5
@@ -190,7 +187,6 @@ text = "4"
 [node name="Chapter3" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 visible = false
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter3"]
@@ -202,7 +198,7 @@ label_settings = SubResource("LabelSettings_l0h45")
 [node name="Buttons" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter3"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 5
@@ -224,7 +220,6 @@ text = "2"
 [node name="Chapter4" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 visible = false
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter4"]
@@ -236,7 +231,7 @@ label_settings = SubResource("LabelSettings_l0h45")
 [node name="Buttons" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Chapter4"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 5
@@ -249,7 +244,7 @@ theme_override_font_sizes/font_size = 32
 text = "1"
 
 [node name="PreviousChapter" type="Button" parent="PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(20, 30)
+custom_minimum_size = Vector2(40, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -257,7 +252,7 @@ disabled = true
 text = "<"
 
 [node name="NextChapter" type="Button" parent="PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(20, 30)
+custom_minimum_size = Vector2(40, 60)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4

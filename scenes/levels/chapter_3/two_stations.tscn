@@ -1,0 +1,338 @@
+[gd_scene load_steps=35 format=3 uid="uid://b4rp63a8odq2h"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_tx771"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_8sd7c"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="3_hdqja"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="4_sax58"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="5_4sx4b"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="6_ht10w"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_bxx4j"]
+[ext_resource type="PackedScene" uid="uid://keoes5bdc7gt" path="res://scenes/obstacles/blue/jump_pad_blue.tscn" id="8_5r2o6"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="9_j3yhk"]
+[ext_resource type="PackedScene" uid="uid://crig3hqos8fo2" path="res://scenes/obstacles/gold/jump_pad_gold.tscn" id="10_fak2k"]
+[ext_resource type="PackedScene" uid="uid://bqfuqtdkwfnw0" path="res://scenes/obstacles/grey/spinner_grey.tscn" id="11_xd2my"]
+[ext_resource type="PackedScene" uid="uid://c6yanjf4snw50" path="res://scenes/obstacles/grey/fan_grey.tscn" id="12_d6c5m"]
+[ext_resource type="PackedScene" uid="uid://clgypnd4wnnht" path="res://scenes/obstacles/blue/fan_blue.tscn" id="13_bm57i"]
+[ext_resource type="PackedScene" uid="uid://fo8e7lqouets" path="res://scenes/obstacles/gold/fan_gold.tscn" id="14_rxmpi"]
+[ext_resource type="PackedScene" uid="uid://dbxo0vsfb3hcm" path="res://scenes/obstacles/grey/laser/laser_wall_grey.tscn" id="15_q2nuy"]
+[ext_resource type="PackedScene" uid="uid://ctujuy3mhmcq1" path="res://scenes/obstacles/grey/laser/laser_grey.tscn" id="16_8vq6y"]
+[ext_resource type="Material" uid="uid://babf6tqjek06e" path="res://assets/mats/grey.tres" id="17_t64lv"]
+[ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="18_024ol"]
+[ext_resource type="PackedScene" uid="uid://dguvhgx2n66rh" path="res://scenes/obstacles/gold/laser/laser_wall_gold.tscn" id="19_lbi68"]
+[ext_resource type="PackedScene" uid="uid://bc7yao7y8fbsc" path="res://scenes/obstacles/gold/laser/laser_gold.tscn" id="20_tm3rf"]
+[ext_resource type="Material" uid="uid://crvbc7qsl8ctq" path="res://assets/mats/gold.tres" id="21_ue1eb"]
+[ext_resource type="PackedScene" uid="uid://dbmbv5jnr5yoa" path="res://scenes/obstacles/gold/spinner_gold.tscn" id="22_pcie6"]
+[ext_resource type="PackedScene" uid="uid://dofh0qygdw1sh" path="res://scenes/obstacles/blue/spinner_blue.tscn" id="23_enlbq"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6rkah"]
+lightmap_size_hint = Vector2i(50, 639)
+add_uv2 = true
+size = Vector3(4.6, 61, 4.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tw20q"]
+size = Vector3(4.6, 62, 4.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bg05"]
+lightmap_size_hint = Vector2i(11, 61)
+add_uv2 = true
+size = Vector3(1, 5, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v1bl5"]
+lightmap_size_hint = Vector2i(17, 11)
+add_uv2 = true
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_arhgh"]
+lightmap_size_hint = Vector2i(11, 61)
+add_uv2 = true
+size = Vector3(1, 5, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ekgrx"]
+lightmap_size_hint = Vector2i(17, 11)
+add_uv2 = true
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wu3xk"]
+size = Vector3(5, 1, 22.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xwedl"]
+lightmap_size_hint = Vector2i(31, 38)
+add_uv2 = true
+size = Vector3(1, 1, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6rkah"]
+size = Vector3(5, 1, 22.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ahrjk"]
+lightmap_size_hint = Vector2i(31, 38)
+add_uv2 = true
+size = Vector3(1, 1, 4.5)
+
+[node name="Two Stations" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_tx771")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_8sd7c")]
+transform = Transform3D(0.7071068, -0.29883626, 0.6408564, 0, 0.9063078, 0.42261827, -0.7071068, -0.29883626, 0.6408564, 77, 75.333, 50)
+cull_mask = 1047553
+size = 71.0
+script = ExtResource("3_hdqja")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("4_sax58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("5_4sx4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 34, -12.5)
+
+[node name="FallDetect" parent="." instance=ExtResource("6_ht10w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Start" parent="." instance=ExtResource("7_bxx4j")]
+
+[node name="Objects" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="JumpPadBlue" parent="Objects" instance=ExtResource("8_5r2o6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+jump_force = 20.0
+
+[node name="JumpPadBlue2" parent="Objects" instance=ExtResource("8_5r2o6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 18, 3.0000024)
+jump_force = 40.0
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("9_j3yhk")]
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("9_j3yhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, -16)
+
+[node name="JumpPadGold" parent="Objects" instance=ExtResource("10_fak2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -8)
+jump_force = 20.0
+
+[node name="SpinnerGrey" parent="Objects" instance=ExtResource("11_xd2my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.499999, 32, 28.999996)
+
+[node name="FanGrey" parent="Objects" instance=ExtResource("12_d6c5m")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -2, 26, -22)
+
+[node name="MeshInstance3D2" parent="Objects/FanGrey" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0)
+sorting_offset = -300.0
+mesh = SubResource("BoxMesh_6rkah")
+
+[node name="FanArea" parent="Objects/FanGrey" index="3"]
+gravity_point_center = Vector3(0, 0, -1)
+gravity_direction = Vector3(0, 0, -1)
+gravity = 20.0
+
+[node name="CollisionShape3D" parent="Objects/FanGrey/FanArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9073486e-06, 30.5, 0)
+shape = SubResource("BoxShape3D_tw20q")
+
+[node name="FanBlue" parent="Objects" instance=ExtResource("13_bm57i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 20, -22)
+
+[node name="MeshInstance3D" parent="Objects/FanBlue" index="1"]
+sorting_offset = 9.285
+
+[node name="FanArea" parent="Objects/FanBlue" index="3"]
+gravity = 50.0
+
+[node name="FanBlue2" parent="Objects" instance=ExtResource("13_bm57i")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 7, 32, -22)
+
+[node name="FanArea" parent="Objects/FanBlue2" index="3"]
+gravity_point_center = Vector3(0, -1, 0)
+gravity_direction = Vector3(0, -1, 0)
+gravity = 900.0
+
+[node name="FanBlue3" parent="Objects" instance=ExtResource("13_bm57i")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 23, 32, -22)
+
+[node name="MeshInstance3D2" parent="Objects/FanBlue3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.05, 0, 9, 0)
+
+[node name="FanArea" parent="Objects/FanBlue3" index="3"]
+gravity_point_center = Vector3(0, -1, 0)
+gravity_direction = Vector3(0, -1, 0)
+gravity = 900.0
+
+[node name="FanBlue4" parent="Objects" instance=ExtResource("13_bm57i")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 39, 32, -22)
+
+[node name="FanArea" parent="Objects/FanBlue4" index="3"]
+gravity_point_center = Vector3(0, -1, 0)
+gravity_direction = Vector3(0, -1, 0)
+gravity = 900.0
+
+[node name="FanGold" parent="Objects" instance=ExtResource("14_rxmpi")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 15, 32, -22)
+
+[node name="FanArea" parent="Objects/FanGold" index="3"]
+gravity_point_center = Vector3(0, -1, 0)
+gravity_direction = Vector3(0, -1, 0)
+gravity = 900.0
+
+[node name="FanGold2" parent="Objects" instance=ExtResource("14_rxmpi")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 31, 32, -22)
+
+[node name="FanArea" parent="Objects/FanGold2" index="3"]
+gravity_point_center = Vector3(0, -1, 0)
+gravity_direction = Vector3(0, -1, 0)
+gravity = 900.0
+
+[node name="FanGold3" parent="Objects" instance=ExtResource("14_rxmpi")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 47, 32, -22)
+
+[node name="FanArea" parent="Objects/FanGold3" index="3"]
+gravity_point_center = Vector3(0, -1, 0)
+gravity_direction = Vector3(0, -1, 0)
+gravity = 900.0
+
+[node name="LaserWallGrey" parent="Objects" instance=ExtResource("15_q2nuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 23, -22)
+
+[node name="MeshInstance3D2" parent="Objects/LaserWallGrey" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.5, 2.75)
+mesh = SubResource("BoxMesh_0bg05")
+
+[node name="MeshInstance3D3" parent="Objects/LaserWallGrey" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.5, -2.75)
+mesh = SubResource("BoxMesh_0bg05")
+
+[node name="LaserGrey1" parent="Objects/LaserWallGrey" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 1, 0)
+
+[node name="LaserGrey2" parent="Objects/LaserWallGrey" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2, 0)
+
+[node name="LaserGrey3" parent="Objects/LaserWallGrey" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 4, 0)
+
+[node name="LaserGrey4" parent="Objects/LaserWallGrey" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 5, 0)
+
+[node name="LaserGrey5" parent="Objects/LaserWallGrey" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 3, 0)
+
+[node name="MeshInstance3D6" parent="Objects/LaserWallGrey" index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -34, 5, 2.75)
+
+[node name="MeshInstance3D7" parent="Objects/LaserWallGrey" index="8"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -34, 5, -2.75)
+
+[node name="LaserGrey6" parent="Objects/LaserWallGrey" instance=ExtResource("16_8vq6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 0)
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Objects/LaserWallGrey"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -34, 0, 2.75)
+layers = 3
+mesh = SubResource("CylinderMesh_v1bl5")
+surface_material_override/0 = ExtResource("17_t64lv")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Objects/LaserWallGrey"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -34, 0, -2.75)
+layers = 3
+mesh = SubResource("CylinderMesh_v1bl5")
+surface_material_override/0 = ExtResource("17_t64lv")
+
+[node name="PlatformGold" parent="Objects" instance=ExtResource("18_024ol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 22, -3.9999976)
+
+[node name="LaserWallGold" parent="Objects" instance=ExtResource("19_lbi68")]
+transform = Transform3D(4.3711392e-08, -8.742278e-08, -1, -1, -4.371139e-08, -4.371139e-08, -4.371138e-08, 1, -8.742278e-08, 55, 23, -2.9999976)
+
+[node name="MeshInstance3D2" parent="Objects/LaserWallGold" index="0"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 6.5, 2.75)
+mesh = SubResource("BoxMesh_arhgh")
+
+[node name="MeshInstance3D3" parent="Objects/LaserWallGold" index="1"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 6.5, -2.75)
+mesh = SubResource("BoxMesh_arhgh")
+
+[node name="LaserGold1" parent="Objects/LaserWallGold" index="2"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 5, 0)
+
+[node name="LaserGold2" parent="Objects/LaserWallGold" index="3"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 6, 0)
+
+[node name="LaserGold3" parent="Objects/LaserWallGold" index="4"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 8, 0)
+
+[node name="LaserGold4" parent="Objects/LaserWallGold" index="5"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 9, 0)
+
+[node name="LaserGold5" parent="Objects/LaserWallGold" index="6"]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 7, 0)
+
+[node name="MeshInstance3D6" parent="Objects/LaserWallGold" index="7"]
+transform = Transform3D(1, -7.1054274e-15, -6.8367697e-15, 1.6420284e-15, -4.3711392e-08, -1, 0, 1, -4.371139e-08, 1, 9, 2.75)
+
+[node name="MeshInstance3D7" parent="Objects/LaserWallGold" index="8"]
+transform = Transform3D(1, -7.1054274e-15, -6.8367697e-15, 1.6420284e-15, -4.3711392e-08, -1, 0, 1, -4.371139e-08, 1, 9, -2.75)
+
+[node name="LaserGold6" parent="Objects/LaserWallGold" instance=ExtResource("20_tm3rf")]
+transform = Transform3D(1, 1.642028e-15, 0, 1.6420284e-15, 1, 0, 0, 0, 1, 1, 4, 0)
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Objects/LaserWallGold"]
+transform = Transform3D(1, -1.0658141e-14, -1.0389483e-14, 1.6420284e-15, -4.3711392e-08, -1, 0, 1, -4.371139e-08, 1, 4, 2.75)
+layers = 2
+mesh = SubResource("CylinderMesh_ekgrx")
+surface_material_override/0 = ExtResource("21_ue1eb")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Objects/LaserWallGold"]
+transform = Transform3D(1, -1.0658141e-14, -1.0389483e-14, 1.6420284e-15, -4.3711392e-08, -1, 0, 1, -4.371139e-08, 1, 4, -2.75)
+layers = 2
+mesh = SubResource("CylinderMesh_ekgrx")
+surface_material_override/0 = ExtResource("21_ue1eb")
+
+[node name="SpinnerGold" parent="Objects" instance=ExtResource("22_pcie6")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 53, 32, 22.000002)
+spin_speed = 1.0
+rotate_vector = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" parent="Objects/SpinnerGold" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+shape = SubResource("BoxShape3D_wu3xk")
+
+[node name="MeshInstance3D" parent="Objects/SpinnerGold" index="1"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 9)
+mesh = SubResource("BoxMesh_xwedl")
+
+[node name="SpinnerBlue" parent="Objects" instance=ExtResource("23_enlbq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.999998, 32, 22)
+rotate_vector = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" parent="Objects/SpinnerBlue" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.335144e-05, 0, 0)
+shape = SubResource("BoxShape3D_6rkah")
+
+[node name="MeshInstance3D" parent="Objects/SpinnerBlue" index="1"]
+transform = Transform3D(4.9999995, 0, 0, 0, 1, 0, 0, 0, 4.9999995, 1.9073486e-06, 0, 0)
+mesh = SubResource("BoxMesh_ahrjk")
+
+[editable path="Objects/FanGrey"]
+[editable path="Objects/FanBlue"]
+[editable path="Objects/FanBlue2"]
+[editable path="Objects/FanBlue3"]
+[editable path="Objects/FanBlue4"]
+[editable path="Objects/FanGold"]
+[editable path="Objects/FanGold2"]
+[editable path="Objects/FanGold3"]
+[editable path="Objects/LaserWallGrey"]
+[editable path="Objects/LaserWallGold"]
+[editable path="Objects/SpinnerGold"]
+[editable path="Objects/SpinnerBlue"]

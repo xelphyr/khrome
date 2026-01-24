@@ -76,12 +76,14 @@ func _on_next_chapter_pressed() -> void:
 	if current_chapter >= 4:
 		$PanelContainer/MarginContainer/NextChapter.disabled = true
 	else:
+		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 		current_chapter += 1
 		$PanelContainer/MarginContainer/PreviousChapter.disabled = false
 		if current_chapter >= 4:
 			$PanelContainer/MarginContainer/NextChapter.disabled = true
 
 func _on_previous_chapter_pressed() -> void:
+	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 	if current_chapter <= 1:
 		$PanelContainer/MarginContainer/PreviousChapter.disabled = true
 	else:

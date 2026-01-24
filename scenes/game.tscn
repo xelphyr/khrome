@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://d3esy1nkd6vc" path="res://scenes/levels/chapter_2/carousel_part_2.tscn" id="8_kvuet"]
 [ext_resource type="PackedScene" uid="uid://c1aqsg4se8tdj" path="res://scenes/levels/chapter_1/railgun.tscn" id="9_trtic"]
 [ext_resource type="PackedScene" uid="uid://td4npp7xv4mc" path="res://scenes/levels/chapter_1/chaotically_tending_upwards.tscn" id="10_1kice"]
-[ext_resource type="PackedScene" uid="uid://j20qxb0lnd8e" path="res://scenes/levels/archive/phase_lock.tscn" id="10_ca42v"]
 [ext_resource type="PackedScene" uid="uid://1v5wk2pxnu05" path="res://scenes/levels/chapter_1/railgun_part_2.tscn" id="10_ir15t"]
-[ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/chapter_3/penultimate.tscn" id="11_dinhu"]
+[ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/chapter_3/two_stations.tscn" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/chapter_4/the_gates_of_eden.tscn" id="12_ir15t"]
+[ext_resource type="PackedScene" uid="uid://dft24scijqgft" path="res://scenes/levels/chapter_2/phaselocked.tscn" id="13_1kice"]
 [ext_resource type="AudioStream" uid="uid://c5bne2v46v31f" path="res://assets/audio/music_zapsplat_action_dark_sci_fi_serious_atmospsheric_deep_tech_014.mp3" id="13_trtic"]
 [ext_resource type="Script" uid="uid://djpykuxbbjxi" path="res://scripts/game_music.gd" id="14_ir15t"]
 
@@ -26,7 +26,7 @@
 [node name="LevelManager" type="Node" parent="." groups=["LevelManager"]]
 script = ExtResource("2_yqjtg")
 levels_chapter_1 = Array[PackedScene]([ExtResource("3_lbhrr"), ExtResource("4_iywne"), ExtResource("5_p57ef"), ExtResource("5_ssvqc"), ExtResource("8_264po"), ExtResource("8_1kice"), ExtResource("9_trtic"), ExtResource("10_ir15t"), ExtResource("10_1kice")])
-levels_chapter_2 = Array[PackedScene]([ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("8_kvuet"), ExtResource("10_ca42v")])
+levels_chapter_2 = Array[PackedScene]([ExtResource("6_u5sy4"), ExtResource("7_gee14"), ExtResource("13_1kice"), ExtResource("8_kvuet")])
 levels_chapter_3 = Array[PackedScene]([ExtResource("7_dinhu"), ExtResource("11_dinhu")])
 levels_chapter_4 = Array[PackedScene]([ExtResource("12_ir15t")])
 
