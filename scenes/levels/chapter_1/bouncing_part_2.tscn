@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjea5aesegx4y"]
+
+[ext_resource type="Script" uid="uid://br0go3fcmqk2" path="res://scripts/level.gd" id="1_maa82"]
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="2_hvuqj"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="3_snhnt"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="4_o8kbk"]
+[ext_resource type="PackedScene" uid="uid://dq3hcjehob3s" path="res://scenes/level_finish.tscn" id="5_gmbdl"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="6_0ilxt"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="7_23hf1"]
+[ext_resource type="PackedScene" uid="uid://keoes5bdc7gt" path="res://scenes/obstacles/blue/jump_pad_blue.tscn" id="8_lbnwq"]
+[ext_resource type="PackedScene" uid="uid://crig3hqos8fo2" path="res://scenes/obstacles/gold/jump_pad_gold.tscn" id="9_d1phn"]
+[ext_resource type="PackedScene" uid="uid://b4qtjb6y8rkrh" path="res://scenes/obstacles/grey/jump_pad_grey.tscn" id="10_61d0t"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="11_kr8m8"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="12_q5w04"]
+[ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="13_f455o"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ql3nd"]
+
+[node name="Bouncing Part 2" type="Node3D" node_paths=PackedStringArray("level_finish", "fall_detect", "start")]
+script = ExtResource("1_maa82")
+level_finish = NodePath("LevelFinish")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_hvuqj")]
+transform = Transform3D(0.70710677, -0.29883623, 0.64085644, 0, 0.9063078, 0.42261824, -0.70710677, -0.29883623, 0.64085644, 50, 43.165596, 50)
+cull_mask = 1047553
+size = 36.424488
+script = ExtResource("3_snhnt")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_ql3nd")
+
+[node name="Player" parent="." instance=ExtResource("4_o8kbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="LevelFinish" parent="." instance=ExtResource("5_gmbdl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.016834, 10.614401, -22)
+
+[node name="FallDetect" parent="." instance=ExtResource("6_0ilxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Start" parent="." instance=ExtResource("7_23hf1")]
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="JumpPadBlue" parent="Objects" instance=ExtResource("8_lbnwq")]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 2.1850939, 6)
+
+[node name="JumpPadGold" parent="Objects" instance=ExtResource("9_d1phn")]
+transform = Transform3D(0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 0, 1, 4.2665195, 7.001157, -22)
+jump_force = 40.0
+
+[node name="JumpPadGrey" parent="Objects" instance=ExtResource("10_61d0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20772362, -8.624, -22)
+jump_force = 28.0
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("11_kr8m8")]
+
+[node name="PlatformBlue" parent="Objects" instance=ExtResource("12_q5w04")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.175, -7.49)
+
+[node name="PlatformGold" parent="Objects" instance=ExtResource("13_f455o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.316383, 8.817207, -22)

@@ -24,13 +24,13 @@ shape = SubResource("BoxShape3D_3jiev")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-layers = 2
+layers = 3
 mesh = SubResource("BoxMesh_kejii")
 surface_material_override/0 = ExtResource("2_5m2mm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.25, 0, 0, 0, 0.5, 0, 0, 0, 5.25, 0, 0, 0)
-layers = 2
+layers = 3
 mesh = SubResource("BoxMesh_kejii")
 surface_material_override/0 = ExtResource("3_8xnj7")
 
