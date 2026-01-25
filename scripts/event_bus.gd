@@ -24,3 +24,5 @@ signal gameui_fadeout_start()
 signal gameui_fadeout_end()
 
 signal phase_lock_unlock_enter()
+
+signal player_movement_started()

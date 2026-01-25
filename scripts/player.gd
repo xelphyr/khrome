@@ -8,6 +8,8 @@ class_name Player
 @export var blue_phase_mat : Material
 @export var gold_phase_mat : Material
 
+var start_movement = false
+
 var curr_grid_enabled : int :
 	set(value):
 		curr_grid_enabled = value
@@ -37,6 +39,11 @@ func change_collision_layer(to: int) -> void:
 func _physics_process(delta: float) -> void:
 	#Step 1: get the movement vector
 	var input_dir := Input.get_vector("move_z+", "move_z-", "move_x+", "move_x-")
+	if input_dir != Vector2.ZERO and start_movement == false:
+		start_movement = true 
+		EventBus.player_movement_started.emit()
+
+
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	#Step 2: get the gravity
@@ -71,6 +78,9 @@ func _physics_process(delta: float) -> void:
 			velocity.y += get_gravity().y * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		if start_movement == false:
+			start_movement = true 
+			EventBus.player_movement_started.emit()
 		AudioManager.create_audio(SoundEffectSettings.SoundEffectType.JUMP)
 		velocity.y = jump_velocity
 

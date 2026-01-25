@@ -10,27 +10,29 @@ var seconds_elapsed : float :
 		update_display(value)
 		 
 
-var timer_running : bool = true
+var timer_running : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventBus.load_level.connect(start_clock)
+	EventBus.player_movement_started.connect(start_clock)
 	EventBus.level_complete.connect(stop_clock)
 	EventBus.pause_game.connect(stop_clock)
 	EventBus.resume_game.connect(resume_clock)
 	EventBus.level_failed.connect(restart_clock)
+	EventBus.load_level.connect(restart_clock)
 
 func _process(delta: float) -> void:
 	if timer_running:
 		seconds_elapsed += delta
 
-func start_clock(_param1, _param2):
+func start_clock():
 	seconds_elapsed = 0
 	timer_running = true
 
-func restart_clock():
+func restart_clock(_param1 = 1, _param2 = 2):
 	$AnimationPlayer.play("ClockReset")
 	seconds_elapsed = 0
+	timer_running = false
 
 func resume_clock():
 	timer_running = true
