@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://64swlkl603eh"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btjfl8m5qbsbp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0axt"]
 bg_color = Color(0.3217281, 0.32172793, 0.32172796, 1)
@@ -6,7 +6,6 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.9607843, 0.81960785, 0.023529412, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrhh3"]
 bg_color = Color(0.099985994, 0.09998601, 0.099985965, 1)
@@ -14,7 +13,6 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.9607843, 0.81960785, 0.023529412, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2ynr"]
 bg_color = Color(0.021434654, 0.021434627, 0.021434633, 1)
@@ -22,7 +20,6 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.9607843, 0.81960785, 0.023529412, 1)
 
 [resource]
 Button/styles/hover = SubResource("StyleBoxFlat_d0axt")

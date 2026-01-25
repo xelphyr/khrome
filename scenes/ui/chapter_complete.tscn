@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://byn6plmckil36" path="res://scripts/chapter_complete_ui.gd" id="1_pst0b"]
 [ext_resource type="Script" uid="uid://dgqx34jh6wsdu" path="res://scripts/typewriter_label.gd" id="2_adncl"]
-[ext_resource type="Theme" uid="uid://64swlkl603eh" path="res://assets/themes/level_select_button.tres" id="3_adncl"]
+[ext_resource type="Theme" uid="uid://64swlkl603eh" path="res://assets/themes/level_select_button_unlocked.tres" id="3_adncl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enauh"]
 bg_color = Color(0, 0, 0, 1)
