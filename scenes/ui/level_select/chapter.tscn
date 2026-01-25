@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfueafj6gef31"]
+
+[ext_resource type="Script" uid="uid://bbqccsltil7eo" path="res://scripts/chapter_select_grid.gd" id="1_3fbfk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l0h45"]
+font_size = 32
+
+[node name="ChapterSelectGrid" type="VBoxContainer"]
+theme_override_constants/separation = 32
+script = ExtResource("1_3fbfk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CHAPTER 1: JUMPING AND PHASING"
+label_settings = SubResource("LabelSettings_l0h45")
+
+[node name="Buttons" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 5

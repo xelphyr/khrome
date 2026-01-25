@@ -26,3 +26,7 @@ signal gameui_fadeout_end()
 signal phase_lock_unlock_enter()
 
 signal player_movement_started()
+
+signal progress_level_completed(uuid: StringName)
+signal progress_level_unlocked(uuid: StringName)
+signal progress_level_speedran(uuid: StringName)

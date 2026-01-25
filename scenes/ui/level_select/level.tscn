@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3d4jlkbnrlxw"]
+
+[ext_resource type="Theme" uid="uid://64swlkl603eh" path="res://assets/themes/level_select_button.tres" id="1_2lah0"]
+
+[node name="1" type="CheckBox"]
+custom_minimum_size = Vector2(60, 60)
+theme = ExtResource("1_2lah0")
+theme_override_font_sizes/font_size = 32
+text = "1"

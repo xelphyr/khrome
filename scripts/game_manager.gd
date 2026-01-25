@@ -7,6 +7,8 @@ var chapter_levels_count = 10
 
 var phase_locked := false
 
+@onready var level_manager = get_tree().get_first_node_in_group(&"LevelManager")
+
 func _ready() -> void:
 	EventBus.level_selected.connect(_on_level_selected)
 	EventBus.level_complete.connect(_on_level_complete)
@@ -45,6 +47,8 @@ func _on_level_selected(chapter:int, level: int):
 func _on_level_complete():
 	phase_locked = false
 	EventBus.phase_lock_unlock_enter.emit()
+	EventBus.progress_level_completed.emit(level_manager.request_level_uuid(curr_chapter, curr_level))
+	level_manager.unlock_next_level(curr_chapter, curr_level)
 	AudioManager.create_audio(SoundEffectSettings.SoundEffectType.WIN)
 	curr_level += 1
 	EventBus.gameui_fadein_start.emit()

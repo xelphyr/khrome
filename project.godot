@@ -32,6 +32,8 @@ EventBus="*res://scripts/event_bus.gd"
 GameManager="*res://scripts/game_manager.gd"
 AudioManager="*res://scenes/audio_manager.tscn"
 UIManager="*res://scenes/ui_manager.tscn"
+ProgressManager="*res://scripts/progress_manager.gd"
+SaveManager="*res://scripts/save_manager.gd"
 
 [display]
 
