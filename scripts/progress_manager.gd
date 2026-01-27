@@ -30,6 +30,7 @@ func _init_data():
 func save_data():
 	SaveManager.save_data(progress_data)
 
+
 func check_level_completed(uuid : StringName) -> bool: 
 	if progress_data.has(uuid):
 		return progress_data[uuid].level_completed
@@ -69,3 +70,10 @@ func level_speedran(uuid : StringName):
 		progress_data[uuid].level_speedran = true
 	else:
 		assert(false, "someting very terrible happened: " + uuid)
+
+func check_chapter_prologue_unlocked(chapter:int) -> bool:
+	var uuids = get_tree().get_first_node_in_group(&"LevelManager").request_chapter_uuids(chapter)
+	var all_levels_speedran = true
+	for uuid in uuids:
+		all_levels_speedran = all_levels_speedran and check_level_speedran(uuid)
+	return all_levels_speedran

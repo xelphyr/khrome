@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=3 uid="uid://bmfgj08c40agv"]
+
+[ext_resource type="PackedScene" uid="uid://butyikmac32bn" path="res://scenes/camera.tscn" id="1_0fkid"]
+[ext_resource type="Script" uid="uid://qi6o6kqh1raa" path="res://scripts/prologue.gd" id="1_y3857"]
+[ext_resource type="Script" uid="uid://bqg1phvs0djqm" path="res://scripts/camera.gd" id="2_i0lmi"]
+[ext_resource type="PackedScene" uid="uid://cyuro6ku8uypl" path="res://scenes/player.tscn" id="3_y3857"]
+[ext_resource type="PackedScene" uid="uid://b1h36xnano1hj" path="res://scenes/alter_ego.tscn" id="5_0fkid"]
+[ext_resource type="PackedScene" uid="uid://uedgjx7cdnrn" path="res://scenes/fall_detect.tscn" id="5_o5e75"]
+[ext_resource type="PackedScene" uid="uid://bcls82n8jsh6n" path="res://scenes/obstacles/grey/platform_grey.tscn" id="7_egpwf"]
+[ext_resource type="PackedScene" uid="uid://d2jig0u58ncbr" path="res://scenes/obstacles/blue/platform_blue.tscn" id="7_k58om"]
+[ext_resource type="PackedScene" uid="uid://bwl48fdww8pdl" path="res://scenes/start.tscn" id="8_egpwf"]
+[ext_resource type="PackedScene" uid="uid://br6xsihjrnao5" path="res://scenes/obstacles/gold/platform_gold.tscn" id="8_lcihm"]
+[ext_resource type="Script" uid="uid://b7mnteft6cgyv" path="res://scripts/dialogue_trigger.gd" id="8_o5e75"]
+[ext_resource type="PackedScene" uid="uid://keoes5bdc7gt" path="res://scenes/obstacles/blue/jump_pad_blue.tscn" id="9_tvj72"]
+[ext_resource type="PackedScene" uid="uid://crig3hqos8fo2" path="res://scenes/obstacles/gold/jump_pad_gold.tscn" id="10_w25kg"]
+[ext_resource type="PackedScene" uid="uid://b4qtjb6y8rkrh" path="res://scenes/obstacles/grey/jump_pad_grey.tscn" id="11_4gnm2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3857"]
+size = Vector3(11, 6, 1)
+
+[node name="Prologue1" type="Node3D" node_paths=PackedStringArray("dialogue_triggers", "level_finish", "fall_detect", "start")]
+script = ExtResource("1_y3857")
+dialogue_triggers = [NodePath("Area3D"), NodePath("Area3D2"), NodePath("Area3D3")]
+level_finish = NodePath("Alter Ego")
+fall_detect = NodePath("FallDetect")
+start = NodePath("Start")
+
+[node name="Camera3D" parent="." instance=ExtResource("1_0fkid")]
+transform = Transform3D(0.7071068, -0.29883623, 0.6408564, 0, 0.9063078, 0.42261824, -0.7071068, -0.29883623, 0.6408564, 50, 87.75017, 13.828613)
+cull_mask = 1047553
+size = 139.57072
+script = ExtResource("2_i0lmi")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 156.8921, 0)
+layers = 3
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("3_y3857")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="FallDetect" parent="." instance=ExtResource("5_o5e75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.103905, 0)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="PlatformGrey" parent="Objects" instance=ExtResource("7_egpwf")]
+
+[node name="PlatformGrey2" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 35, -12)
+
+[node name="PlatformGrey6" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 1, -42, 35, -33)
+
+[node name="PlatformGrey3" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.5, 35, -33.5)
+
+[node name="PlatformGrey7" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.3, 79, -45)
+
+[node name="PlatformGrey4" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.480614)
+
+[node name="PlatformGrey10" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34.5, 39, -128.3403)
+
+[node name="PlatformGrey11" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 41.5, 39, -128.3403)
+
+[node name="PlatformGrey12" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48.5, 39, -128.3403)
+
+[node name="PlatformGrey9" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 25.5, 0, -128.3403)
+
+[node name="PlatformGrey8" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 79, -116.48061)
+
+[node name="PlatformGrey5" parent="Objects" instance=ExtResource("7_egpwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 79, -108.71591)
+
+[node name="PlatformBlue" parent="Objects" instance=ExtResource("7_k58om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -2, -33)
+
+[node name="PlatformBlue2" parent="Objects" instance=ExtResource("7_k58om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, -2, -33)
+
+[node name="PlatformBlue3" parent="Objects" instance=ExtResource("7_k58om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3, 79, -52)
+
+[node name="PlatformGold" parent="Objects" instance=ExtResource("8_lcihm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -26, 0, -36)
+
+[node name="PlatformGold3" parent="Objects" instance=ExtResource("8_lcihm")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -14.3, 79, -59)
+
+[node name="PlatformBlue4" parent="Objects" instance=ExtResource("7_k58om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3, 79, -66)
+
+[node name="PlatformGold4" parent="Objects" instance=ExtResource("8_lcihm")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -14.3, 79, -73)
+
+[node name="PlatformBlue5" parent="Objects" instance=ExtResource("7_k58om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3, 79, -80)
+
+[node name="PlatformGold5" parent="Objects" instance=ExtResource("8_lcihm")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -14.3, 79, -87)
+
+[node name="PlatformBlue6" parent="Objects" instance=ExtResource("7_k58om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3, 79, -94)
+
+[node name="PlatformGold6" parent="Objects" instance=ExtResource("8_lcihm")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -14.3, 79, -101)
+
+[node name="PlatformGold2" parent="Objects" instance=ExtResource("8_lcihm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -26, 5, -36)
+
+[node name="JumpPadBlue" parent="Objects" instance=ExtResource("9_tvj72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 0)
+jump_force = 30.0
+
+[node name="JumpPadBlue2" parent="Objects" instance=ExtResource("9_tvj72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 11, 0)
+jump_force = 30.0
+
+[node name="JumpPadBlue3" parent="Objects" instance=ExtResource("9_tvj72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 21, 0)
+jump_force = 30.0
+
+[node name="JumpPadGold" parent="Objects" instance=ExtResource("10_w25kg")]
+transform = Transform3D(-0.5735765, 0.819152, -8.156656e-08, 0.819152, 0.5735765, -2.1855694e-08, 2.8881525e-08, -7.9351324e-08, -1, -13.5, 2, -128.82092)
+jump_force = 100.0
+
+[node name="JumpPadGold6" parent="Objects" instance=ExtResource("10_w25kg")]
+transform = Transform3D(0.08715581, -0.99619466, 1.6898933e-07, 0.99619466, 0.08715581, 2.1855694e-08, -3.6500932e-08, 1.6644142e-07, 1, 3.519411, 2, 0.17907715)
+
+[node name="JumpPadGold2" parent="Objects" instance=ExtResource("10_w25kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -2, -33)
+jump_force = 70.0
+
+[node name="JumpPadGold4" parent="Objects" instance=ExtResource("10_w25kg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34.5, 0, -128.3403)
+jump_force = 60.0
+
+[node name="JumpPadGold5" parent="Objects" instance=ExtResource("10_w25kg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34.5, 22, -128.3403)
+jump_force = 60.0
+
+[node name="JumpPadGold3" parent="Objects" instance=ExtResource("10_w25kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4, 46, -33.4)
+
+[node name="JumpPadGrey" parent="Objects" instance=ExtResource("11_4gnm2")]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.9659258, 0, -0.9659258, 0.258819, -26, 0, -13)
+jump_force = 100.0
+
+[node name="JumpPadGrey2" parent="Objects" instance=ExtResource("11_4gnm2")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -14.4, 35, -33.4)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 35, -13)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("8_o5e75")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_y3857")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.5, 35, -33.5)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("8_o5e75")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_y3857")
+
+[node name="Area3D3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 79, -109.40158)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("8_o5e75")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_y3857")
+
+[node name="Start" parent="." instance=ExtResource("8_egpwf")]
+
+[node name="Alter Ego" parent="." instance=ExtResource("5_0fkid")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48.5, 41, -128.42093)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D3" to="Area3D3" method="_on_body_entered"]

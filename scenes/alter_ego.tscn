@@ -1,0 +1,224 @@
+[gd_scene load_steps=19 format=3 uid="uid://b1h36xnano1hj"]
+
+[ext_resource type="Material" uid="uid://c4vh1i42q041g" path="res://assets/mats/black.tres" id="1_47ray"]
+[ext_resource type="Material" uid="uid://3pgsn35ulr7w" path="res://assets/mats/grey_glow.tres" id="2_6dnc0"]
+[ext_resource type="ArrayMesh" uid="uid://dljdd84mqtlri" path="res://assets/models/capsule_outline_body.obj" id="2_8iacs"]
+[ext_resource type="ArrayMesh" uid="uid://dpicgpbqx2njh" path="res://assets/models/capsule_outline_top.obj" id="3_3npaa"]
+[ext_resource type="PackedScene" uid="uid://cw2fi3x1qlg6j" path="res://scenes/shadow.tscn" id="3_8iacs"]
+[ext_resource type="ArrayMesh" uid="uid://bb127isrbavhj" path="res://assets/models/capsule_outline_bottom.obj" id="3_bip8v"]
+[ext_resource type="Texture2D" uid="uid://drwy56t31c1ea" path="res://images/square.png" id="4_bip8v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0umw0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k847a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_joamf"]
+material = ExtResource("2_6dnc0")
+flip_faces = true
+size = Vector3(1.2, 1.2, 1.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_47ray"]
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6dnc0"]
+
+[sub_resource type="Animation" id="Animation_k847a"]
+resource_name = "LevelFinishHover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1.9833333, 1, 0, 0.2, 0, 2.9833333, 1, 0, 0.2, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 2.0166667, 1, 0, 0.2, 0, 3, 1, 0, 0.2, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CubeOutline")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 2.0166667, 1, 0, 0.2, 0, 3, 1, 0, 0.2, 0)
+
+[sub_resource type="Animation" id="Animation_kib3w"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CubeOutline")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.99999994, 0.99999994, 0.99999994)
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CapsuleTop")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/4/type = "scale_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CapsuleTopOutline")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 1.2, 1.2, 1.2)
+tracks/5/type = "scale_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CapsuleBottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/6/type = "scale_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CapsuleBottomOutline")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 1.2, 1.2, 1.2)
+
+[sub_resource type="Animation" id="Animation_8iacs"]
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 1, 1, 0, 0, 0)
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CubeOutline")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.033333335, 1, 0.99999994, 0.99999994, 0.99999994, 0.96666664, 1, 0, 0, 0)
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CapsuleTop")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 0, 1, 0.96666664, 1, 1, 1, 1)
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CapsuleTopOutline")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1.2, 0, 1.2, 1, 1, 1.2, 1.2, 1.2)
+tracks/4/type = "scale_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CapsuleBottom")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0.033333335, 1, 1, 0, 1, 1, 1, 1, 1, 1)
+tracks/5/type = "scale_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CapsuleBottomOutline")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 1.2, 0, 1.2, 1, 1, 1.2, 1.2, 1.2)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_joamf"]
+_data = {
+&"LevelFinishHover": SubResource("Animation_k847a"),
+&"RESET": SubResource("Animation_kib3w"),
+&"Transform": SubResource("Animation_8iacs")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfkf3"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.79607844)
+albedo_texture = ExtResource("4_bip8v")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s5ft6"]
+material = SubResource("StandardMaterial3D_bfkf3")
+size = Vector2(1, 1)
+
+[node name="Alter Ego" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("BoxShape3D_0umw0")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+layers = 3
+mesh = SubResource("BoxMesh_k847a")
+surface_material_override/0 = ExtResource("1_47ray")
+
+[node name="CubeOutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+layers = 3
+mesh = SubResource("BoxMesh_joamf")
+
+[node name="CapsuleBody" type="MeshInstance3D" parent="."]
+layers = 3
+mesh = SubResource("CylinderMesh_47ray")
+surface_material_override/0 = ExtResource("1_47ray")
+
+[node name="CapsuleBodyOutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.2, 0, 0, 0)
+layers = 3
+mesh = ExtResource("2_8iacs")
+surface_material_override/0 = ExtResource("2_6dnc0")
+
+[node name="CapsuleTop" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 3
+mesh = SubResource("SphereMesh_6dnc0")
+surface_material_override/0 = ExtResource("1_47ray")
+
+[node name="CapsuleTopOutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.5, 0)
+layers = 3
+mesh = ExtResource("3_3npaa")
+surface_material_override/0 = ExtResource("2_6dnc0")
+
+[node name="CapsuleBottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 3
+mesh = SubResource("SphereMesh_6dnc0")
+surface_material_override/0 = ExtResource("1_47ray")
+
+[node name="CapsuleBottomOutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.5, 0)
+layers = 3
+mesh = ExtResource("3_bip8v")
+surface_material_override/0 = ExtResource("2_6dnc0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_joamf")
+}
+autoplay = "LevelFinishHover"
+
+[node name="Shadow" parent="." instance=ExtResource("3_8iacs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3336835, 0)
+mesh = SubResource("PlaneMesh_s5ft6")

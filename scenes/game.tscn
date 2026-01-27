@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cf7lm2tagexth"]
+[gd_scene load_steps=44 format=3 uid="uid://cf7lm2tagexth"]
 
 [ext_resource type="Script" uid="uid://c2i8voyg3vck5" path="res://scripts/chapter.gd" id="2_37s47"]
 [ext_resource type="Script" uid="uid://b4n7dgs7x13qs" path="res://scripts/level_manager.gd" id="2_yqjtg"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b4rp63a8odq2h" path="res://scenes/levels/chapter_3/two_stations.tscn" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dy6t3ot4u3u0q" path="res://scenes/levels/chapter_4/the_gates_of_eden.tscn" id="12_ir15t"]
 [ext_resource type="PackedScene" uid="uid://dft24scijqgft" path="res://scenes/levels/chapter_2/phaselocked.tscn" id="13_1kice"]
+[ext_resource type="PackedScene" uid="uid://bmfgj08c40agv" path="res://scenes/levels/prologues/prologue_1.tscn" id="13_bt5mj"]
 [ext_resource type="AudioStream" uid="uid://c5bne2v46v31f" path="res://assets/audio/music_zapsplat_action_dark_sci_fi_serious_atmospsheric_deep_tech_014.mp3" id="13_trtic"]
 [ext_resource type="Script" uid="uid://djpykuxbbjxi" path="res://scripts/game_music.gd" id="14_ir15t"]
 
@@ -28,7 +29,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"baby_steps"
 level_name = &"Baby Steps"
 scene = ExtResource("3_lbhrr")
-speedrun_time = 8.0
+speedrun_time = 4.8
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_pl11u"]
@@ -36,6 +37,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"switcheroo"
 level_name = &"Switcheroo"
 scene = ExtResource("4_iywne")
+speedrun_time = 5.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_bhx41"]
@@ -43,6 +45,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"cross_stacking"
 level_name = &"Cross Stacking"
 scene = ExtResource("5_p57ef")
+speedrun_time = 2.2
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_qnb83"]
@@ -50,6 +53,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"bouncing"
 level_name = &"Bouncing"
 scene = ExtResource("5_ssvqc")
+speedrun_time = 7.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_sww3w"]
@@ -57,6 +61,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"a_matter_of_perspective"
 level_name = &"A Matter of Perspective"
 scene = ExtResource("8_264po")
+speedrun_time = 10.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_suyxu"]
@@ -64,6 +69,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"bouncing_pt_2"
 level_name = &"Bouncing Part 2"
 scene = ExtResource("8_1kice")
+speedrun_time = 4.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_sgl2t"]
@@ -71,6 +77,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"railgun"
 level_name = &"Railgun"
 scene = ExtResource("9_trtic")
+speedrun_time = 4.2
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_qouja"]
@@ -78,6 +85,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"railgun_pt_2"
 level_name = &"Railgun Part 2"
 scene = ExtResource("10_ir15t")
+speedrun_time = 6.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_wljb1"]
@@ -85,12 +93,14 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"chaotically_tending_upwards"
 level_name = &"Chaotically Tending Upwards"
 scene = ExtResource("10_1kice")
+speedrun_time = 13.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_v2yb1"]
 script = ExtResource("2_37s47")
 chapter_name = &"Moving and Jumping"
 levels = Array[ExtResource("3_bt5mj")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qnb83"), SubResource("Resource_sww3w"), SubResource("Resource_suyxu"), SubResource("Resource_sgl2t"), SubResource("Resource_qouja"), SubResource("Resource_wljb1")])
+prologue = ExtResource("13_bt5mj")
 metadata/_custom_type_script = "uid://c2i8voyg3vck5"
 
 [sub_resource type="Resource" id="Resource_js0lu"]
@@ -98,6 +108,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"security"
 level_name = &"Security"
 scene = ExtResource("6_u5sy4")
+speedrun_time = 6.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_gxtfn"]
@@ -105,6 +116,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"carousel"
 level_name = &"A Deadly Carousel"
 scene = ExtResource("7_gee14")
+speedrun_time = 6.5
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_twgab"]
@@ -112,6 +124,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"phaselocked"
 level_name = &"Phaselocked"
 scene = ExtResource("13_1kice")
+speedrun_time = 17.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_02fa5"]
@@ -119,6 +132,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"carousel_pt_2"
 level_name = &"Carousel Part 2"
 scene = ExtResource("8_kvuet")
+speedrun_time = 20.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_nepv3"]
@@ -132,6 +146,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"move_and_be_moved"
 level_name = &"Move and Be Moved"
 scene = ExtResource("7_dinhu")
+speedrun_time = 17.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_m4url"]
@@ -139,6 +154,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"two_stations"
 level_name = &"Two Stations"
 scene = ExtResource("11_dinhu")
+speedrun_time = 31.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_8ool0"]
@@ -152,6 +168,7 @@ script = ExtResource("3_bt5mj")
 level_uuid = &"gates_of_eden"
 level_name = &"The Gates of Eden"
 scene = ExtResource("12_ir15t")
+speedrun_time = 17.0
 metadata/_custom_type_script = "uid://khhmvi4e5sjj"
 
 [sub_resource type="Resource" id="Resource_05nbr"]

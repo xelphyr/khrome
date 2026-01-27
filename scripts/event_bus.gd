@@ -30,3 +30,7 @@ signal player_movement_started()
 signal progress_level_completed(uuid: StringName)
 signal progress_level_unlocked(uuid: StringName)
 signal progress_level_speedran(uuid: StringName)
+
+signal prologue_selected(chapter: int)
+signal load_prologue(chapter: int)
+signal prologue_trigger_dialogue(index: int)

@@ -30,7 +30,7 @@ gold_phase_mat = ExtResource("3_qlg0r")
 shape = SubResource("CapsuleShape3D_u8vuu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 3
+layers = 1024
 mesh = SubResource("CapsuleMesh_3vyb7")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]

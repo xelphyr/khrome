@@ -3,11 +3,12 @@ class_name LevelManager
 
 @export var chapters : Array[Chapter]
 
-var current_level_name : StringName
+var current_level_data : LevelData
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.load_level.connect(_load_level)
+	EventBus.load_prologue.connect(_load_prologue)
 	EventBus.exit_level.connect(_unload)
 
 func request_level_count(chapter:int) -> int:
@@ -48,8 +49,16 @@ func _load_level(chapter:int, level: int) -> void:
 		child.queue_free()
 
 	var loaded_level = chapters[chapter-1].levels[level-1].get_scene().instantiate()
-	current_level_name = chapters[chapter-1].levels[level-1].get_level_name()
+	current_level_data = chapters[chapter-1].levels[level-1]
 	add_child(loaded_level)
+
+func _load_prologue(chapter:int) -> void:
+	for child in get_children():
+		child.queue_free()
+		
+	var loaded_prologue = chapters[chapter-1].prologue.instantiate()
+	add_child(loaded_prologue)
+
 
 func _unload() -> void:
 	for child in get_children():

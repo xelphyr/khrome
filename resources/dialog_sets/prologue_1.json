@@ -1,0 +1,79 @@
+{
+	"speakers" : {
+		"scientist" : {
+			"color" : "#FFC0CB"
+		},
+		"military" : {
+			"color" : "#8A9A5B"
+		}
+	},
+	"dialogues" : [
+		[
+			{
+				"speaker": "military",
+				"text": "Do you have an explanation for this?",
+				"delay": 2.5
+			},
+			{
+				"speaker": "scientist",
+				"text": "Sir, with all due respect, this technology is relatively new and-",
+				"delay": 3
+			},
+			{
+				"speaker": "military",
+				"text": "Hundreds. Hundreds of soldiers died in that expedition. We put our trust in your science, and this is what we get.",
+				"delay": 9
+			}
+		],
+		[
+			{
+				"speaker": "scientist",
+				"text": "Our experiments are still in their infancy. We'd appreciate if that factored in to your decision making.",
+				"delay": 7
+			},
+			{
+				"speaker": "scientist",
+				"text": "It was you who sent out those troops-",
+				"delay": 1.8
+			},
+			{
+				"speaker": "military",
+				"text": "Don't. Turn. This. On. Me.",
+				"delay": 4
+			},
+			{
+				"speaker": "scientist",
+				"text": "...",
+				"delay": 5
+			}
+		],
+		[
+			{
+				"speaker": "scientist",
+				"text": "We'll increase the complexity of our simulations. With the fresh batch of-",
+				"delay": 3.5
+			},
+			{
+				"speaker": "military",
+				"text": "Don't call them that.",
+				"delay": 3
+			},
+			{
+				"speaker": "scientist",
+				"text": "...new processing resources, it should be feasible now. We only ask that you give us time.",
+				"delay": 5.5
+			},
+			{
+				"speaker": "military",
+				"text": "Time is the one luxury that we can't afford.",
+				"delay": 5
+			},
+			{
+				"speaker": "military",
+				"text": "I'll leave you to your... instruments. There are lives at stake. Everyone's lives. I hope that... factors in... to your decision making.",
+				"delay": 5
+			}
+		]
+	]
+	
+}

@@ -15,6 +15,8 @@ var is_fadeout_just_start := true
 
 @onready var level_manager = get_tree().get_first_node_in_group(&"LevelManager")
 
+@onready var timer = $MarginContainer/VBoxContainer2/Clock
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.gameui_fadein_start.connect(func(): curr_state = State.FADEIN)
@@ -37,6 +39,11 @@ func _ready() -> void:
 		$PhaseToBlue.modulate.a = 0
 		$PhaseToGold.modulate.a = 0)
 	$Panel.modulate.a = 1.0
+
+	setup_other_stuff()
+
+func setup_other_stuff() -> void:
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -75,13 +82,12 @@ func reset_level_data():
 	level_name_display.reset_display()
 
 func set_level_idx():
-	print("Setting level texr")
 	var level_idx = GameManager.curr_level
 	var chapter_idx = GameManager.curr_chapter
 	level_idx_display.start_display("SIMULATION %s.%s" % [chapter_idx, level_idx])
 
 func set_level_name():
-	var level_name = level_manager.current_level_name
+	var level_name = level_manager.current_level_data.get_level_name()
 	level_name_display.start_display(level_name.to_upper())
 
 func pause():

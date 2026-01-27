@@ -24,6 +24,7 @@ func _ready() -> void:
 		chapter.chapter_index = i + 1
 		chapters.call_deferred("add_child", chapter)
 		chapter.level_selected.connect(_level_selected)
+		chapter.prologue_selected.connect(_prologue_selected)
 	call_deferred("initialize")
 
 
@@ -31,6 +32,10 @@ func _level_selected(chapter: int, level: int):
 	#AudioManager.create_audio(SoundEffectSettings.SoundEffectType.BUTTON_SELECT)
 	EventBus.level_selected.emit(chapter, level)
 	UIManager.call("change_state", Enum.UIState.GAME)
+
+func _prologue_selected(chapter: int):
+	EventBus.prologue_selected.emit(chapter)
+	UIManager.call("change_state", Enum.UIState.PROLOGUE)
 
 
 func _change_chapter(to:int):

@@ -9,6 +9,7 @@ var completed_theme = preload("res://assets/themes/level_select_button_completed
 var speedran_theme = preload("res://assets/themes/level_select_button_speedran.tres")
 
 signal level_selected(chapter:int, level:int)
+signal prologue_selected(chapter:int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,7 +32,14 @@ func _ready() -> void:
 		button.button_group = chapter_button_group
 		$Buttons.call_deferred("add_child", button)
 	chapter_button_group.pressed.connect(_on_button_group_pressed)
-	
+
+	var prologue_button = button_scene.instantiate() as CheckBox
+	prologue_button.text = "P"
+	prologue_button.name = "Prologue"
+	if chapter_index != 1 or not ProgressManager.check_chapter_prologue_unlocked(chapter_index):
+		prologue_button.disabled = true
+	prologue_button.pressed.connect(func(): prologue_selected.emit(chapter_index))
+	$Buttons.call_deferred("add_child", prologue_button)
 
 func _on_button_group_pressed(button: BaseButton):
 	level_selected.emit(chapter_index, button.name.to_int())

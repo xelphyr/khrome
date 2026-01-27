@@ -22,6 +22,7 @@ ButtonPrompts/optional_supported_controllers/nintendo_switch=true
 [application]
 
 config/name="Khrome"
+config/version="3.0"
 run/main_scene="uid://cf7lm2tagexth"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"

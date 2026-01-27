@@ -1,0 +1,11 @@
+{
+    "speakers" : {
+        "scientist" : {
+            "color" : "#FFC0CB"
+        },
+        "military" : {
+            "color" : "#8A9A5B"
+        }
+    }
+    
+}
